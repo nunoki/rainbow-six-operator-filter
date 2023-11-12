@@ -88,7 +88,7 @@
 				top: 1rem
 				right: 1rem
 				fill: white
-				width: 1.5rem
+				width: 2rem
 
 			&:hover
 				outline: 1px solid white
