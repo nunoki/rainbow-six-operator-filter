@@ -5,15 +5,25 @@
 
 <style lang="sass">
 	:global(body)
+		margin: 0
+		padding: 1px
+		height: 100%
+
 		font-family: R6S-RegItalic,sans-serif
 		color: white
 
 		background: url(https://static-dm.ubisoft.com/siege/prod/7907369fa863844fc1ae432a9ca0e610.jpg)
 		background-size: 100%
+		backdrop-filter: hue-rotate(90deg)
 
 	:global(h1,h2)
 		text-transform: uppercase
 		font-weight: normal
+
+	.wrapper
+		max-width: 1600px
+		margin: 0 auto
+		padding: 0 1rem
 
 	@font-face 
 		font-family: R6S-RegItalic
