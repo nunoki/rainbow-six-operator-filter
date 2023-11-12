@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { operators } from "../operators"
+	import IconExternalLink from "../util/IconExternalLink.svelte"
 </script>
 
 <section class="operator-list">
@@ -20,6 +21,10 @@
 					<span class="name">{op.name}</span>
 				</div>
 			</div>
+
+			<div class="icon-external-link">
+				<IconExternalLink />
+			</div>
 		</a>
 	{/each}
 
@@ -36,6 +41,7 @@
 		flex-wrap: wrap
 
 		.operator
+			position: relative
 			flex: 1 1 calc(12.5% - 5px)
 			text-decoration: none
 
@@ -50,7 +56,7 @@
 					.pic
 						width: 100%
 						flex: 1
-					
+
 					.name
 						padding: .25rem
 						text-transform: uppercase
@@ -58,6 +64,18 @@
 						font-size: 26px
 						color: #24262a
 						background-color: #c3c3c3
+
+			.icon-external-link
+				opacity: 0
+				position: absolute
+				top: 1rem
+				right: 1rem
+				fill: white
+				width: 1.5rem
+
 			&:hover
 				outline: 1px solid white
+
+				.icon-external-link
+					opacity: 1
 </style>
