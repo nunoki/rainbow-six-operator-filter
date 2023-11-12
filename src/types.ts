@@ -36,11 +36,15 @@ export enum SCOPE {
 }
 
 export type operator = {
-	side: SIDE
 	uri: string
 	name: string
 	pic: string
 	icon: string
+	side: SIDE
+	gunsPrimary: GUN_TYPE[]
+	gunsSecondary: GUN_TYPE[]
+	gadgets: GADGET[]
+	scopes: SCOPE[]
 }
 
 export type radioOption = {

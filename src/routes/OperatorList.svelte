@@ -13,6 +13,18 @@
 		if (filters.side !== NONE) {
 			output = output.filter((op) => op.side === filters.side)
 		}
+		if (filters.gunTypePrimary !== NONE) {
+			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypePrimary))
+		}
+		if (filters.gunTypeSecondary !== NONE) {
+			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypeSecondary))
+		}
+		if (filters.gadget !== NONE) {
+			output = output.filter((op) => op.gadgets.includes(filters.gadget))
+		}
+		if (filters.scope !== NONE) {
+			output = output.filter((op) => op.scopes.includes(filters.scope))
+		}
 		return output
 	}
 </script>
