@@ -47,4 +47,12 @@ export type radioOption = {
 	value: number
 }
 
+export type filterParams = {
+	side: number
+	gunTypePrimary: number
+	gunTypeSecondary: number
+	gadget: number
+	scope: number
+}
+
 export const NONE = -1

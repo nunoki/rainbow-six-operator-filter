@@ -1,10 +1,26 @@
 <script lang="ts">
 	import { operators } from "../operators"
+	import type { filterParams, operator } from "../types"
+	import { NONE, SIDE } from "../types"
 	import IconExternalLink from "../util/IconExternalLink.svelte"
+
+	export let filters: filterParams
+
+	$: filteredOps = filter(filters)
+
+	function filter(filters: filterParams): operator[] {
+		let output = operators
+		if (filters.side !== NONE) {
+			output = output.filter((op) => op.side === filters.side)
+		}
+		return output
+	}
 </script>
 
+<pre>{JSON.stringify(filters)}</pre>
+
 <div class="operator-list">
-	{#each operators as op}
+	{#each filteredOps as op}
 		<a
 			class="operator"
 			href={"https://www.ubisoft.com" + op.uri}

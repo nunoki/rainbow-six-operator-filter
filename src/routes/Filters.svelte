@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { type radioOption, SIDE, GUN_TYPE, GADGET, SCOPE, NONE } from "../types"
+	import { createEventDispatcher } from "svelte"
+	import type { radioOption, filterParams } from "../types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE } from "../types"
 	import Radio from "../util/Radio.svelte"
 
 	const sides: radioOption[] = [
@@ -41,6 +43,8 @@
 		{ label: "2.5x", value: SCOPE.s2_5 },
 	]
 
+	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
+
 	let side: SIDE
 	let gunTypePrimary: GUN_TYPE
 	let gunTypeSecondary: GUN_TYPE
@@ -53,9 +57,16 @@
 			: side === SIDE.defender
 			? gadgets.common.concat(gadgets.defense)
 			: gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
+	$: dispatch("filtered", {
+		side,
+		gunTypePrimary,
+		gunTypeSecondary,
+		gadget,
+		scope,
+	})
 </script>
 
-<div class="filters">
+<div class="filterParams">
 	<div class="filter">
 		Side: <Radio
 			name="side"
@@ -98,6 +109,6 @@
 </div>
 
 <style lang="sass">
-	.filters
+	.filterParams
 		margin: 1rem 0
 </style>
