@@ -3,7 +3,7 @@
 	import IconExternalLink from "../util/IconExternalLink.svelte"
 </script>
 
-<section class="operator-list">
+<div class="operator-list">
 	{#each operators as op}
 		<a
 			class="operator"
@@ -31,7 +31,7 @@
 	{#each Array(8) as _}
 		<span class="operator" />
 	{/each}
-</section>
+</div>
 
 <style lang="sass">
 	.operator-list
