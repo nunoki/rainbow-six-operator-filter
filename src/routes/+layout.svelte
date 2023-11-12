@@ -4,10 +4,12 @@
 </div>
 
 <style lang="sass">
+	:global(html,body)
+		height: 100%
+
 	:global(body)
 		margin: 0
 		padding: 1px
-		height: 100%
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
 		color: white
