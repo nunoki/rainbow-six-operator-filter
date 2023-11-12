@@ -12,6 +12,7 @@
 	const gunTypes: radioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "Rifle", value: GUN_TYPE.rifle },
+		{ label: "SMG", value: GUN_TYPE.smg },
 		{ label: "DMR", value: GUN_TYPE.dmr },
 		{ label: "LMG", value: GUN_TYPE.lmg },
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },

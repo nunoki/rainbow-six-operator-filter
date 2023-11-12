@@ -5,6 +5,7 @@ export enum SIDE {
 
 export enum GUN_TYPE {
 	rifle,
+	smg,
 	dmr,
 	lmg,
 	shotgun,
