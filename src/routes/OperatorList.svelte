@@ -23,7 +23,7 @@
 			output = output.filter((op) => op.gadgets.includes(filters.gadget))
 		}
 		if (filters.scope !== NONE) {
-			output = output.filter((op) => op.scopes.includes(filters.scope))
+			output = output.filter((op) => op.maxScope >= filters.scope)
 		}
 		if (filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)

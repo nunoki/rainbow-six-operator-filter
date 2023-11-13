@@ -56,7 +56,7 @@ export type operator = {
 	gunsPrimary: GUN_TYPE[]
 	gunsSecondary: GUN_TYPE[]
 	gadgets: GADGET[]
-	scopes: SCOPE[]
+	maxScope: SCOPE
 	note?: string
 }
 
