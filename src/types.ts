@@ -50,6 +50,7 @@ export type operator = {
 	gunsSecondary: GUN_TYPE[]
 	gadgets: GADGET[]
 	scopes: SCOPE[]
+	note?: string
 }
 
 export type radioOption = {

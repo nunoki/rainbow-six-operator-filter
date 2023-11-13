@@ -11,10 +11,10 @@
 	]
 	const gunTypes: radioOption[] = [
 		{ label: "Any", value: NONE },
-		{ label: "Rifle", value: GUN_TYPE.rifle },
-		{ label: "SMG", value: GUN_TYPE.smg },
-		{ label: "DMR", value: GUN_TYPE.dmr },
-		{ label: "LMG", value: GUN_TYPE.lmg },
+		{ label: "Assault rifle", value: GUN_TYPE.rifle },
+		{ label: "Submachine gun", value: GUN_TYPE.smg },
+		{ label: "Marksman rifle", value: GUN_TYPE.dmr },
+		{ label: "Light machine gun", value: GUN_TYPE.lmg },
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },
 		{ label: "Pistol", value: GUN_TYPE.pistol },
 		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
@@ -30,12 +30,12 @@
 			{ label: "barbwire", value: GADGET.barbwire },
 		],
 		attack: [
-			{ label: "grenade", value: GADGET.grenade },
-			{ label: "smoke", value: GADGET.smoke },
+			{ label: "Frag grenade", value: GADGET.grenade },
+			{ label: "Smoke grenade", value: GADGET.smoke },
 			{ label: "stun", value: GADGET.stun },
-			{ label: "claymore", value: GADGET.claymore },
-			{ label: "sbreach", value: GADGET.sbreach },
-			{ label: "hbreach", value: GADGET.hbreach },
+			{ label: "Claymore", value: GADGET.claymore },
+			{ label: "Breach charge", value: GADGET.sbreach },
+			{ label: "Hard breach charge", value: GADGET.hbreach },
 		],
 		common: [{ label: "Any", value: NONE }],
 	}
@@ -88,7 +88,7 @@
 	</div>
 
 	<div class="filter">
-		Scope (primary gun): <Radio
+		Scope (primary gun) <mark>TODO</mark>: <Radio
 			name="scope"
 			options={scopes}
 			bind:selected={scope}

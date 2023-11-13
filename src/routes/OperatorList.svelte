@@ -17,7 +17,7 @@
 			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypePrimary))
 		}
 		if (filters.gunTypeSecondary !== NONE) {
-			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypeSecondary))
+			output = output.filter((op) => op.gunsSecondary.includes(filters.gunTypeSecondary))
 		}
 		if (filters.gadget !== NONE) {
 			output = output.filter((op) => op.gadgets.includes(filters.gadget))
@@ -53,6 +53,15 @@
 			<div class="icon-external-link">
 				<IconExternalLink />
 			</div>
+
+			{#if op.note}
+				<div
+					class="icon-note"
+					title={op.note}
+				>
+					*
+				</div>
+			{/if}
 		</a>
 	{/each}
 
@@ -101,6 +110,16 @@
 				right: 1rem
 				fill: white
 				width: 2rem
+
+			.icon-note
+				position: absolute
+				z-index: 2
+				bottom: 1rem
+				right: 1rem
+				font-size: 3rem
+				font-weight: bold
+				color: red
+				cursor: help
 
 			&:hover
 				outline: 1px solid white
