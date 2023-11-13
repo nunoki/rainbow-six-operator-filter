@@ -17,6 +17,7 @@
 		{ label: "Light machine gun", value: GUN_TYPE.lmg },
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },
 		{ label: "Pistol", value: GUN_TYPE.pistol },
+		{ label: "Bailiff", value: GUN_TYPE.bailiff },
 		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
 		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		{ label: "Shield", value: GUN_TYPE.shield },

@@ -13,6 +13,7 @@ export enum GUN_TYPE {
 	mpistol,
 	gonne6,
 	shield,
+	bailiff,
 }
 
 export enum GADGET {
