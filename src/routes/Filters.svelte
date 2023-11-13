@@ -17,6 +17,9 @@
 		{ label: "LMG", value: GUN_TYPE.lmg },
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },
 		{ label: "Pistol", value: GUN_TYPE.pistol },
+		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
+		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
+		{ label: "Shield", value: GUN_TYPE.shield },
 	]
 	const gadgets: { [name: string]: radioOption[] } = {
 		defense: [
