@@ -120,7 +120,7 @@
 				cursor: help
 
 			&:hover
-				outline: 1px solid white
+				outline: 2px solid white
 
 				.icon-external-link
 					opacity: 1
