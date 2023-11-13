@@ -25,6 +25,9 @@
 		if (filters.scope !== NONE) {
 			output = output.filter((op) => op.scopes.includes(filters.scope))
 		}
+		if (filters.speed !== NONE) {
+			output = output.filter((op) => op.speed === filters.speed)
+		}
 		return output
 	}
 </script>

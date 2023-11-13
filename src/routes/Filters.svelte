@@ -85,6 +85,7 @@
 		gunTypeSecondary,
 		gadget,
 		scope,
+		speed,
 	})
 </script>
 

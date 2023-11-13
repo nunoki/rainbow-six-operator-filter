@@ -73,6 +73,7 @@ export type filterParams = {
 	gunTypeSecondary: number
 	gadget: number
 	scope: number
+	speed: number
 }
 
 export const NONE = -1
