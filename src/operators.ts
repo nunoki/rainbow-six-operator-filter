@@ -1,6 +1,10 @@
 import type { operator } from "./types"
 import { GUN_TYPE, SIDE, GADGET } from "./types"
 
+function mpVsSmgNote(smg: string): string {
+	return `${smg} is classified as a Machine pistol on Ubisoft's site, so here it counts as both Machine pistol and Submachine gun.`
+}
+
 export const operators: operator[] = [
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/ram",
@@ -119,9 +123,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2K1uxROLvHGxOIOMpNRFeU/7b4afc5ded3d1b9a937d1b504b5d4d0d/Y4S3_BADGE_Amaru_L.png",
 		side: SIDE.attacker,
 		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.stun, GADGET.hbreach],
 		scopes: [],
+		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/nokk",
@@ -196,9 +201,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/aoQeHLohcuqvubBoyrzsM/d4a230ecba495c58c5521e10d5d84baa/Y2S4_BADGE_Dokkaebi_L.png",
 		side: SIDE.attacker,
 		gunsPrimary: [GUN_TYPE.dmr, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.smoke, GADGET.stun],
 		scopes: [],
+		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/zofia",
@@ -405,9 +411,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6YOBUP5JMskklFx9nDJQ49/d9d4b0968f581597feaa0ef4ec0891f3/r6s-operators-badge-solis.png",
 		side: SIDE.defender,
 		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.impact, GADGET.bpcamera],
 		scopes: [],
+		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/azami",
@@ -504,9 +511,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/hx1Ljf1qIWbjpgCNmfJbu/2217283b569ef316dc12b93e86649f8f/Y4S2_BADGE_Warden_L.png",
 		side: SIDE.defender,
 		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.dshield, GADGET.nitro],
 		scopes: [],
+		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/mozzie",
@@ -570,9 +578,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/56A3hXhWZdwO623g3ejeku/a40a0582a7841abfeed723d8fbe238d3/Y2S4_BADGE_Vigil_L.png",
 		side: SIDE.defender,
 		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.bpcamera, GADGET.impact],
 		scopes: [],
+		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/ela",
@@ -658,9 +667,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3exeHnxH1tmUmQTequWRKa/e1b6c6f057eb24722dd7860af0276316/Y0R6_BADGE_Mute_L.png",
 		side: SIDE.defender,
 		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.bpcamera, GADGET.nitro],
 		scopes: [],
+		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/smoke",
@@ -669,9 +679,10 @@ export const operators: operator[] = [
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/6mOMxoc3t27R9Gr9wFtt6T/f5f90a6be6a6710bee686ce69df29906/Y0R6_BADGE_Smoke_L.png",
 		side: SIDE.defender,
 		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
 		gadgets: [GADGET.dshield, GADGET.barbwire],
 		scopes: [],
+		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/castle",
