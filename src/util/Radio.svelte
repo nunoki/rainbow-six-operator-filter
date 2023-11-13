@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from "svelte"
-
 	export let options: any[]
 	export let name: string
 	export let selected = options ? options[0].value : null
