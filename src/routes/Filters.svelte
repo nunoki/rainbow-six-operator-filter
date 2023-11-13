@@ -23,16 +23,16 @@
 	]
 	const gadgets: { [name: string]: radioOption[] } = {
 		defense: [
-			{ label: "impact", value: GADGET.impact },
-			{ label: "bpcamera", value: GADGET.bpcamera },
-			{ label: "obsblocker", value: GADGET.obsblocker },
-			{ label: "dshield", value: GADGET.dshield },
-			{ label: "barbwire", value: GADGET.barbwire },
+			{ label: "Impact grenade", value: GADGET.impact },
+			{ label: "Bulletproof camera", value: GADGET.bpcamera },
+			{ label: "Observation blocker", value: GADGET.obsblocker },
+			{ label: "Deployable shield", value: GADGET.dshield },
+			{ label: "Barbed wire", value: GADGET.barbwire },
 		],
 		attack: [
 			{ label: "Frag grenade", value: GADGET.grenade },
 			{ label: "Smoke grenade", value: GADGET.smoke },
-			{ label: "stun", value: GADGET.stun },
+			{ label: "Stun grenade", value: GADGET.stun },
 			{ label: "Claymore", value: GADGET.claymore },
 			{ label: "Breach charge", value: GADGET.sbreach },
 			{ label: "Hard breach charge", value: GADGET.hbreach },
