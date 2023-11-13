@@ -29,8 +29,6 @@
 	}
 </script>
 
-<pre>{JSON.stringify(filters)}</pre>
-
 <div class="operator-list">
 	{#each filteredOps as op}
 		<a
