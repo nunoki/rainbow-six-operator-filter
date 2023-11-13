@@ -11,7 +11,7 @@ export const operators: operator[] = [
 		name: "Ram",
 		pic: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7uO4bXss6I8nCRVOxYKxEf/5be8def62a24cc353d1342296b9a5f27/r6s-operators-list-ram.png",
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/3YQiStwC1Qo4wKWmgK6XCH/ac8a0fea30f2996f96ca31b17a0039fa/r6s-operators-badge-ram.png",
-		side: SIDE.defender,
+		side: SIDE.attacker,
 		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg],
 		gunsSecondary: [GUN_TYPE.shotgun, GUN_TYPE.pistol],
 		gadgets: [GADGET.smoke, GADGET.stun],
