@@ -5,7 +5,24 @@ function mpVsSmgNote(smg: string): string {
 	return `${smg} is classified as a Machine pistol on Ubisoft's site, so here it counts as both Machine pistol and Submachine gun.`
 }
 
+function arVsDmrNote(dmr: string): string {
+	return `${dmr} is classified as an Assault rifle on Ubisoft's site, but here it counts as a Marksman rifle because it doesn't have full-auto fire.`
+}
+
 export const operators: operator[] = [
+	{
+		uri: "/en-us/game/rainbow-six/siege/game-info/operators/tubarao",
+		name: "Tubarão",
+		pic: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/1ceva9aObGqSk9C9UNehdK/8541f4312f3b363c0692b7ce19e40725/r6s-operators-list-tubarao.png",
+		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/43VtYmfmTtLwwKDGhalSCO/9673bb50e981ba2684cd649534f00de7/r6s-operators-badge-tubarao.png",
+		side: SIDE.defender,
+		speed: SPEED.s2,
+		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
+		gunsSecondary: [GUN_TYPE.pistol],
+		gadgets: [GADGET.nitro, GADGET.proxalarm],
+		maxScope: SCOPE.s1_5,
+		note: arVsDmrNote("AR-15.50"),
+	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/ram",
 		name: "Ram",
@@ -186,7 +203,7 @@ export const operators: operator[] = [
 		gunsSecondary: [GUN_TYPE.pistol],
 		gadgets: [GADGET.stun, GADGET.claymore],
 		maxScope: SCOPE.s2_5,
-		note: "AR-15.50 is classified as an Assault rifle on Ubisoft's site, but here it counts as a Marksman rifle because it doesn't have full-auto fire.",
+		note: arVsDmrNote("AR-15.50"),
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/lion",
