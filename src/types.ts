@@ -10,6 +10,9 @@ export enum GUN_TYPE {
 	lmg,
 	shotgun,
 	pistol,
+	mpistol,
+	gonne6,
+	shield,
 }
 
 export enum GADGET {
