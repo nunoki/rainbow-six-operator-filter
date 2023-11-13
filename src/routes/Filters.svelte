@@ -70,49 +70,101 @@
 	})
 </script>
 
-<div class="filterParams">
+<div class="filters">
 	<div class="filter">
-		Side: <Radio
-			name="side"
-			options={sides}
-			bind:selected={side}
-		/>
+		<div class="label">Side</div>
+		<div class="options">
+			<Radio
+				name="side"
+				options={sides}
+				bind:selected={side}
+			/>
+		</div>
 	</div>
 
 	<div class="filter">
-		Primary gun: <Radio
-			name="primary_gun"
-			options={gunTypes}
-			bind:selected={gunTypePrimary}
-		/>
+		<div class="label">Speed</div>
+		<div class="options">
+			<Radio
+				name="speed"
+				options={speeds}
+				bind:selected={speed}
+			/>
+		</div>
 	</div>
 
 	<div class="filter">
-		Scope (primary gun) <mark>TODO</mark>: <Radio
-			name="scope"
-			options={scopes}
-			bind:selected={scope}
-		/>
+		<div class="label">Primary gun</div>
+		<div class="options">
+			<Radio
+				name="primary_gun"
+				options={gunTypes}
+				bind:selected={gunTypePrimary}
+			/>
+		</div>
 	</div>
 
 	<div class="filter">
-		Secondary gun: <Radio
-			name="secondary_gun"
-			options={gunTypes}
-			bind:selected={gunTypeSecondary}
-		/>
+		<div class="label">Scope</div>
+		<div class="options">
+			<Radio
+				name="scope"
+				options={scopes}
+				bind:selected={scope}
+			/>
+		</div>
 	</div>
 
 	<div class="filter">
-		Gadget: <Radio
-			name="gadget"
-			options={availableGadgets}
-			bind:selected={gadget}
-		/>
+		<div class="label">Secondary gun</div>
+		<div class="options">
+			<Radio
+				name="secondary_gun"
+				options={gunTypes}
+				bind:selected={gunTypeSecondary}
+			/>
+		</div>
+	</div>
+
+	<div class="filter">
+		<div class="label">Gadget</div>
+		<div class="options">
+			<Radio
+				name="gadget"
+				options={availableGadgets}
+				bind:selected={gadget}
+			/>
+		</div>
 	</div>
 </div>
 
 <style lang="sass">
-	.filterParams
+	.filters
 		margin: 1rem 0
+
+	.filter
+		display: flex
+		padding: .5rem 0
+
+		.label
+			display: flex
+			gap: .5rem
+			align-items: center
+
+			margin-bottom: .5rem
+			font-weight: normal
+			font-family: R6S-RegItalic
+			font-size: 26px
+			text-transform: uppercase
+			flex: 1 0 9rem
+			padding-right: 1rem
+
+			&::after
+				flex: 1
+				content: " "
+				height: 1px
+				background-color: rgba(255,255,255,.25)
+
+		.options
+			flex: 100 1 50%
 </style>
