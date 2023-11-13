@@ -34,12 +34,7 @@
 
 <div class="operator-list">
 	{#each filteredOps as op}
-		<a
-			class="operator"
-			href={"https://www.ubisoft.com" + op.uri}
-			target="_blank"
-			rel="noopener"
-		>
+		<div class="operator">
 			<div class="card">
 				<div class="inner">
 					<img
@@ -51,9 +46,22 @@
 				</div>
 			</div>
 
-			<div class="icon-external-link">
-				<IconExternalLink />
-			</div>
+			<a
+				href={"https://www.ubisoft.com" + op.uri}
+				target="_blank"
+				rel="noopener"
+				class="link link--ubisoft"
+			>
+				ubisoft.com <IconExternalLink />
+			</a>
+			<a
+				href={`https://rainbowsix.fandom.com/wiki/${op.name}`}
+				target="_blank"
+				rel="noopener"
+				class="link link--fandom"
+			>
+				fandom.com <IconExternalLink />
+			</a>
 
 			{#if op.note}
 				<div
@@ -63,7 +71,7 @@
 					*
 				</div>
 			{/if}
-		</a>
+		</div>
 	{/each}
 
 	{#each Array(8) as _}
@@ -104,13 +112,32 @@
 						color: #24262a
 						background-color: #c3c3c3
 
-			.icon-external-link
+			.link
 				opacity: 0
 				position: absolute
-				top: 1rem
-				right: 1rem
-				fill: white
-				width: 2rem
+				padding: .25rem
+				right: 10%
+				width: 80%
+				text-align: center
+				white-space: nowrap
+				text-decoration: none
+				fill: purple
+				color: purple
+				background-color: white
+
+				&.link--ubisoft
+					top: 1rem
+
+				&.link--fandom
+					top: 3.5rem
+
+				&:hover
+					color: white
+					fill: white
+					background-color: purple
+
+				&:active
+					background-color: black
 
 			.icon-note
 				position: absolute
@@ -125,6 +152,6 @@
 			&:hover
 				outline: 2px solid white
 
-				.icon-external-link
+				.link
 					opacity: 1
 </style>
