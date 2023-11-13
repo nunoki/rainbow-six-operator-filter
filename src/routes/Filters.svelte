@@ -36,6 +36,7 @@
 			{ label: "Claymore", value: GADGET.claymore },
 			{ label: "Breach charge", value: GADGET.sbreach },
 			{ label: "Hard breach charge", value: GADGET.hbreach },
+			{ label: "Impact EMP grenade", value: GADGET.emp },
 		],
 		common: [{ label: "Any", value: NONE }],
 	}
@@ -45,6 +46,7 @@
 		{ label: "1.5x", value: SCOPE.s1_5 },
 		{ label: "2.0x", value: SCOPE.s2_0 },
 		{ label: "2.5x", value: SCOPE.s2_5 },
+		{ label: "> 2.5x", value: SCOPE.s2_5plus },
 	]
 	const speeds: radioOption[] = [
 		{ label: "Any", value: NONE },

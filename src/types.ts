@@ -31,6 +31,7 @@ export enum GADGET {
 	claymore,
 	sbreach,
 	hbreach,
+	emp,
 }
 
 export enum SCOPE {
@@ -38,6 +39,7 @@ export enum SCOPE {
 	s1_5,
 	s2_0,
 	s2_5,
+	s2_5plus,
 }
 
 export enum SPEED {
