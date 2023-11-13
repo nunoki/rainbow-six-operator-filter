@@ -13,6 +13,7 @@
 	:global(body)
 		margin: 0
 		padding: 1px
+		overflow-y: scroll
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
 		color: white
