@@ -4,6 +4,9 @@
 </div>
 
 <style lang="sass">
+	:global(*)
+		box-sizing: border-box
+
 	:global(html,body)
 		min-height: 100vh
 
