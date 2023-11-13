@@ -158,7 +158,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "/en-us/game/rainbow-six/siege/game-info/operators/nokk",
-		name: "NØKK",
+		name: "Nøkk",
 		pic: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/VeXso9iKMqBDrSmuJ2kBx/b8020ed099ddbdcb31ec809b9d7da152/r6-operators-list-nokk.png",
 		icon: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2qfSHHTdCRVhx9EWycVDNr/9e361e73fb91e571f7470de21edf5c7a/Y4S2_BADGE_Nokk_L.png",
 		side: SIDE.attacker,
