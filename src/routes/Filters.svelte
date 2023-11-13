@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
 	import type { radioOption, filterParams } from "../types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE } from "../types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED } from "../types"
 	import Radio from "../util/Radio.svelte"
 
 	const sides: radioOption[] = [
@@ -46,6 +46,12 @@
 		{ label: "2.0x", value: SCOPE.s2_0 },
 		{ label: "2.5x", value: SCOPE.s2_5 },
 	]
+	const speeds: radioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "(3-armor)" },
+		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "(2-armor)" },
+		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "(1-armor)" },
+	]
 
 	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
 
@@ -54,13 +60,25 @@
 	let gunTypeSecondary: GUN_TYPE
 	let gadget: GADGET
 	let scope: SCOPE
+	let speed: SPEED
 
-	$: availableGadgets =
-		side === SIDE.attacker
-			? gadgets.common.concat(gadgets.attack)
-			: side === SIDE.defender
-			? gadgets.common.concat(gadgets.defense)
-			: gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
+	let availableGadgets: radioOption[] = []
+	$: {
+		// disable selection of attacker gadgets on defense and vice-versa
+		gadgets.attack.map((g) => (g.disabled = side === SIDE.defender))
+		gadgets.defense.map((g) => (g.disabled = side === SIDE.attacker))
+		availableGadgets = gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
+
+		// after selecting a defender gadget and then switching side to attack (or vice-versa),
+		// reset selection
+		if (
+			(side === SIDE.attacker && gadgets.defense.find((g) => gadget === g.value)) ||
+			(side === SIDE.defender && gadgets.attack.find((g) => gadget === g.value))
+		) {
+			gadget = gadgets.common[0].value
+		}
+	}
+
 	$: dispatch("filtered", {
 		side,
 		gunTypePrimary,

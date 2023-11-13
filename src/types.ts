@@ -40,12 +40,19 @@ export enum SCOPE {
 	s2_5,
 }
 
+export enum SPEED {
+	s1,
+	s2,
+	s3,
+}
+
 export type operator = {
 	uri: string
 	name: string
 	pic: string
 	icon: string
 	side: SIDE
+	speed: SPEED
 	gunsPrimary: GUN_TYPE[]
 	gunsSecondary: GUN_TYPE[]
 	gadgets: GADGET[]
@@ -55,7 +62,9 @@ export type operator = {
 
 export type radioOption = {
 	label: string
+	secondaryLabel?: string
 	value: number
+	disabled?: boolean
 }
 
 export type filterParams = {
