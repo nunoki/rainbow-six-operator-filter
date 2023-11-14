@@ -41,10 +41,9 @@
 			<div class="operator">
 				<div class="card">
 					<div class="inner">
-						<img
+						<div
 							class="pic"
-							src={op.pic}
-							alt={op.name}
+							style="background-image: url({op.pic})"
 						/>
 						<span class="name">{op.name}</span>
 					</div>
@@ -124,8 +123,8 @@
 						flex-direction: column
 
 						.pic
-							min-height: 0
-							max-height: 100%
+							background-size: cover
+							background-position: center
 							flex: 1
 
 						.name
