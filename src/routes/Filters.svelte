@@ -137,7 +137,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Specialty</div>
+		<div class="label">Role</div>
 		<div class="options">
 			<Radio
 				name="specialty"
