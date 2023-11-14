@@ -1,5 +1,10 @@
+<header class="header">
+	<div class="wrapper">
+		<h1>Rainbow six operator filter</h1>
+	</div>
+</header>
+
 <div class="wrapper">
-	<h1>Op filter</h1>
 	<slot />
 </div>
 
@@ -12,7 +17,6 @@
 
 	:global(body)
 		margin: 0
-		padding: 1px
 		overflow-y: scroll
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
@@ -31,6 +35,22 @@
 		max-width: 1600px
 		margin: 0 auto
 		padding: 0 1rem
+
+	.header
+		border-bottom: 4px solid white
+
+		.wrapper
+			display: flex
+			justify-content: space-between
+			align-items: center
+			height: 4rem
+
+			> h1
+				margin: 0
+				// flex: 0 100 content
+				// white-space: nowrap
+				// overflow: hidden
+				// text-overflow: ellipsis
 
 	@font-face
 		font-family: R6S-RegItalic
