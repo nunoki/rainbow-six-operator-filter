@@ -6,8 +6,8 @@
 
 	const sides: radioOption[] = [
 		{ label: "Any", value: NONE },
-		{ label: "Defender", value: SIDE.defender },
-		{ label: "Attacker", value: SIDE.attacker },
+		{ label: "Defender", value: SIDE.defense },
+		{ label: "Attacker", value: SIDE.attack },
 	]
 	const gunTypes: radioOption[] = [
 		{ label: "Any", value: NONE },
@@ -81,15 +81,15 @@
 	let availableGadgets: radioOption[] = []
 	$: {
 		// disable selection of attacker gadgets on defense and vice-versa
-		gadgets.attack.map((g) => (g.disabled = side === SIDE.defender))
-		gadgets.defense.map((g) => (g.disabled = side === SIDE.attacker))
+		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
+		gadgets.defense.map((g) => (g.disabled = side === SIDE.attack))
 		availableGadgets = gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
 
 		// after selecting a defender gadget and then switching side to attack (or vice-versa),
 		// reset selection
 		if (
-			(side === SIDE.attacker && gadgets.defense.find((g) => gadget === g.value)) ||
-			(side === SIDE.defender && gadgets.attack.find((g) => gadget === g.value))
+			(side === SIDE.attack && gadgets.defense.find((g) => gadget === g.value)) ||
+			(side === SIDE.defense && gadgets.attack.find((g) => gadget === g.value))
 		) {
 			gadget = gadgets.common[0].value
 		}

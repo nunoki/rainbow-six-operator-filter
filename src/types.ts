@@ -1,6 +1,6 @@
 export enum SIDE {
-	defender,
-	attacker,
+	defense,
+	attack,
 }
 
 export enum GUN_TYPE {
