@@ -58,9 +58,9 @@
 	]
 	const speeds: radioOption[] = [
 		{ label: "Any", value: NONE },
-		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "(3-armor)" },
-		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "(2-armor)" },
-		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "(1-armor)" },
+		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
+		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
+		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
 	const specialties: radioOption[] = [
 		{ label: "Any", value: NONE },

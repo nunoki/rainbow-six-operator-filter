@@ -55,7 +55,13 @@
 
 				.secondary
 					font-size: .75em
-					opacity: .75
+					opacity: .5
+
+					&::before
+						content: "("
+
+					&::after
+						content: ")"
 
 			input
 				opacity: 0
