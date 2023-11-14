@@ -28,6 +28,9 @@
 		if (filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)
 		}
+		if (filters.specialty !== NONE) {
+			output = output.filter((op) => op.specialties.includes(filters.specialty))
+		}
 		return output
 	}
 </script>

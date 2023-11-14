@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
 	import type { radioOption, filterParams } from "../types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED } from "../types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "../types"
 	import Radio from "../util/Radio.svelte"
 
 	const sides: radioOption[] = [
@@ -55,6 +55,18 @@
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "(2-armor)" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "(1-armor)" },
 	]
+	const specialties: radioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Anti-entry", value: SPECIALTY.antientry },
+		{ label: "Anti-gadget", value: SPECIALTY.antigadget },
+		{ label: "Breaching", value: SPECIALTY.breaching },
+		{ label: "Trapping", value: SPECIALTY.trapping },
+		{ label: "Intel", value: SPECIALTY.intel },
+		{ label: "Support", value: SPECIALTY.support },
+		{ label: "Frontline", value: SPECIALTY.frontline },
+		{ label: "Map control", value: SPECIALTY.mapcontrol },
+		{ label: "Crowd control", value: SPECIALTY.crowdcontrol },
+	]
 
 	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
 
@@ -64,6 +76,7 @@
 	let gadget: GADGET
 	let scope: SCOPE
 	let speed: SPEED
+	let specialty: SPECIALTY
 
 	let availableGadgets: radioOption[] = []
 	$: {
@@ -89,6 +102,7 @@
 		gadget,
 		scope,
 		speed,
+		specialty,
 	})
 </script>
 
@@ -111,6 +125,17 @@
 				name="speed"
 				options={speeds}
 				bind:selected={speed}
+			/>
+		</div>
+	</div>
+
+	<div class="filter">
+		<div class="label">Specialty</div>
+		<div class="options">
+			<Radio
+				name="specialty"
+				options={specialties}
+				bind:selected={specialty}
 			/>
 		</div>
 	</div>

@@ -16,6 +16,18 @@ export enum GUN_TYPE {
 	bailiff,
 }
 
+export enum SPECIALTY {
+	antientry,
+	antigadget,
+	breaching,
+	trapping,
+	intel,
+	support,
+	frontline,
+	mapcontrol,
+	crowdcontrol,
+}
+
 export enum GADGET {
 	// defense:
 	impact,
@@ -55,6 +67,7 @@ export type operator = {
 	pic: string
 	icon: string
 	side: SIDE
+	specialties: SPECIALTY[]
 	speed: SPEED
 	gunsPrimary: GUN_TYPE[]
 	gunsSecondary: GUN_TYPE[]
@@ -77,6 +90,7 @@ export type filterParams = {
 	gadget: number
 	scope: number
 	speed: number
+	specialty: number
 }
 
 export const NONE = -1
