@@ -159,17 +159,6 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Scope</div>
-		<div class="options">
-			<Radio
-				name="scope"
-				options={scopes}
-				bind:selected={scope}
-			/>
-		</div>
-	</div>
-
-	<div class="filter">
 		<div class="label">Secondary gun</div>
 		<div class="options">
 			<Radio
@@ -187,6 +176,17 @@
 				name="gadget"
 				options={availableGadgets}
 				bind:selected={gadget}
+			/>
+		</div>
+	</div>
+
+	<div class="filter">
+		<div class="label">Scope</div>
+		<div class="options">
+			<Radio
+				name="scope"
+				options={scopes}
+				bind:selected={scope}
 			/>
 		</div>
 	</div>
