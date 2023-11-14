@@ -4,31 +4,31 @@
 	import { NONE, SIDE } from "../types"
 	import IconExternalLink from "../util/IconExternalLink.svelte"
 
-	export let filters: filterParams
+	export let filters: filterParams = {} as filterParams
 
 	$: filteredOps = filter(filters)
 
 	function filter(filters: filterParams): operator[] {
 		let output = operators
-		if (filters.side !== NONE) {
+		if (filters.side && filters.side !== NONE) {
 			output = output.filter((op) => op.side === filters.side)
 		}
-		if (filters.gunTypePrimary !== NONE) {
+		if (filters.gunTypePrimary && filters.gunTypePrimary !== NONE) {
 			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypePrimary))
 		}
-		if (filters.gunTypeSecondary !== NONE) {
+		if (filters.gunTypeSecondary && filters.gunTypeSecondary !== NONE) {
 			output = output.filter((op) => op.gunsSecondary.includes(filters.gunTypeSecondary))
 		}
-		if (filters.gadget !== NONE) {
+		if (filters.gadget && filters.gadget !== NONE) {
 			output = output.filter((op) => op.gadgets.includes(filters.gadget))
 		}
-		if (filters.scope !== NONE) {
+		if (filters.scope && filters.scope !== NONE) {
 			output = output.filter((op) => op.maxScope >= filters.scope)
 		}
-		if (filters.speed !== NONE) {
+		if (filters.speed && filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)
 		}
-		if (filters.specialty !== NONE) {
+		if (filters.specialty && filters.specialty !== NONE) {
 			output = output.filter((op) => op.specialties.includes(filters.specialty))
 		}
 		return output
@@ -36,50 +36,57 @@
 </script>
 
 <div class="operator-list">
-	{#each filteredOps as op}
-		<div class="operator">
-			<div class="card">
-				<div class="inner">
-					<img
-						class="pic"
-						src={op.pic}
-						alt={op.name}
-					/>
-					<span class="name">{op.name}</span>
+	{#if filteredOps.length > 0}
+		{#each filteredOps as op}
+			<div class="operator">
+				<div class="card">
+					<div class="inner">
+						<img
+							class="pic"
+							src={op.pic}
+							alt={op.name}
+						/>
+						<span class="name">{op.name}</span>
+					</div>
 				</div>
-			</div>
 
-			<a
-				href={"https://www.ubisoft.com" + op.uri}
-				target="_blank"
-				rel="noopener"
-				class="link link--ubisoft"
-			>
-				ubisoft.com <IconExternalLink />
-			</a>
-			<a
-				href={`https://rainbowsix.fandom.com/wiki/${op.name}`}
-				target="_blank"
-				rel="noopener"
-				class="link link--fandom"
-			>
-				fandom.com <IconExternalLink />
-			</a>
-
-			{#if op.note}
-				<div
-					class="icon-note"
-					title={op.note}
+				<a
+					href={"https://www.ubisoft.com" + op.uri}
+					target="_blank"
+					rel="noopener"
+					class="link link--ubisoft"
 				>
-					*
-				</div>
-			{/if}
-		</div>
-	{/each}
+					ubisoft.com <IconExternalLink />
+				</a>
+				<a
+					href={`https://rainbowsix.fandom.com/wiki/${op.name}`}
+					target="_blank"
+					rel="noopener"
+					class="link link--fandom"
+				>
+					fandom.com <IconExternalLink />
+				</a>
 
-	{#each Array(8) as _}
-		<span class="operator" />
-	{/each}
+				{#if op.note}
+					<div
+						class="icon-note"
+						title={op.note}
+					>
+						*
+					</div>
+				{/if}
+			</div>
+		{/each}
+
+		{#each Array(8) as _}
+			<span class="operator" />
+		{/each}
+	{:else}
+		<div class="no-results">
+			<div class="emote">¯\_(ツ)_/¯</div>
+			<p class="message">No results for selected filters</p>
+		</div>
+	{/if}
 </div>
 
 <style lang="sass">
@@ -157,4 +164,16 @@
 
 				.link
 					opacity: 1
+
+		.no-results
+			padding: 4rem 0
+			text-align: center
+			color: cyan
+
+			.emote
+				font-size: 4rem
+
+			.message
+				font-weight: bold
+				font-size: 2rem
 </style>
