@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Rainbow Six Operator Filter</title>
+</svelte:head>
+
 <div class="wrapper">
 	<header class="header">
 		<div class="container">
