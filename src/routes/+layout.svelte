@@ -1,11 +1,18 @@
-<header class="header">
-	<div class="wrapper">
-		<h1>Rainbow six operator filter</h1>
-	</div>
-</header>
-
 <div class="wrapper">
-	<slot />
+	<header class="header">
+		<div class="container">
+			<h1>Rainbow six operator filter</h1>
+		</div>
+	</header>
+
+	<div class="container page">
+		<slot />
+	</div>
+
+	<footer class="footer">
+		<p>This tool is not affiliated nor endorsed by Ubisoft.</p>
+		<p>All trademarks, logos and brand names are the property of their respective owners.</p>
+	</footer>
 </div>
 
 <style lang="sass">
@@ -26,20 +33,46 @@
 		background-size: 100%
 		backdrop-filter: hue-rotate(90deg)
 
+		a
+			fill: yellow
+			color: yellow
+			text-decoration: none
+
+			&:hover
+				text-decoration: underline
+
+			&:active
+				fill: orange
+				color: orange
+
 	:global(h1,h2)
 		text-transform: uppercase
 		font-family: R6S-RegItalic,sans-serif
 		font-weight: normal
 
-	.wrapper
+	.container
 		max-width: 1600px
 		margin: 0 auto
 		padding: 0 1rem
 
+	.wrapper
+		display: flex
+		flex-direction: column
+		height: 100vh
+
+		.header
+			flex: 0 1 content
+
+		.page
+			flex: 1
+
+		.footer
+			flex: 0 1 content
+
 	.header
 		border-bottom: 4px solid white
 
-		.wrapper
+		.container
 			display: flex
 			justify-content: space-between
 			align-items: center
@@ -51,6 +84,13 @@
 				// white-space: nowrap
 				// overflow: hidden
 				// text-overflow: ellipsis
+
+	.footer
+		padding: 2em
+		text-align: center
+
+		> p
+			margin: .5rem 0
 
 	@font-face
 		font-family: R6S-RegItalic
