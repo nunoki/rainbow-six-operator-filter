@@ -92,4 +92,9 @@ export type filterParams = {
 	specialty: number
 }
 
+export type link = {
+	url: string
+	domain: string
+}
+
 export const NONE = -1

@@ -1,12 +1,36 @@
 <script lang="ts">
 	import { operators } from "../operators"
-	import type { filterParams, operator } from "../types"
+	import type { filterParams, link, operator } from "../types"
 	import { NONE, SIDE } from "../types"
 	import IconExternalLink from "../util/IconExternalLink.svelte"
 
 	export let filters: filterParams = {} as filterParams
 
 	$: filteredOps = filter(filters)
+
+	function generateLinks(op: operator): link[] {
+		let links: link[] = []
+
+		if (op.name !== "Recruit") {
+			links.push({
+				url: `https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/${op.uri}`,
+				domain: "ubisoft.com",
+			})
+			links.push({
+				url: `https://r6siegecenter.com/guides/operators/${
+					op.side === SIDE.defense ? "defenders" : "attackers"
+				}/${op.uri}/`,
+				domain: "r6siegecenter.com",
+			})
+		}
+
+		links.push({
+			url: `https://rainbowsix.fandom.com/wiki/${op.name}`,
+			domain: "fandom.com",
+		})
+
+		return links
+	}
 
 	function filter(filters: filterParams): operator[] {
 		let output = operators
@@ -55,26 +79,19 @@
 					/>
 				</div>
 
-				{#if op.noUbisoftWebsite !== true}
-					<a
-						href={"https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/" +
-							op.uri}
-						target="_blank"
-						rel="noopener"
-						class="link link--ubisoft"
-					>
-						ubisoft.com <IconExternalLink />
-					</a>
-				{/if}
-
-				<a
-					href={`https://rainbowsix.fandom.com/wiki/${op.name}`}
-					target="_blank"
-					rel="noopener"
-					class="link link--fandom"
-				>
-					fandom.com <IconExternalLink />
-				</a>
+				<div class="links">
+					{#each generateLinks(op) as l}
+						<a
+							href={l.url}
+							target="_blank"
+							rel="noopener"
+							class="link"
+						>
+							{l.domain}
+							<IconExternalLink />
+						</a>
+					{/each}
+				</div>
 
 				{#if op.note}
 					<div
@@ -152,32 +169,35 @@
 						width: 50%
 						height: auto
 
-				.link
+				.links
 					opacity: 0
+					transition: opacity .3s ease
 					position: absolute
-					padding: .25rem
-					right: 10%
+					z-index: 3
+					bottom: 2rem
+					left: 10%
 					width: 80%
-					text-align: center
-					white-space: nowrap
-					text-decoration: none
-					fill: purple
-					color: purple
-					background-color: white
 
-					&.link--ubisoft
-						top: 1rem
+					.link
+						padding: .25rem
+						margin: .25rem 0
+						display: block
+						text-align: center
+						white-space: nowrap
+						overflow: hidden
+						text-overflow: ellipsis
+						text-decoration: none
+						fill: purple
+						color: purple
+						background-color: white
 
-					&.link--fandom
-						top: 3.5rem
+						&:hover
+							color: white
+							fill: white
+							background-color: purple
 
-					&:hover
-						color: white
-						fill: white
-						background-color: purple
-
-					&:active
-						background-color: black
+						&:active
+							background-color: black
 
 				.icon-note
 					position: absolute
@@ -192,7 +212,7 @@
 				&:hover
 					outline: 2px solid white
 
-					.link
+					.links
 						opacity: 1
 
 		.no-results
