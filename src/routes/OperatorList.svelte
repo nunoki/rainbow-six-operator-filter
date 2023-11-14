@@ -43,26 +43,30 @@
 					<div class="inner">
 						<div
 							class="pic"
-							style="background-image: url({op.pic})"
+							style="background-image: url(/operators/{op.uri}-pic.png)"
 						/>
 						<span class="name">{op.name}</span>
 					</div>
 
 					<img
 						class="operator-icon"
-						src={op.icon}
+						src="/operators/{op.uri}-icon.png"
 						alt=""
 					/>
 				</div>
 
-				<a
-					href={"https://www.ubisoft.com" + op.uri}
-					target="_blank"
-					rel="noopener"
-					class="link link--ubisoft"
-				>
-					ubisoft.com <IconExternalLink />
-				</a>
+				{#if op.noUbisoftWebsite !== true}
+					<a
+						href={"https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/" +
+							op.uri}
+						target="_blank"
+						rel="noopener"
+						class="link link--ubisoft"
+					>
+						ubisoft.com <IconExternalLink />
+					</a>
+				{/if}
+
 				<a
 					href={`https://rainbowsix.fandom.com/wiki/${op.name}`}
 					target="_blank"

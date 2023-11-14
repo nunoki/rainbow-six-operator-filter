@@ -64,8 +64,6 @@ export enum SPEED {
 export type operator = {
 	uri: string
 	name: string
-	pic: string
-	icon: string
 	side: SIDE
 	specialties: SPECIALTY[]
 	speed: SPEED
@@ -74,6 +72,7 @@ export type operator = {
 	gadgets: GADGET[]
 	maxScope: SCOPE
 	note?: string
+	noUbisoftWebsite?: boolean
 }
 
 export type radioOption = {
