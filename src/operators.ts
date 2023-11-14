@@ -804,6 +804,7 @@ export const operators: operator[] = [
 			GADGET.barbwire,
 			GADGET.impact,
 			GADGET.proxalarm,
+			GADGET.dshield,
 		],
 		maxScope: SCOPE.s1_0,
 		noUbisoftWebsite: true,
