@@ -98,7 +98,7 @@
 
 	@font-face
 		font-family: R6S-RegItalic
-		src: url("https://static-dm.ubisoft.com/siege/prod/7c574ea662392ab39c09ed79280cf5b2.woff2") format("woff2"), url("https://static-dm.ubisoft.com/siege/prod/1a098e45a853edc663c9505d21770af9.woff") format("woff")
+		src: url("/fonts/R6S-RegItalic.woff2") format("woff2"), url("/fonts/R6S-RegItalic.woff") format("woff")
 		font-style: normal
 		font-weight: 400
 </style>
