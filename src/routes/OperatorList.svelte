@@ -206,4 +206,10 @@
 			.message
 				font-weight: bold
 				font-size: 2rem
+
+	@media (max-width: 600px)
+		.operator-list
+			.operator,
+			.filler
+				flex: 1 1 calc(25% - 10px)
 </style>
