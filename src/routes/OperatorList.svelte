@@ -48,6 +48,12 @@
 						/>
 						<span class="name">{op.name}</span>
 					</div>
+
+					<img
+						class="operator-icon"
+						src={op.icon}
+						alt=""
+					/>
 				</div>
 
 				<a
@@ -130,6 +136,18 @@
 							font-size: 26px
 							color: #24262a
 							background-color: #c3c3c3
+
+					.operator-icon
+						display: block
+						position: absolute
+						z-index: 1
+						top: 55%
+						right: auto
+						left: 50%
+						bottom: auto
+						margin: 0 -25%
+						width: 50%
+						height: auto
 
 				.link
 					opacity: 0
