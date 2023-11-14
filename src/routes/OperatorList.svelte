@@ -10,25 +10,25 @@
 
 	function filter(filters: filterParams): operator[] {
 		let output = operators
-		if (filters.side && filters.side !== NONE) {
+		if (filters.hasOwnProperty("side") && filters.side !== NONE) {
 			output = output.filter((op) => op.side === filters.side)
 		}
-		if (filters.gunTypePrimary && filters.gunTypePrimary !== NONE) {
+		if (filters.hasOwnProperty("gunTypePrimary") && filters.gunTypePrimary !== NONE) {
 			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypePrimary))
 		}
-		if (filters.gunTypeSecondary && filters.gunTypeSecondary !== NONE) {
+		if (filters.hasOwnProperty("gunTypeSecondary") && filters.gunTypeSecondary !== NONE) {
 			output = output.filter((op) => op.gunsSecondary.includes(filters.gunTypeSecondary))
 		}
-		if (filters.gadget && filters.gadget !== NONE) {
+		if (filters.hasOwnProperty("gadget") && filters.gadget !== NONE) {
 			output = output.filter((op) => op.gadgets.includes(filters.gadget))
 		}
-		if (filters.scope && filters.scope !== NONE) {
+		if (filters.hasOwnProperty("scope") && filters.scope !== NONE) {
 			output = output.filter((op) => op.maxScope >= filters.scope)
 		}
-		if (filters.speed && filters.speed !== NONE) {
+		if (filters.hasOwnProperty("speed") && filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)
 		}
-		if (filters.specialty && filters.specialty !== NONE) {
+		if (filters.hasOwnProperty("specialty") && filters.specialty !== NONE) {
 			output = output.filter((op) => op.specialties.includes(filters.specialty))
 		}
 		return output
