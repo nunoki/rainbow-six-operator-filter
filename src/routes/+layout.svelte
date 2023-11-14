@@ -14,7 +14,7 @@
 	</div>
 
 	<footer class="footer">
-		<p>This tool is not affiliated nor endorsed by Ubisoft.</p>
+		<p>This tool is not affiliated with nor endorsed by Ubisoft.</p>
 		<p>All trademarks, logos and brand names are the property of their respective owners.</p>
 	</footer>
 </div>
