@@ -102,15 +102,22 @@
 			text-decoration: none
 
 			.card
+				padding-bottom: 190%
 				position: relative
 				background-color: rgba(255,255,255,.15)
 
 				.inner
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
 					display: flex
 					flex-direction: column
 
 					.pic
-						width: 100%
+						min-height: 0
+						max-height: 100%
 						flex: 1
 
 					.name
