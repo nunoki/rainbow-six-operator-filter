@@ -9,19 +9,26 @@
 		{ label: "Defender", value: SIDE.defense },
 		{ label: "Attacker", value: SIDE.attack },
 	]
-	const gunTypes: radioOption[] = [
-		{ label: "Any", value: NONE },
-		{ label: "Assault rifle", value: GUN_TYPE.rifle },
-		{ label: "Submachine gun", value: GUN_TYPE.smg },
-		{ label: "Marksman rifle", value: GUN_TYPE.dmr },
-		{ label: "Light machine gun", value: GUN_TYPE.lmg },
-		{ label: "Shotgun", value: GUN_TYPE.shotgun },
-		{ label: "Pistol", value: GUN_TYPE.pistol },
-		{ label: "Bailiff", value: GUN_TYPE.bailiff },
-		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
-		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
-		{ label: "Shield", value: GUN_TYPE.shield },
-	]
+	const gunTypes: { [name: string]: radioOption[] } = {
+		primary: [
+			{ label: "Any", value: NONE },
+			{ label: "Assault rifle", value: GUN_TYPE.rifle },
+			{ label: "Submachine gun", value: GUN_TYPE.smg },
+			{ label: "Marksman rifle", value: GUN_TYPE.dmr },
+			{ label: "Light machine gun", value: GUN_TYPE.lmg },
+			{ label: "Shotgun", value: GUN_TYPE.shotgun },
+			{ label: "Shield", value: GUN_TYPE.shield },
+		],
+		secondary: [
+			{ label: "Any", value: NONE },
+			{ label: "Submachine gun", value: GUN_TYPE.smg },
+			{ label: "Shotgun", value: GUN_TYPE.shotgun },
+			{ label: "Pistol", value: GUN_TYPE.pistol },
+			{ label: "Bailiff", value: GUN_TYPE.bailiff },
+			{ label: "Machine pistol", value: GUN_TYPE.mpistol },
+			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
+		],
+	}
 	const gadgets: { [name: string]: radioOption[] } = {
 		defense: [
 			{ label: "Impact grenade", value: GADGET.impact },
@@ -145,7 +152,7 @@
 		<div class="options">
 			<Radio
 				name="primary_gun"
-				options={gunTypes}
+				options={gunTypes.primary}
 				bind:selected={gunTypePrimary}
 			/>
 		</div>
@@ -167,7 +174,7 @@
 		<div class="options">
 			<Radio
 				name="secondary_gun"
-				options={gunTypes}
+				options={gunTypes.secondary}
 				bind:selected={gunTypeSecondary}
 			/>
 		</div>
