@@ -36,6 +36,8 @@
 			{ label: "Observation blocker", value: GADGET.obsblocker },
 			{ label: "Deployable shield", value: GADGET.dshield },
 			{ label: "Barbed wire", value: GADGET.barbwire },
+			{ label: "Proximity alarm", value: GADGET.proxalarm },
+			{ label: "Nitro cell", value: GADGET.nitro },
 		],
 		attack: [
 			{ label: "Frag grenade", value: GADGET.grenade },
