@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from "$app/paths"
 	import { operators } from "../operators"
 	import type { filterParams, link, operator } from "../types"
 	import { NONE, SIDE } from "../types"
@@ -67,14 +68,14 @@
 					<div class="inner">
 						<div
 							class="pic"
-							style="background-image: url(/operators/{op.uri}-pic.png)"
+							style="background-image: url({base}/operators/{op.uri}-pic.png)"
 						/>
 						<span class="name">{op.name}</span>
 					</div>
 
 					<img
 						class="operator-icon"
-						src="/operators/{op.uri}-icon.png"
+						src="{base}/operators/{op.uri}-icon.png"
 						alt=""
 					/>
 				</div>
