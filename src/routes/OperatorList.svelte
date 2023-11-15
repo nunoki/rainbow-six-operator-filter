@@ -155,7 +155,7 @@
 							padding: .25rem
 							text-transform: uppercase
 							text-align: center
-							font-family: R6S-RegItalic,sans-serif
+							font-family: $font_ubi
 							font-size: 26px
 							color: #24262a
 							background-color: #c3c3c3
@@ -231,9 +231,21 @@
 				font-weight: bold
 				font-size: 2rem
 
-	@media (max-width: 600px)
+	@media (max-width: 900px)
+		.operator-list
+			.operator,
+			.filler
+				flex: 1 1 calc(20% - 10px)
+
+	@media (max-width: 700px)
 		.operator-list
 			.operator,
 			.filler
 				flex: 1 1 calc(25% - 10px)
+
+	@media (max-width: 500px)
+		.operator-list
+			.operator,
+			.filler
+				flex: 1 1 calc(33% - 10px)
 </style>

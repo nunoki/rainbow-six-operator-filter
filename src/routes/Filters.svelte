@@ -198,11 +198,14 @@
 	@import "$lib/sass/variables"
 
 	.filters
+		display: flex
+		gap: .5rem
+		width: 100%
+		overflow-x: auto
 		margin: 1rem 0
 
 	.filter
-		display: flex
-		padding: .5rem 0
+		flex: 1 0 7rem
 
 		.label
 			display: flex
@@ -211,11 +214,11 @@
 
 			margin-bottom: .5rem
 			font-weight: normal
-			font-family: R6S-RegItalic
+			font-family: $font_ubi
 			font-size: 26px
 			text-transform: uppercase
 			flex: 1 0 9rem
-			padding-right: 1rem
+			padding-right: .5rem
 
 			&::after
 				flex: 1
