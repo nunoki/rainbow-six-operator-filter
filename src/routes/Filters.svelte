@@ -64,18 +64,24 @@
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const specialties: radioOption[] = [
-		{ label: "Any", value: NONE },
-		{ label: "Anti-entry", value: SPECIALTY.antientry },
-		{ label: "Anti-gadget", value: SPECIALTY.antigadget },
-		{ label: "Breaching", value: SPECIALTY.breaching },
-		{ label: "Trapping", value: SPECIALTY.trapping },
-		{ label: "Intel", value: SPECIALTY.intel },
-		{ label: "Support", value: SPECIALTY.support },
-		{ label: "Frontline", value: SPECIALTY.frontline },
-		{ label: "Map control", value: SPECIALTY.mapcontrol },
-		{ label: "Crowd control", value: SPECIALTY.crowdcontrol },
-	]
+	const specialties: { [name: string]: radioOption[] } = {
+		defense: [
+			{ label: "Anti-entry", value: SPECIALTY.antientry },
+			{ label: "Trapping", value: SPECIALTY.trapping },
+			{ label: "Crowd control", value: SPECIALTY.crowdcontrol },
+		],
+		attack: [
+			{ label: "Breaching", value: SPECIALTY.breaching },
+			{ label: "Frontline", value: SPECIALTY.frontline },
+			{ label: "Map control", value: SPECIALTY.mapcontrol },
+		],
+		common: [
+			{ label: "Any", value: NONE },
+			{ label: "Anti-gadget", value: SPECIALTY.antigadget },
+			{ label: "Intel", value: SPECIALTY.intel },
+			{ label: "Support", value: SPECIALTY.support },
+		],
+	}
 
 	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
 
@@ -88,6 +94,7 @@
 	let specialty: SPECIALTY
 
 	let availableGadgets: radioOption[] = []
+	let availableSpecialties: radioOption[] = []
 	$: {
 		// disable selection of attacker gadgets on defense and vice-versa
 		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
@@ -101,6 +108,20 @@
 			(side === SIDE.defense && gadgets.attack.find((g) => gadget === g.value))
 		) {
 			gadget = gadgets.common[0].value
+		}
+
+		// disable selection of attacker specialties on defense and vice-versa
+		specialties.attack.map((s) => (s.disabled = side === SIDE.defense))
+		specialties.defense.map((s) => (s.disabled = side === SIDE.attack))
+		availableSpecialties = specialties.common.concat(specialties.attack.concat(specialties.defense))
+
+		// after selecting a defender specialty and then switching side to attack (or vice-versa),
+		// reset selection
+		if (
+			(side === SIDE.attack && specialties.defense.find((g) => specialty === g.value)) ||
+			(side === SIDE.defense && specialties.attack.find((g) => specialty === g.value))
+		) {
+			specialty = specialties.common[0].value
 		}
 	}
 
@@ -143,7 +164,7 @@
 		<div class="options">
 			<Radio
 				name="specialty"
-				options={specialties}
+				options={availableSpecialties}
 				bind:selected={specialty}
 			/>
 		</div>
