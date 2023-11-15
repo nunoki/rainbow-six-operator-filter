@@ -3,7 +3,7 @@
 	import { operators } from "$lib/data/operators"
 	import type { filterParams, link, operator } from "$lib/data/types"
 	import { NONE, SIDE } from "$lib/data/types"
-	import IconExternalLink from "../util/IconExternalLink.svelte"
+	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 
 	export let filters: filterParams = {} as filterParams
 
