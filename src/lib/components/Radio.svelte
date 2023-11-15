@@ -50,7 +50,7 @@
 				white-space: nowrap
 
 				&:hover
-					outline: 1px solid $color_fg
+					background-color: lighten($color_bg, 10%)
 
 				.secondary
 					font-size: .75em
@@ -71,7 +71,6 @@
 					opacity: 1
 					color: $color_bg
 					background-color: $color_fg
-					outline: 1px solid $color_fg
 
 				&:disabled ~ .option-label
 					opacity: .1
@@ -79,5 +78,4 @@
 
 					&:hover
 						background-color: transparent
-						outline-color: transparent
 </style>
