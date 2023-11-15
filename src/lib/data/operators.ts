@@ -1,5 +1,5 @@
 import type { operator } from "./types"
-import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, SPECIALTY } from "./types"
+import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
 
 function mpVsSmgNote(smg: string): string {
 	return `${smg} is classified as a Machine pistol on Ubisoft's site, so here it counts as both Machine pistol and Submachine gun.`
@@ -12,7 +12,7 @@ function arVsDmrNote(dmr: string): string {
 export const operators: operator[] = [
 	{
 		uri: "tubarao",
-		specialties: [SPECIALTY.antientry, SPECIALTY.antigadget],
+		roles: [ROLE.antientry, ROLE.antigadget],
 		name: "Tubarão",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -24,7 +24,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "ram",
-		specialties: [SPECIALTY.breaching, SPECIALTY.intel],
+		roles: [ROLE.breaching, ROLE.intel],
 		name: "Ram",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -35,7 +35,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "brava",
-		specialties: [SPECIALTY.antigadget],
+		roles: [ROLE.antigadget],
 		name: "Brava",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -46,7 +46,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "grim",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Grim",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -57,7 +57,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "sens",
-		specialties: [SPECIALTY.support, SPECIALTY.mapcontrol],
+		roles: [ROLE.support, ROLE.mapcontrol],
 		name: "Sens",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -68,7 +68,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "osa",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Osa",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -79,7 +79,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "flores",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Flores",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -90,7 +90,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "zero",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Zero",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -101,7 +101,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "ace",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.breaching],
+		roles: [ROLE.antigadget, ROLE.breaching],
 		name: "Ace",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -112,7 +112,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "iana",
-		specialties: [SPECIALTY.intel, SPECIALTY.frontline],
+		roles: [ROLE.intel, ROLE.frontline],
 		name: "Iana",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -123,7 +123,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "kali",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.support],
+		roles: [ROLE.antigadget, ROLE.support],
 		name: "Kali",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -134,7 +134,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "amaru",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Amaru",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -146,7 +146,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "nokk",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Nøkk",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -157,7 +157,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "gridlock",
-		specialties: [SPECIALTY.support, SPECIALTY.mapcontrol],
+		roles: [ROLE.support, ROLE.mapcontrol],
 		name: "Gridlock",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -168,7 +168,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "nomad",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Nomad",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -179,7 +179,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "maverick",
-		specialties: [SPECIALTY.breaching, SPECIALTY.frontline],
+		roles: [ROLE.breaching, ROLE.frontline],
 		name: "Maverick",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -191,7 +191,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "lion",
-		specialties: [SPECIALTY.intel, SPECIALTY.mapcontrol],
+		roles: [ROLE.intel, ROLE.mapcontrol],
 		name: "Lion",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -202,7 +202,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "finka",
-		specialties: [SPECIALTY.support, SPECIALTY.frontline],
+		roles: [ROLE.support, ROLE.frontline],
 		name: "Finka",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -213,7 +213,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "dokkaebi",
-		specialties: [SPECIALTY.intel, SPECIALTY.mapcontrol],
+		roles: [ROLE.intel, ROLE.mapcontrol],
 		name: "Dokkaebi",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -225,7 +225,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "zofia",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.breaching],
+		roles: [ROLE.antigadget, ROLE.breaching],
 		name: "Zofia",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -236,7 +236,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "ying",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Ying",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -247,7 +247,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "jackal",
-		specialties: [SPECIALTY.intel, SPECIALTY.mapcontrol],
+		roles: [ROLE.intel, ROLE.mapcontrol],
 		name: "Jackal",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -258,7 +258,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "hibana",
-		specialties: [SPECIALTY.breaching, SPECIALTY.frontline],
+		roles: [ROLE.breaching, ROLE.frontline],
 		name: "Hibana",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -269,7 +269,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "capitao",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "CAPITÃO",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -280,7 +280,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "blackbeard",
-		specialties: [SPECIALTY.support],
+		roles: [ROLE.support],
 		name: "Blackbeard",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -291,7 +291,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "buck",
-		specialties: [SPECIALTY.breaching, SPECIALTY.support],
+		roles: [ROLE.breaching, ROLE.support],
 		name: "Buck",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -302,7 +302,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "sledge",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.breaching],
+		roles: [ROLE.antigadget, ROLE.breaching],
 		name: "Sledge",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -313,7 +313,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "thatcher",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.support],
+		roles: [ROLE.antigadget, ROLE.support],
 		name: "Thatcher",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -324,7 +324,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "ash",
-		specialties: [SPECIALTY.breaching, SPECIALTY.frontline],
+		roles: [ROLE.breaching, ROLE.frontline],
 		name: "Ash",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -335,7 +335,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "thermite",
-		specialties: [SPECIALTY.breaching, SPECIALTY.support],
+		roles: [ROLE.breaching, ROLE.support],
 		name: "Thermite",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -346,7 +346,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "montagne",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Montagne",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -357,7 +357,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "twitch",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Twitch",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -368,7 +368,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "blitz",
-		specialties: [SPECIALTY.frontline, SPECIALTY.mapcontrol],
+		roles: [ROLE.frontline, ROLE.mapcontrol],
 		name: "Blitz",
 		side: SIDE.attack,
 		speed: SPEED.s2,
@@ -379,7 +379,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "iq",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "IQ",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -390,7 +390,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "fuze",
-		specialties: [SPECIALTY.antigadget],
+		roles: [ROLE.antigadget],
 		name: "Fuze",
 		side: SIDE.attack,
 		speed: SPEED.s1,
@@ -401,7 +401,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "glaz",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Glaz",
 		side: SIDE.attack,
 		speed: SPEED.s3,
@@ -412,7 +412,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "fenrir",
-		specialties: [SPECIALTY.trapping],
+		roles: [ROLE.trapping],
 		name: "Fenrir",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -423,7 +423,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "solis",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Solis",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -435,7 +435,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "azami",
-		specialties: [SPECIALTY.antientry, SPECIALTY.support],
+		roles: [ROLE.antientry, ROLE.support],
 		name: "Azami ",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -446,7 +446,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "thorn",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Thorn",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -457,7 +457,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "thunderbird",
-		specialties: [SPECIALTY.support],
+		roles: [ROLE.support],
 		name: "Thunderbird",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -468,7 +468,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "aruni",
-		specialties: [SPECIALTY.antientry, SPECIALTY.antigadget],
+		roles: [ROLE.antientry, ROLE.antigadget],
 		name: "Aruni",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -479,7 +479,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "melusi",
-		specialties: [SPECIALTY.intel, SPECIALTY.crowdcontrol],
+		roles: [ROLE.intel, ROLE.crowdcontrol],
 		name: "Melusi",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -490,7 +490,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "oryx",
-		specialties: [SPECIALTY.support],
+		roles: [ROLE.support],
 		name: "Oryx",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -501,7 +501,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "wamai",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.trapping],
+		roles: [ROLE.antigadget, ROLE.trapping],
 		name: "Wamai",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -512,7 +512,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "goyo",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Goyo",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -523,7 +523,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "warden",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Warden",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -535,7 +535,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "mozzie",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Mozzie",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -546,7 +546,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "kaid",
-		specialties: [SPECIALTY.antientry, SPECIALTY.antigadget],
+		roles: [ROLE.antientry, ROLE.antigadget],
 		name: "Kaid",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -557,7 +557,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "clash",
-		specialties: [SPECIALTY.intel, SPECIALTY.crowdcontrol],
+		roles: [ROLE.intel, ROLE.crowdcontrol],
 		name: "Clash",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -568,7 +568,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "maestro",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.intel],
+		roles: [ROLE.antigadget, ROLE.intel],
 		name: "Maestro",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -579,7 +579,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "alibi",
-		specialties: [SPECIALTY.trapping, SPECIALTY.intel],
+		roles: [ROLE.trapping, ROLE.intel],
 		name: "Alibi",
 		side: SIDE.defense,
 		speed: SPEED.s3,
@@ -590,7 +590,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "vigil",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.crowdcontrol],
+		roles: [ROLE.antigadget, ROLE.crowdcontrol],
 		name: "Vigil",
 		side: SIDE.defense,
 		speed: SPEED.s3,
@@ -602,7 +602,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "ela",
-		specialties: [SPECIALTY.trapping, SPECIALTY.crowdcontrol],
+		roles: [ROLE.trapping, ROLE.crowdcontrol],
 		name: "Ela",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -613,7 +613,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "lesion",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Lesion",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -624,7 +624,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "mira",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Mira",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -635,7 +635,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "echo",
-		specialties: [SPECIALTY.intel, SPECIALTY.crowdcontrol],
+		roles: [ROLE.intel, ROLE.crowdcontrol],
 		name: "Echo",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -646,7 +646,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "caveira",
-		specialties: [SPECIALTY.intel, SPECIALTY.crowdcontrol],
+		roles: [ROLE.intel, ROLE.crowdcontrol],
 		name: "Caveira",
 		side: SIDE.defense,
 		speed: SPEED.s3,
@@ -657,7 +657,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "valkyrie",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Valkyrie",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -668,7 +668,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "frost",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Frost",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -679,7 +679,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "mute",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.crowdcontrol],
+		roles: [ROLE.antigadget, ROLE.crowdcontrol],
 		name: "Mute",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -691,7 +691,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "smoke",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Smoke",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -703,7 +703,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "castle",
-		specialties: [SPECIALTY.antientry, SPECIALTY.support],
+		roles: [ROLE.antientry, ROLE.support],
 		name: "Castle",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -714,7 +714,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "pulse",
-		specialties: [SPECIALTY.intel, SPECIALTY.support],
+		roles: [ROLE.intel, ROLE.support],
 		name: "Pulse",
 		side: SIDE.defense,
 		speed: SPEED.s3,
@@ -725,7 +725,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "doc",
-		specialties: [SPECIALTY.support],
+		roles: [ROLE.support],
 		name: "Doc",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -736,7 +736,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "rook",
-		specialties: [SPECIALTY.support],
+		roles: [ROLE.support],
 		name: "Rook",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -747,7 +747,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "jager",
-		specialties: [SPECIALTY.antigadget, SPECIALTY.support],
+		roles: [ROLE.antigadget, ROLE.support],
 		name: "Jäger",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -758,7 +758,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "bandit",
-		specialties: [SPECIALTY.antientry, SPECIALTY.antigadget],
+		roles: [ROLE.antientry, ROLE.antigadget],
 		name: "Bandit",
 		side: SIDE.defense,
 		speed: SPEED.s3,
@@ -769,7 +769,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "tachanka",
-		specialties: [SPECIALTY.antientry, SPECIALTY.crowdcontrol],
+		roles: [ROLE.antientry, ROLE.crowdcontrol],
 		name: "Tachanka",
 		side: SIDE.defense,
 		speed: SPEED.s1,
@@ -780,7 +780,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "kapkan",
-		specialties: [SPECIALTY.antientry, SPECIALTY.trapping],
+		roles: [ROLE.antientry, ROLE.trapping],
 		name: "Kapkan",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -791,7 +791,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "recruit-defense",
-		specialties: [],
+		roles: [],
 		name: "Recruit",
 		side: SIDE.defense,
 		speed: SPEED.s2,
@@ -811,7 +811,7 @@ export const operators: operator[] = [
 	},
 	{
 		uri: "recruit-attack",
-		specialties: [],
+		roles: [],
 		name: "Recruit",
 		side: SIDE.attack,
 		speed: SPEED.s2,

@@ -16,7 +16,7 @@ export enum GUN_TYPE {
 	bailiff,
 }
 
-export enum SPECIALTY {
+export enum ROLE {
 	antientry,
 	antigadget,
 	breaching,
@@ -65,7 +65,7 @@ export type operator = {
 	uri: string
 	name: string
 	side: SIDE
-	specialties: SPECIALTY[]
+	roles: ROLE[]
 	speed: SPEED
 	gunsPrimary: GUN_TYPE[]
 	gunsSecondary: GUN_TYPE[]
@@ -89,7 +89,7 @@ export type filterParams = {
 	gadget: number
 	scope: number
 	speed: number
-	specialty: number
+	role: number
 }
 
 export type link = {

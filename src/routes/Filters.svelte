@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
 	import type { radioOption, filterParams } from "$lib/data/types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "$lib/data/types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
 
 	const sides: radioOption[] = [
@@ -64,22 +64,22 @@
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const specialties: { [name: string]: radioOption[] } = {
+	const roles: { [name: string]: radioOption[] } = {
 		defense: [
-			{ label: "Anti-entry", value: SPECIALTY.antientry },
-			{ label: "Trapping", value: SPECIALTY.trapping },
-			{ label: "Crowd control", value: SPECIALTY.crowdcontrol },
+			{ label: "Anti-entry", value: ROLE.antientry },
+			{ label: "Trapping", value: ROLE.trapping },
+			{ label: "Crowd control", value: ROLE.crowdcontrol },
 		],
 		attack: [
-			{ label: "Breaching", value: SPECIALTY.breaching },
-			{ label: "Frontline", value: SPECIALTY.frontline },
-			{ label: "Map control", value: SPECIALTY.mapcontrol },
+			{ label: "Breaching", value: ROLE.breaching },
+			{ label: "Frontline", value: ROLE.frontline },
+			{ label: "Map control", value: ROLE.mapcontrol },
 		],
 		common: [
 			{ label: "Any", value: NONE },
-			{ label: "Anti-gadget", value: SPECIALTY.antigadget },
-			{ label: "Intel", value: SPECIALTY.intel },
-			{ label: "Support", value: SPECIALTY.support },
+			{ label: "Anti-gadget", value: ROLE.antigadget },
+			{ label: "Intel", value: ROLE.intel },
+			{ label: "Support", value: ROLE.support },
 		],
 	}
 
@@ -91,10 +91,10 @@
 	let gadget: GADGET
 	let scope: SCOPE
 	let speed: SPEED
-	let specialty: SPECIALTY
+	let role: ROLE
 
 	let availableGadgets: radioOption[] = []
-	let availableSpecialties: radioOption[] = []
+	let availableRoles: radioOption[] = []
 	$: {
 		// disable selection of attacker gadgets on defense and vice-versa
 		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
@@ -110,18 +110,18 @@
 			gadget = gadgets.common[0].value
 		}
 
-		// disable selection of attacker specialties on defense and vice-versa
-		specialties.attack.map((s) => (s.disabled = side === SIDE.defense))
-		specialties.defense.map((s) => (s.disabled = side === SIDE.attack))
-		availableSpecialties = specialties.common.concat(specialties.attack.concat(specialties.defense))
+		// disable selection of attacker roles on defense and vice-versa
+		roles.attack.map((s) => (s.disabled = side === SIDE.defense))
+		roles.defense.map((s) => (s.disabled = side === SIDE.attack))
+		availableRoles = roles.common.concat(roles.attack.concat(roles.defense))
 
-		// after selecting a defender specialty and then switching side to attack (or vice-versa),
+		// after selecting a defender role and then switching side to attack (or vice-versa),
 		// reset selection
 		if (
-			(side === SIDE.attack && specialties.defense.find((g) => specialty === g.value)) ||
-			(side === SIDE.defense && specialties.attack.find((g) => specialty === g.value))
+			(side === SIDE.attack && roles.defense.find((g) => role === g.value)) ||
+			(side === SIDE.defense && roles.attack.find((g) => role === g.value))
 		) {
-			specialty = specialties.common[0].value
+			role = roles.common[0].value
 		}
 	}
 
@@ -132,7 +132,7 @@
 		gadget,
 		scope,
 		speed,
-		specialty,
+		role,
 	})
 </script>
 
@@ -163,9 +163,9 @@
 		<div class="label">Role</div>
 		<div class="options">
 			<Radio
-				name="specialty"
-				options={availableSpecialties}
-				bind:selected={specialty}
+				name="role"
+				options={availableRoles}
+				bind:selected={role}
 			/>
 		</div>
 	</div>

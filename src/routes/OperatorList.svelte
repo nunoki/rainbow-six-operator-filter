@@ -53,8 +53,8 @@
 		if (filters.hasOwnProperty("speed") && filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)
 		}
-		if (filters.hasOwnProperty("specialty") && filters.specialty !== NONE) {
-			output = output.filter((op) => op.specialties.includes(filters.specialty))
+		if (filters.hasOwnProperty("role") && filters.role !== NONE) {
+			output = output.filter((op) => op.roles.includes(filters.role))
 		}
 		return output
 	}
