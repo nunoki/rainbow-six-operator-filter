@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { base } from "$app/paths"
-	import { operators } from "../operators"
-	import type { filterParams, link, operator } from "../types"
-	import { NONE, SIDE } from "../types"
-	import IconExternalLink from "../util/IconExternalLink.svelte"
+	import { operators } from "$lib/data/operators"
+	import type { filterParams, link, operator } from "$lib/data/types"
+	import { NONE, SIDE } from "$lib/data/types"
+	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 
 	export let filters: filterParams = {} as filterParams
 
@@ -117,6 +117,8 @@
 </div>
 
 <style lang="sass">
+	@import "$lib/sass/variables"
+
 	.operator-list
 		display: flex
 		gap: 10px
@@ -188,14 +190,15 @@
 						overflow: hidden
 						text-overflow: ellipsis
 						text-decoration: none
-						fill: purple
-						color: purple
-						background-color: white
+						fill: $color_bg
+						color: $color_bg
+						background-color: $color_fg
 
 						&:hover
-							color: white
-							fill: white
-							background-color: purple
+							color: $color_fg
+							fill: $color_fg
+							background-color: $color_bg
+							outline: 1px solid $color_fg
 
 						&:active
 							background-color: black
@@ -211,7 +214,7 @@
 					cursor: help
 
 				&:hover
-					outline: 2px solid white
+					outline: 2px solid $color_fg
 
 					.links
 						opacity: 1

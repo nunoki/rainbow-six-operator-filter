@@ -20,6 +20,8 @@
 </div>
 
 <style lang="sass">
+	@import "$lib/sass/variables"
+
 	:global(*)
 		box-sizing: border-box
 
@@ -31,9 +33,9 @@
 		overflow-y: scroll
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
-		color: white
+		color: $color_fg
 
-		background-color: #424
+		background-color: $color_bg
 
 		a
 			fill: yellow
@@ -72,7 +74,7 @@
 			flex: 0 1 content
 
 	.header
-		border-bottom: 4px solid white
+		border-bottom: 4px solid $color_fg
 
 		.container
 			display: flex

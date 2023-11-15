@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { radioOption, filterParams } from "../types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "../types"
-	import Radio from "../util/Radio.svelte"
+	import type { radioOption, filterParams } from "$lib/data/types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "$lib/data/types"
+	import Radio from "$lib/components/Radio.svelte"
 
 	const sides: radioOption[] = [
 		{ label: "Any", value: NONE },
@@ -195,6 +195,8 @@
 </div>
 
 <style lang="sass">
+	@import "$lib/sass/variables"
+
 	.filters
 		margin: 1rem 0
 
@@ -219,7 +221,8 @@
 				flex: 1
 				content: " "
 				height: 1px
-				background-color: rgba(255,255,255,.25)
+				background-color: $color_fg
+				opacity: .25
 
 		.options
 			flex: 100 1 50%

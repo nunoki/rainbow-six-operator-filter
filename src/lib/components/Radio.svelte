@@ -34,6 +34,8 @@
 {/if}
 
 <style lang="sass">
+	@import "$lib/sass/variables"
+
 	.options
 		display: inline-flex
 		gap: .5rem
@@ -47,7 +49,7 @@
 			.option-label
 				display: block
 				padding: .25rem .5rem
-				border: 1px solid white
+				border: 1px solid $color_fg
 				cursor: pointer
 
 				&:hover
@@ -69,8 +71,8 @@
 				z-index: -1
 
 				&:checked ~ .option-label
-					color: #606
-					background-color: white
+					color: $color_bg
+					background-color: $color_fg
 
 				&:disabled ~ .option-label
 					opacity: .25
