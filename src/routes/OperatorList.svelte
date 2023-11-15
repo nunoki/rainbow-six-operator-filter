@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { base } from "$app/paths"
-	import { operators } from "../operators"
-	import type { filterParams, link, operator } from "../types"
-	import { NONE, SIDE } from "../types"
+	import { operators } from "$lib/data/operators"
+	import type { filterParams, link, operator } from "$lib/data/types"
+	import { NONE, SIDE } from "$lib/data/types"
 	import IconExternalLink from "../util/IconExternalLink.svelte"
 
 	export let filters: filterParams = {} as filterParams

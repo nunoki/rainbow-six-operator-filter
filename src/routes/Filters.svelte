@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { radioOption, filterParams } from "../types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "../types"
+	import type { radioOption, filterParams } from "$lib/data/types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "$lib/data/types"
 	import Radio from "../util/Radio.svelte"
 
 	const sides: radioOption[] = [

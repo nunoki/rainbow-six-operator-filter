@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { filterParams } from "../types"
+	import type { filterParams } from "$lib/data/types"
 	import Filters from "./Filters.svelte"
 	import OperatorList from "./OperatorList.svelte"
 
