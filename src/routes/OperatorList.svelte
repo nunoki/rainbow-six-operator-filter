@@ -206,8 +206,8 @@
 				.icon-note
 					position: absolute
 					z-index: 2
-					bottom: 1rem
-					right: 1rem
+					top: 0
+					right: 0
 					font-size: 3rem
 					font-weight: bold
 					color: red

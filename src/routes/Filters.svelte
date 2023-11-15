@@ -191,6 +191,10 @@
 				bind:selected={scope}
 			/>
 		</div>
+		<p class="note">
+			Note that the scope filter is not linked to the gun filter, meaning that the selected scope
+			will not necessarily be on the selected gun (if any)
+		</p>
 	</div>
 </div>
 
@@ -230,10 +234,9 @@
 		.options
 			flex: 100 1 50%
 
-	@media (max-width: 600px)
-		.filter
-			flex-direction: column
-
-			.label
-				flex-basis: 1rem
+	.note
+		font-size: .9em
+		opacity: .5
+		font-style: italic
+		font-family: serif
 </style>

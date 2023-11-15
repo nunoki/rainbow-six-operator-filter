@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { base } from "$app/paths"
+</script>
+
 <svelte:head>
 	<title>Rainbow Six Operator Filter</title>
 </svelte:head>
@@ -5,7 +9,14 @@
 <div class="wrapper">
 	<header class="header">
 		<div class="container">
-			<h1>Rainbow six operator filter</h1>
+			<h1>
+				<img
+					class="header-img"
+					src="{base}/favicon.png"
+					alt=""
+				/>
+				Rainbow six operator filter
+			</h1>
 		</div>
 	</header>
 
@@ -91,6 +102,11 @@
 				// white-space: nowrap
 				// overflow: hidden
 				// text-overflow: ellipsis
+
+			.header-img
+				height: 2rem
+				vertical-align: middle
+				margin-right: .5rem
 
 	.footer
 		padding: 2em
