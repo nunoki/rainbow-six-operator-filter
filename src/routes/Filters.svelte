@@ -199,6 +199,7 @@
 
 	.filters
 		display: flex
+		gap: .5rem
 		margin: 1rem 0
 
 	.filter
@@ -215,7 +216,7 @@
 			font-size: 26px
 			text-transform: uppercase
 			flex: 1 0 9rem
-			padding-right: 1rem
+			padding-right: .5rem
 
 			&::after
 				flex: 1

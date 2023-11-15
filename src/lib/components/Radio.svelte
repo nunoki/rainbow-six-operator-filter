@@ -45,11 +45,12 @@
 			.option-label
 				display: block
 				padding: .25rem .5rem
-				border: 1px solid $color_fg
 				cursor: pointer
 
+				white-space: nowrap
+
 				&:hover
-					background-color: rgba(255,255,255,.25)
+					outline: 1px solid $color_fg
 
 				.secondary
 					font-size: .75em
@@ -67,10 +68,16 @@
 				z-index: -1
 
 				&:checked ~ .option-label
+					opacity: 1
 					color: $color_bg
 					background-color: $color_fg
+					outline: 1px solid $color_fg
 
 				&:disabled ~ .option-label
-					opacity: .25
+					opacity: .1
 					cursor: not-allowed
+
+					&:hover
+						background-color: transparent
+						outline-color: transparent
 </style>
