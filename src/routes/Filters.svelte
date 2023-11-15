@@ -195,6 +195,8 @@
 </div>
 
 <style lang="sass">
+	@import "$lib/sass/variables"
+
 	.filters
 		margin: 1rem 0
 
@@ -219,7 +221,8 @@
 				flex: 1
 				content: " "
 				height: 1px
-				background-color: rgba(255,255,255,.25)
+				background-color: $color_fg
+				opacity: .25
 
 		.options
 			flex: 100 1 50%
