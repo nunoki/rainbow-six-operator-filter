@@ -33,8 +33,7 @@
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
 		color: white
 
-		background: url(/background/background.jpg)
-		background-size: 100%
+		background-color: #424
 
 		a
 			fill: yellow
