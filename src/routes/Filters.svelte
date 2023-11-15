@@ -230,10 +230,4 @@
 		.options
 			flex: 100 1 50%
 
-	@media (max-width: 600px)
-		.filter
-			flex-direction: column
-
-			.label
-				flex-basis: 1rem
 </style>
