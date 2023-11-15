@@ -200,10 +200,12 @@
 	.filters
 		display: flex
 		gap: .5rem
+		width: 100%
+		overflow-x: auto
 		margin: 1rem 0
 
 	.filter
-		flex: 1
+		flex: 1 0 7rem
 
 		.label
 			display: flex
