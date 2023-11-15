@@ -74,16 +74,18 @@
 			flex: 0 1 content
 
 	.header
-		border-bottom: 4px solid $color_fg
+		background: linear-gradient(to bottom, darken($color_bg, 2%) 90%, darken($color_bg, 5%))
+		border-bottom: 1px solid darken($color_bg, 50%)
 
 		.container
 			display: flex
 			justify-content: space-between
 			align-items: center
-			height: 4rem
+			height: 3rem
 
 			> h1
 				margin: 0
+				font-size: 1.75rem
 				// flex: 0 100 content
 				// white-space: nowrap
 				// overflow: hidden
