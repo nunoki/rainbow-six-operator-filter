@@ -198,11 +198,11 @@
 	@import "$lib/sass/variables"
 
 	.filters
+		display: flex
 		margin: 1rem 0
 
 	.filter
-		display: flex
-		padding: .5rem 0
+		flex: 1
 
 		.label
 			display: flex

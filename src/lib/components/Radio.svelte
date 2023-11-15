@@ -37,13 +37,9 @@
 	@import "$lib/sass/variables"
 
 	.options
-		display: inline-flex
-		gap: .5rem
-		flex-wrap: wrap
-
 		.option
-			flex: 0 1 content
-			white-space: nowrap
+			// white-space: nowrap
+			display: block
 			position: relative
 
 			.option-label
