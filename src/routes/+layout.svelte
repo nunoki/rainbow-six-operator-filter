@@ -51,7 +51,7 @@
 
 	:global(h1,h2)
 		text-transform: uppercase
-		font-family: R6S-RegItalic,sans-serif
+		font-family: $font_ubi
 		font-weight: normal
 
 	.container
@@ -100,7 +100,7 @@
 			margin: .5rem 0
 
 	@font-face
-		font-family: R6S-RegItalic
+		font-family: $font_ubi
 		src: url("/fonts/R6S-RegItalic.woff2") format("woff2"), url("/fonts/R6S-RegItalic.woff") format("woff")
 		font-style: normal
 		font-weight: 400

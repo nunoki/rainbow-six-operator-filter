@@ -155,7 +155,7 @@
 							padding: .25rem
 							text-transform: uppercase
 							text-align: center
-							font-family: R6S-RegItalic,sans-serif
+							font-family: $font_ubi
 							font-size: 26px
 							color: #24262a
 							background-color: #c3c3c3

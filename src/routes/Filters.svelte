@@ -211,7 +211,7 @@
 
 			margin-bottom: .5rem
 			font-weight: normal
-			font-family: R6S-RegItalic
+			font-family: $font_ubi
 			font-size: 26px
 			text-transform: uppercase
 			flex: 1 0 9rem
