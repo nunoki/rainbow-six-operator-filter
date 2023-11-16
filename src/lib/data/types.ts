@@ -16,7 +16,7 @@ export enum GUN_TYPE {
 	bailiff,
 }
 
-export enum SPECIALTY {
+export enum ROLE {
 	antientry,
 	antigadget,
 	breaching,
@@ -61,11 +61,11 @@ export enum SPEED {
 	s3,
 }
 
-export type operator = {
+export type Operator = {
 	uri: string
 	name: string
 	side: SIDE
-	specialties: SPECIALTY[]
+	roles: ROLE[]
 	speed: SPEED
 	gunsPrimary: GUN_TYPE[]
 	gunsSecondary: GUN_TYPE[]
@@ -75,24 +75,30 @@ export type operator = {
 	noUbisoftWebsite?: boolean
 }
 
-export type radioOption = {
+export type RadioOption = {
 	label: string
 	secondaryLabel?: string
 	value: number
 	disabled?: boolean
 }
 
-export type filterParams = {
+export type InputOptions = {
+	attack: RadioOption[]
+	defense: RadioOption[]
+	common: RadioOption[]
+}
+
+export type FilterParams = {
 	side: number
 	gunTypePrimary: number
 	gunTypeSecondary: number
 	gadget: number
 	scope: number
 	speed: number
-	specialty: number
+	role: number
 }
 
-export type link = {
+export type Link = {
 	url: string
 	domain: string
 }

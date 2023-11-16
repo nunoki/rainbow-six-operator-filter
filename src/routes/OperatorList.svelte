@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { base } from "$app/paths"
 	import { operators } from "$lib/data/operators"
-	import type { filterParams, link, operator } from "$lib/data/types"
+	import type { FilterParams, Link, Operator } from "$lib/data/types"
 	import { NONE, SIDE } from "$lib/data/types"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 
-	export let filters: filterParams = {} as filterParams
+	export let filters: FilterParams = {} as FilterParams
 
 	$: filteredOps = filter(filters)
 
-	function generateLinks(op: operator): link[] {
-		let links: link[] = []
+	function generateLinks(op: Operator): Link[] {
+		let links: Link[] = []
 
 		if (op.name !== "Recruit") {
 			links.push({
@@ -33,7 +33,7 @@
 		return links
 	}
 
-	function filter(filters: filterParams): operator[] {
+	function filter(filters: FilterParams): Operator[] {
 		let output = operators
 		if (filters.hasOwnProperty("side") && filters.side !== NONE) {
 			output = output.filter((op) => op.side === filters.side)
@@ -53,8 +53,8 @@
 		if (filters.hasOwnProperty("speed") && filters.speed !== NONE) {
 			output = output.filter((op) => op.speed === filters.speed)
 		}
-		if (filters.hasOwnProperty("specialty") && filters.specialty !== NONE) {
-			output = output.filter((op) => op.specialties.includes(filters.specialty))
+		if (filters.hasOwnProperty("role") && filters.role !== NONE) {
+			output = output.filter((op) => op.roles.includes(filters.role))
 		}
 		return output
 	}
@@ -131,93 +131,93 @@
 			flex: 1 1 calc(12.5% - 5px)
 			text-decoration: none
 
-			&.operator
-				.card
-					padding-bottom: 190%
-					position: relative
-					background-color: rgba(255,255,255,.15)
+		.operator
+			.card
+				padding-bottom: 190%
+				position: relative
+				background-color: rgba(255,255,255,.15)
 
-					.inner
-						position: absolute
-						top: 0
-						left: 0
-						width: 100%
-						height: 100%
-						display: flex
-						flex-direction: column
+				.inner
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
+					display: flex
+					flex-direction: column
 
-						.pic
-							background-size: cover
-							background-position: center
-							flex: 1
+					.pic
+						background-size: cover
+						background-position: center
+						flex: 1
 
-						.name
-							padding: .25rem
-							text-transform: uppercase
-							text-align: center
-							font-family: $font_ubi
-							font-size: 26px
-							color: #24262a
-							background-color: #c3c3c3
+					.name
+						padding: .25rem
+						text-transform: uppercase
+						text-align: center
+						font-family: $font_ubi
+						font-size: 26px
+						color: #24262a
+						background-color: #c3c3c3
 
-					.operator-icon
-						display: block
-						position: absolute
-						z-index: 1
-						top: 55%
-						right: auto
-						left: 50%
-						bottom: auto
-						margin: 0 -25%
-						width: 50%
-						height: auto
+				.operator-icon
+					display: block
+					position: absolute
+					z-index: 1
+					top: 55%
+					right: auto
+					left: 50%
+					bottom: auto
+					margin: 0 -25%
+					width: 50%
+					height: auto
+
+			.links
+				opacity: 0
+				transition: opacity .3s ease
+				position: absolute
+				z-index: 3
+				bottom: 2rem
+				left: 10%
+				width: 80%
+
+				.link
+					padding: .25rem
+					margin: .25rem 0
+					display: block
+					text-align: center
+					white-space: nowrap
+					overflow: hidden
+					text-overflow: ellipsis
+					text-decoration: none
+					fill: $color_bg
+					color: $color_bg
+					background-color: $color_fg
+
+					&:hover
+						color: $color_fg
+						fill: $color_fg
+						background-color: $color_bg
+						outline: 1px solid $color_fg
+
+					&:active
+						background-color: black
+
+			.icon-note
+				position: absolute
+				z-index: 2
+				top: 0
+				right: 0
+				font-size: 3rem
+				font-weight: bold
+				color: red
+				cursor: help
+
+			&:hover
+				outline: 2px solid $color_fg
 
 				.links
-					opacity: 0
-					transition: opacity .3s ease
-					position: absolute
-					z-index: 3
-					bottom: 2rem
-					left: 10%
-					width: 80%
-
-					.link
-						padding: .25rem
-						margin: .25rem 0
-						display: block
-						text-align: center
-						white-space: nowrap
-						overflow: hidden
-						text-overflow: ellipsis
-						text-decoration: none
-						fill: $color_bg
-						color: $color_bg
-						background-color: $color_fg
-
-						&:hover
-							color: $color_fg
-							fill: $color_fg
-							background-color: $color_bg
-							outline: 1px solid $color_fg
-
-						&:active
-							background-color: black
-
-				.icon-note
-					position: absolute
-					z-index: 2
-					top: 0
-					right: 0
-					font-size: 3rem
-					font-weight: bold
-					color: red
-					cursor: help
-
-				&:hover
-					outline: 2px solid $color_fg
-
-					.links
-						opacity: 1
+					opacity: 1
 
 		.no-results
 			padding: 4rem 0

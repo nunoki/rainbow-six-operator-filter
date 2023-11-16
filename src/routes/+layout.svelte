@@ -48,17 +48,17 @@
 
 		background-color: $color_bg
 
-		a
-			fill: yellow
-			color: yellow
-			text-decoration: none
+		// a
+		// 	fill: yellow
+		// 	color: yellow
+		// 	text-decoration: none
 
-			&:hover
-				text-decoration: underline
+		// 	&:hover
+		// 		text-decoration: underline
 
-			&:active
-				fill: orange
-				color: orange
+		// 	&:active
+		// 		fill: orange
+		// 		color: orange
 
 	:global(h1,h2)
 		text-transform: uppercase
@@ -86,7 +86,7 @@
 			flex: 0 1 content
 
 	.header
-		background: linear-gradient(to bottom, darken($color_bg, 2%) 90%, darken($color_bg, 5%))
+		background-color: darken($color_bg, 5%)
 		border-bottom: 1px solid darken($color_bg, 50%)
 
 		.container

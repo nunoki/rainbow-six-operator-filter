@@ -1,35 +1,35 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { radioOption, filterParams } from "$lib/data/types"
-	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, SPECIALTY } from "$lib/data/types"
+	import type { RadioOption, InputOptions, FilterParams } from "$lib/data/types"
+	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
 
-	const sides: radioOption[] = [
+	const sides: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "Defender", value: SIDE.defense },
 		{ label: "Attacker", value: SIDE.attack },
 	]
-	const gunTypes: { [name: string]: radioOption[] } = {
-		primary: [
-			{ label: "Any", value: NONE },
-			{ label: "Assault rifle", value: GUN_TYPE.rifle },
-			{ label: "Submachine gun", value: GUN_TYPE.smg },
-			{ label: "Marksman rifle", value: GUN_TYPE.dmr },
-			{ label: "Light machine gun", value: GUN_TYPE.lmg },
-			{ label: "Shotgun", value: GUN_TYPE.shotgun },
-			{ label: "Shield", value: GUN_TYPE.shield },
-		],
-		secondary: [
+	const gunTypesPrimary: RadioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Assault rifle", value: GUN_TYPE.rifle },
+		{ label: "Submachine gun", value: GUN_TYPE.smg },
+		{ label: "Marksman rifle", value: GUN_TYPE.dmr },
+		{ label: "Light machine gun", value: GUN_TYPE.lmg },
+		{ label: "Shotgun", value: GUN_TYPE.shotgun },
+		{ label: "Shield", value: GUN_TYPE.shield },
+	]
+	const gunTypesSecondary: InputOptions = {
+		attack: [{ label: "Gonne-6", value: GUN_TYPE.gonne6 }],
+		defense: [{ label: "Bailiff", value: GUN_TYPE.bailiff }],
+		common: [
 			{ label: "Any", value: NONE },
 			{ label: "Submachine gun", value: GUN_TYPE.smg },
 			{ label: "Shotgun", value: GUN_TYPE.shotgun },
 			{ label: "Pistol", value: GUN_TYPE.pistol },
-			{ label: "Bailiff", value: GUN_TYPE.bailiff },
 			{ label: "Machine pistol", value: GUN_TYPE.mpistol },
-			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		],
 	}
-	const gadgets: { [name: string]: radioOption[] } = {
+	const gadgets: InputOptions = {
 		defense: [
 			{ label: "Impact grenade", value: GADGET.impact },
 			{ label: "Bulletproof camera", value: GADGET.bpcamera },
@@ -50,7 +50,7 @@
 		],
 		common: [{ label: "Any", value: NONE }],
 	}
-	const scopes: radioOption[] = [
+	const scopes: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "1.0x", value: SCOPE.s1_0 },
 		{ label: "1.5x", value: SCOPE.s1_5 },
@@ -58,26 +58,32 @@
 		{ label: "2.5x", value: SCOPE.s2_5 },
 		{ label: "> 2.5x", value: SCOPE.s2_5plus },
 	]
-	const speeds: radioOption[] = [
+	const speeds: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const specialties: radioOption[] = [
-		{ label: "Any", value: NONE },
-		{ label: "Anti-entry", value: SPECIALTY.antientry },
-		{ label: "Anti-gadget", value: SPECIALTY.antigadget },
-		{ label: "Breaching", value: SPECIALTY.breaching },
-		{ label: "Trapping", value: SPECIALTY.trapping },
-		{ label: "Intel", value: SPECIALTY.intel },
-		{ label: "Support", value: SPECIALTY.support },
-		{ label: "Frontline", value: SPECIALTY.frontline },
-		{ label: "Map control", value: SPECIALTY.mapcontrol },
-		{ label: "Crowd control", value: SPECIALTY.crowdcontrol },
-	]
+	const roles: InputOptions = {
+		defense: [
+			{ label: "Anti-entry", value: ROLE.antientry },
+			{ label: "Trapping", value: ROLE.trapping },
+			{ label: "Crowd control", value: ROLE.crowdcontrol },
+		],
+		attack: [
+			{ label: "Breaching", value: ROLE.breaching },
+			{ label: "Frontline", value: ROLE.frontline },
+			{ label: "Map control", value: ROLE.mapcontrol },
+		],
+		common: [
+			{ label: "Any", value: NONE },
+			{ label: "Anti-gadget", value: ROLE.antigadget },
+			{ label: "Intel", value: ROLE.intel },
+			{ label: "Support", value: ROLE.support },
+		],
+	}
 
-	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
+	const dispatch = createEventDispatcher<{ filtered: FilterParams }>()
 
 	let side: SIDE
 	let gunTypePrimary: GUN_TYPE
@@ -85,23 +91,36 @@
 	let gadget: GADGET
 	let scope: SCOPE
 	let speed: SPEED
-	let specialty: SPECIALTY
+	let role: ROLE
 
-	let availableGadgets: radioOption[] = []
+	let availableGadgets: RadioOption[] = []
+	let availableRoles: RadioOption[] = []
+	let availableGunTypesSecondary: RadioOption[] = []
 	$: {
-		// disable selection of attacker gadgets on defense and vice-versa
-		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
-		gadgets.defense.map((g) => (g.disabled = side === SIDE.attack))
-		availableGadgets = gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
+		;[availableGadgets, gadget] = disableNonapplicable(gadgets, side, gadget)
+		;[availableRoles, role] = disableNonapplicable(roles, side, role)
+		;[availableGunTypesSecondary, gunTypeSecondary] = disableNonapplicable(
+			gunTypesSecondary,
+			side,
+			gunTypeSecondary,
+		)
+	}
 
-		// after selecting a defender gadget and then switching side to attack (or vice-versa),
-		// reset selection
+	function disableNonapplicable(
+		input: InputOptions,
+		side: number,
+		selected: number,
+	): [RadioOption[], number] {
+		input.attack.map((s) => (s.disabled = side === SIDE.defense))
+		input.defense.map((s) => (s.disabled = side === SIDE.attack))
+
 		if (
-			(side === SIDE.attack && gadgets.defense.find((g) => gadget === g.value)) ||
-			(side === SIDE.defense && gadgets.attack.find((g) => gadget === g.value))
+			(side === SIDE.attack && input.defense.find((g) => selected === g.value)) ||
+			(side === SIDE.defense && input.attack.find((g) => selected === g.value))
 		) {
-			gadget = gadgets.common[0].value
+			selected = input.common[0].value
 		}
+		return [input.common.concat(input.attack.concat(input.defense)), selected]
 	}
 
 	$: dispatch("filtered", {
@@ -111,7 +130,7 @@
 		gadget,
 		scope,
 		speed,
-		specialty,
+		role,
 	})
 </script>
 
@@ -142,9 +161,9 @@
 		<div class="label">Role</div>
 		<div class="options">
 			<Radio
-				name="specialty"
-				options={specialties}
-				bind:selected={specialty}
+				name="role"
+				options={availableRoles}
+				bind:selected={role}
 			/>
 		</div>
 	</div>
@@ -154,7 +173,7 @@
 		<div class="options">
 			<Radio
 				name="primary_gun"
-				options={gunTypes.primary}
+				options={gunTypesPrimary}
 				bind:selected={gunTypePrimary}
 			/>
 		</div>
@@ -165,7 +184,7 @@
 		<div class="options">
 			<Radio
 				name="secondary_gun"
-				options={gunTypes.secondary}
+				options={availableGunTypesSecondary}
 				bind:selected={gunTypeSecondary}
 			/>
 		</div>
