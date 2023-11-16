@@ -86,7 +86,7 @@
 			flex: 0 1 content
 
 	.header
-		background: linear-gradient(to bottom, darken($color_bg, 2%) 90%, darken($color_bg, 5%))
+		background-color: darken($color_bg, 5%)
 		border-bottom: 1px solid darken($color_bg, 50%)
 
 		.container
