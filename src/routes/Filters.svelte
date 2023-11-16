@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { RadioOption, InputOptions, FilterParams } from "$lib/data/types"
+	import type { RadioOption, FilterParams } from "$lib/data/types"
 	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
 
@@ -18,38 +18,32 @@
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },
 		{ label: "Shield", value: GUN_TYPE.shield },
 	]
-	const gunTypesSecondary: InputOptions = {
-		attack: [{ label: "Gonne-6", value: GUN_TYPE.gonne6 }],
-		defense: [{ label: "Bailiff", value: GUN_TYPE.bailiff }],
-		common: [
-			{ label: "Any", value: NONE },
-			{ label: "Submachine gun", value: GUN_TYPE.smg },
-			{ label: "Shotgun", value: GUN_TYPE.shotgun },
-			{ label: "Pistol", value: GUN_TYPE.pistol },
-			{ label: "Machine pistol", value: GUN_TYPE.mpistol },
-		],
-	}
-	const gadgets: InputOptions = {
-		defense: [
-			{ label: "Impact grenade", value: GADGET.impact },
-			{ label: "Bulletproof camera", value: GADGET.bpcamera },
-			{ label: "Observation blocker", value: GADGET.obsblocker },
-			{ label: "Deployable shield", value: GADGET.dshield },
-			{ label: "Barbed wire", value: GADGET.barbwire },
-			{ label: "Proximity alarm", value: GADGET.proxalarm },
-			{ label: "Nitro cell", value: GADGET.nitro },
-		],
-		attack: [
-			{ label: "Frag grenade", value: GADGET.grenade },
-			{ label: "Smoke grenade", value: GADGET.smoke },
-			{ label: "Stun grenade", value: GADGET.stun },
-			{ label: "Claymore", value: GADGET.claymore },
-			{ label: "Breach charge", value: GADGET.sbreach },
-			{ label: "Hard breach charge", value: GADGET.hbreach },
-			{ label: "Impact EMP grenade", value: GADGET.emp },
-		],
-		common: [{ label: "Any", value: NONE }],
-	}
+	const gunTypesSecondary: RadioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
+		{ label: "Bailiff", value: GUN_TYPE.bailiff },
+		{ label: "Submachine gun", value: GUN_TYPE.smg },
+		{ label: "Shotgun", value: GUN_TYPE.shotgun },
+		{ label: "Pistol", value: GUN_TYPE.pistol },
+		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
+	]
+	const gadgets: RadioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Impact grenade", value: GADGET.impact },
+		{ label: "Bulletproof camera", value: GADGET.bpcamera },
+		{ label: "Observation blocker", value: GADGET.obsblocker },
+		{ label: "Deployable shield", value: GADGET.dshield },
+		{ label: "Barbed wire", value: GADGET.barbwire },
+		{ label: "Proximity alarm", value: GADGET.proxalarm },
+		{ label: "Nitro cell", value: GADGET.nitro },
+		{ label: "Frag grenade", value: GADGET.grenade },
+		{ label: "Smoke grenade", value: GADGET.smoke },
+		{ label: "Stun grenade", value: GADGET.stun },
+		{ label: "Claymore", value: GADGET.claymore },
+		{ label: "Breach charge", value: GADGET.sbreach },
+		{ label: "Hard breach charge", value: GADGET.hbreach },
+		{ label: "Impact EMP grenade", value: GADGET.emp },
+	]
 	const scopes: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "1.0x", value: SCOPE.s1_0 },
@@ -64,24 +58,18 @@
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const roles: InputOptions = {
-		defense: [
-			{ label: "Anti-entry", value: ROLE.antientry },
-			{ label: "Trapping", value: ROLE.trapping },
-			{ label: "Crowd control", value: ROLE.crowdcontrol },
-		],
-		attack: [
-			{ label: "Breaching", value: ROLE.breaching },
-			{ label: "Frontline", value: ROLE.frontline },
-			{ label: "Map control", value: ROLE.mapcontrol },
-		],
-		common: [
-			{ label: "Any", value: NONE },
-			{ label: "Anti-gadget", value: ROLE.antigadget },
-			{ label: "Intel", value: ROLE.intel },
-			{ label: "Support", value: ROLE.support },
-		],
-	}
+	const roles: RadioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Anti-entry", value: ROLE.antientry },
+		{ label: "Trapping", value: ROLE.trapping },
+		{ label: "Crowd control", value: ROLE.crowdcontrol },
+		{ label: "Breaching", value: ROLE.breaching },
+		{ label: "Frontline", value: ROLE.frontline },
+		{ label: "Map control", value: ROLE.mapcontrol },
+		{ label: "Anti-gadget", value: ROLE.antigadget },
+		{ label: "Intel", value: ROLE.intel },
+		{ label: "Support", value: ROLE.support },
+	]
 
 	const dispatch = createEventDispatcher<{ filtered: FilterParams }>()
 
@@ -92,36 +80,6 @@
 	let scope: SCOPE
 	let speed: SPEED
 	let role: ROLE
-
-	let availableGadgets: RadioOption[] = []
-	let availableRoles: RadioOption[] = []
-	let availableGunTypesSecondary: RadioOption[] = []
-	$: {
-		;[availableGadgets, gadget] = disableNonapplicable(gadgets, side, gadget)
-		;[availableRoles, role] = disableNonapplicable(roles, side, role)
-		;[availableGunTypesSecondary, gunTypeSecondary] = disableNonapplicable(
-			gunTypesSecondary,
-			side,
-			gunTypeSecondary,
-		)
-	}
-
-	function disableNonapplicable(
-		input: InputOptions,
-		side: number,
-		selected: number,
-	): [RadioOption[], number] {
-		input.attack.map((s) => (s.disabled = side === SIDE.defense))
-		input.defense.map((s) => (s.disabled = side === SIDE.attack))
-
-		if (
-			(side === SIDE.attack && input.defense.find((g) => selected === g.value)) ||
-			(side === SIDE.defense && input.attack.find((g) => selected === g.value))
-		) {
-			selected = input.common[0].value
-		}
-		return [input.common.concat(input.attack.concat(input.defense)), selected]
-	}
 
 	$: dispatch("filtered", {
 		side,
@@ -162,7 +120,7 @@
 		<div class="options">
 			<Radio
 				name="role"
-				options={availableRoles}
+				options={roles}
 				bind:selected={role}
 			/>
 		</div>
@@ -184,7 +142,7 @@
 		<div class="options">
 			<Radio
 				name="secondary_gun"
-				options={availableGunTypesSecondary}
+				options={gunTypesSecondary}
 				bind:selected={gunTypeSecondary}
 			/>
 		</div>
@@ -195,7 +153,7 @@
 		<div class="options">
 			<Radio
 				name="gadget"
-				options={availableGadgets}
+				options={gadgets}
 				bind:selected={gadget}
 			/>
 		</div>
