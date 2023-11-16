@@ -243,12 +243,12 @@
 			flex: 1 0 9rem
 			padding-right: .5rem
 
-			&::after
-				flex: 1
-				content: " "
-				height: 1px
-				background-color: $color_fg
-				opacity: .25
+			// &::after
+			// 	flex: 1
+			// 	content: " "
+			// 	height: 1px
+			// 	background-color: $color_fg
+			// 	opacity: .25
 
 		.options
 			flex: 100 1 50%

@@ -41,6 +41,7 @@
 			// white-space: nowrap
 			display: block
 			position: relative
+			margin-bottom: .25rem
 
 			.option-label
 				display: block
@@ -48,9 +49,11 @@
 				cursor: pointer
 
 				white-space: nowrap
+				background-color: lighten($color_bg, 6%)
+				border: 1px solid lighten($color_bg, 15%)
 
 				&:hover
-					background-color: lighten($color_bg, 10%)
+					background-color: lighten($color_bg, 15%)
 
 				.secondary
 					font-size: .75em
@@ -71,11 +74,12 @@
 					opacity: 1
 					color: $color_bg
 					background-color: $color_fg
+					border-color: $color_fg
 
 				&:disabled ~ .option-label
-					opacity: .1
+					// opacity: .1
 					cursor: not-allowed
-
-					&:hover
-						background-color: transparent
+					color: lighten($color_bg, 5%)
+					background-color: darken($color_bg, 1%)
+					border-color: darken($color_bg, 5%)
 </style>
