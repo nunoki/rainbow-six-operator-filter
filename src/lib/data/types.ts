@@ -82,6 +82,12 @@ export type RadioOption = {
 	disabled?: boolean
 }
 
+export type InputOptions = {
+	attack: RadioOption[]
+	defense: RadioOption[]
+	common: RadioOption[]
+}
+
 export type FilterParams = {
 	side: number
 	gunTypePrimary: number

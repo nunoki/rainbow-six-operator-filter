@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { RadioOption, FilterParams } from "$lib/data/types"
+	import type { RadioOption, InputOptions, FilterParams } from "$lib/data/types"
 	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
 
@@ -29,7 +29,7 @@
 			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		],
 	}
-	const gadgets: { [name: string]: RadioOption[] } = {
+	const gadgets: InputOptions = {
 		defense: [
 			{ label: "Impact grenade", value: GADGET.impact },
 			{ label: "Bulletproof camera", value: GADGET.bpcamera },
@@ -64,7 +64,7 @@
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const roles: { [name: string]: RadioOption[] } = {
+	const roles: InputOptions = {
 		defense: [
 			{ label: "Anti-entry", value: ROLE.antientry },
 			{ label: "Trapping", value: ROLE.trapping },
@@ -96,33 +96,25 @@
 	let availableGadgets: RadioOption[] = []
 	let availableRoles: RadioOption[] = []
 	$: {
-		// disable selection of attacker gadgets on defense and vice-versa
-		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
-		gadgets.defense.map((g) => (g.disabled = side === SIDE.attack))
-		availableGadgets = gadgets.common.concat(gadgets.attack.concat(gadgets.defense))
+		;[availableGadgets, gadget] = disableNonapplicable(gadgets, side, gadget)
+		;[availableRoles, role] = disableNonapplicable(roles, side, role)
+	}
 
-		// after selecting a defender gadget and then switching side to attack (or vice-versa),
-		// reset selection
+	function disableNonapplicable(
+		input: InputOptions,
+		side: number,
+		selected: number,
+	): [RadioOption[], number] {
+		input.attack.map((s) => (s.disabled = side === SIDE.defense))
+		input.defense.map((s) => (s.disabled = side === SIDE.attack))
+
 		if (
-			(side === SIDE.attack && gadgets.defense.find((g) => gadget === g.value)) ||
-			(side === SIDE.defense && gadgets.attack.find((g) => gadget === g.value))
+			(side === SIDE.attack && input.defense.find((g) => selected === g.value)) ||
+			(side === SIDE.defense && input.attack.find((g) => selected === g.value))
 		) {
-			gadget = gadgets.common[0].value
+			selected = input.common[0].value
 		}
-
-		// disable selection of attacker roles on defense and vice-versa
-		roles.attack.map((s) => (s.disabled = side === SIDE.defense))
-		roles.defense.map((s) => (s.disabled = side === SIDE.attack))
-		availableRoles = roles.common.concat(roles.attack.concat(roles.defense))
-
-		// after selecting a defender role and then switching side to attack (or vice-versa),
-		// reset selection
-		if (
-			(side === SIDE.attack && roles.defense.find((g) => role === g.value)) ||
-			(side === SIDE.defense && roles.attack.find((g) => role === g.value))
-		) {
-			role = roles.common[0].value
-		}
+		return [input.common.concat(input.attack.concat(input.defense)), selected]
 	}
 
 	$: dispatch("filtered", {
