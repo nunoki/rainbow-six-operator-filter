@@ -79,7 +79,7 @@
 				&:disabled ~ .option-label
 					// opacity: .1
 					cursor: not-allowed
-					color: lighten($color_bg, 5%)
+					color: darken($color_bg, 5%)
 					background-color: darken($color_bg, 1%)
 					border-color: darken($color_bg, 5%)
 </style>
