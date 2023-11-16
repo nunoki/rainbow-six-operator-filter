@@ -81,6 +81,12 @@
 	let speed: SPEED
 	let role: ROLE
 
+	$: {
+		for (let i in gadgets) {
+			gadgets[i].count = Math.floor(Math.random() * 10)
+		}
+	}
+
 	$: dispatch("filtered", {
 		side,
 		gunTypePrimary,
