@@ -1,3 +1,7 @@
+// NOTE: when doing updates on the operator configuration, if ever a previously-established rule is
+// broken in terms of impossible equipment combinations (for example how no attacker has a bailiff,
+// no defender has a breach charge, etc), the corresponding change should be updated in the
+// Filters.svelte file to allow for those new combinations.
 import type { Operator } from "./types"
 import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
 
