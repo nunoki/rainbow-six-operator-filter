@@ -30,7 +30,7 @@
 						{/if}
 						-->
 
-					{#if opt.count}
+					{#if opt.count !== undefined}
 						<span class="label-badge">
 							{opt.count}
 						</span>
@@ -80,6 +80,7 @@
 					padding: .25rem
 					margin-left: .25rem
 					background-color: $color_bg
+					color: white
 
 			input
 				opacity: 0
