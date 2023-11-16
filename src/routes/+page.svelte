@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { filterParams } from "$lib/data/types"
+	import type { FilterParams } from "$lib/data/types"
 	import Filters from "./Filters.svelte"
 	import OperatorList from "./OperatorList.svelte"
 
-	let filters: filterParams = {} as filterParams
-	function onFiltersChanged(event: { detail: filterParams }) {
+	let filters: FilterParams = {} as FilterParams
+	function onFiltersChanged(event: { detail: FilterParams }) {
 		filters = event.detail
 	}
 </script>
