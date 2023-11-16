@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { base } from "$app/paths"
 	import { operators } from "$lib/data/operators"
-	import type { filterParams, link, operator } from "$lib/data/types"
+	import type { FilterParams, Link, Operator } from "$lib/data/types"
 	import { NONE, SIDE } from "$lib/data/types"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 
-	export let filters: filterParams = {} as filterParams
+	export let filters: FilterParams = {} as FilterParams
 
 	$: filteredOps = filter(filters)
 
-	function generateLinks(op: operator): link[] {
-		let links: link[] = []
+	function generateLinks(op: Operator): Link[] {
+		let links: Link[] = []
 
 		if (op.name !== "Recruit") {
 			links.push({
@@ -33,7 +33,7 @@
 		return links
 	}
 
-	function filter(filters: filterParams): operator[] {
+	function filter(filters: FilterParams): Operator[] {
 		let output = operators
 		if (filters.hasOwnProperty("side") && filters.side !== NONE) {
 			output = output.filter((op) => op.side === filters.side)

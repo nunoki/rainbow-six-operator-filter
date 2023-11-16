@@ -1,4 +1,4 @@
-import type { operator } from "./types"
+import type { Operator } from "./types"
 import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
 
 function mpVsSmgNote(smg: string): string {
@@ -9,7 +9,7 @@ function arVsDmrNote(dmr: string): string {
 	return `${dmr} is classified as an Assault rifle on Ubisoft's site, but here it counts as a Marksman rifle because it doesn't have full-auto fire.`
 }
 
-export const operators: operator[] = [
+export const operators: Operator[] = [
 	{
 		uri: "tubarao",
 		roles: [ROLE.antientry, ROLE.antigadget],

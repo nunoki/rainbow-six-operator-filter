@@ -61,7 +61,7 @@ export enum SPEED {
 	s3,
 }
 
-export type operator = {
+export type Operator = {
 	uri: string
 	name: string
 	side: SIDE
@@ -75,14 +75,14 @@ export type operator = {
 	noUbisoftWebsite?: boolean
 }
 
-export type radioOption = {
+export type RadioOption = {
 	label: string
 	secondaryLabel?: string
 	value: number
 	disabled?: boolean
 }
 
-export type filterParams = {
+export type FilterParams = {
 	side: number
 	gunTypePrimary: number
 	gunTypeSecondary: number
@@ -92,7 +92,7 @@ export type filterParams = {
 	role: number
 }
 
-export type link = {
+export type Link = {
 	url: string
 	domain: string
 }

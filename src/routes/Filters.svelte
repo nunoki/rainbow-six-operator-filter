@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte"
-	import type { radioOption, filterParams } from "$lib/data/types"
+	import type { RadioOption, FilterParams } from "$lib/data/types"
 	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
 
-	const sides: radioOption[] = [
+	const sides: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "Defender", value: SIDE.defense },
 		{ label: "Attacker", value: SIDE.attack },
 	]
-	const gunTypes: { [name: string]: radioOption[] } = {
+	const gunTypes: { [name: string]: RadioOption[] } = {
 		primary: [
 			{ label: "Any", value: NONE },
 			{ label: "Assault rifle", value: GUN_TYPE.rifle },
@@ -29,7 +29,7 @@
 			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		],
 	}
-	const gadgets: { [name: string]: radioOption[] } = {
+	const gadgets: { [name: string]: RadioOption[] } = {
 		defense: [
 			{ label: "Impact grenade", value: GADGET.impact },
 			{ label: "Bulletproof camera", value: GADGET.bpcamera },
@@ -50,7 +50,7 @@
 		],
 		common: [{ label: "Any", value: NONE }],
 	}
-	const scopes: radioOption[] = [
+	const scopes: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "1.0x", value: SCOPE.s1_0 },
 		{ label: "1.5x", value: SCOPE.s1_5 },
@@ -58,13 +58,13 @@
 		{ label: "2.5x", value: SCOPE.s2_5 },
 		{ label: "> 2.5x", value: SCOPE.s2_5plus },
 	]
-	const speeds: radioOption[] = [
+	const speeds: RadioOption[] = [
 		{ label: "Any", value: NONE },
 		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const roles: { [name: string]: radioOption[] } = {
+	const roles: { [name: string]: RadioOption[] } = {
 		defense: [
 			{ label: "Anti-entry", value: ROLE.antientry },
 			{ label: "Trapping", value: ROLE.trapping },
@@ -83,7 +83,7 @@
 		],
 	}
 
-	const dispatch = createEventDispatcher<{ filtered: filterParams }>()
+	const dispatch = createEventDispatcher<{ filtered: FilterParams }>()
 
 	let side: SIDE
 	let gunTypePrimary: GUN_TYPE
@@ -93,8 +93,8 @@
 	let speed: SPEED
 	let role: ROLE
 
-	let availableGadgets: radioOption[] = []
-	let availableRoles: radioOption[] = []
+	let availableGadgets: RadioOption[] = []
+	let availableRoles: RadioOption[] = []
 	$: {
 		// disable selection of attacker gadgets on defense and vice-versa
 		gadgets.attack.map((g) => (g.disabled = side === SIDE.defense))
