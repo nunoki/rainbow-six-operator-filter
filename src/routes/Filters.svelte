@@ -3,6 +3,7 @@
 	import type { RadioOption, FilterParams } from "$lib/data/types"
 	import { SIDE, GUN_TYPE, GADGET, SCOPE, NONE, SPEED, ROLE } from "$lib/data/types"
 	import Radio from "$lib/components/Radio.svelte"
+	import { filter } from "$lib/util/filter"
 
 	const sides: RadioOption[] = [
 		{ label: "Any", value: NONE },
@@ -82,8 +83,19 @@
 	let role: ROLE
 
 	$: {
-		for (let i in gadgets) {
-			gadgets[i].count = Math.floor(Math.random() * 10)
+		for (let i in gunTypesPrimary) {
+			let testFilters = {
+				gadget,
+				side,
+				gunTypePrimary: gunTypesPrimary[i].value,
+				gunTypeSecondary,
+				scope,
+				speed,
+				role,
+			}
+			let results = filter(testFilters)
+			gunTypesPrimary[i].count = results.length
+			gunTypesPrimary[i].disabled = results.length === 0
 		}
 	}
 
