@@ -48,17 +48,17 @@
 
 		background-color: $color_bg
 
-		a
-			fill: yellow
-			color: yellow
-			text-decoration: none
+		// a
+		// 	fill: yellow
+		// 	color: yellow
+		// 	text-decoration: none
 
-			&:hover
-				text-decoration: underline
+		// 	&:hover
+		// 		text-decoration: underline
 
-			&:active
-				fill: orange
-				color: orange
+		// 	&:active
+		// 		fill: orange
+		// 		color: orange
 
 	:global(h1,h2)
 		text-transform: uppercase
