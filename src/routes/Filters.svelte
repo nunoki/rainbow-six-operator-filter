@@ -9,24 +9,24 @@
 		{ label: "Defender", value: SIDE.defense },
 		{ label: "Attacker", value: SIDE.attack },
 	]
-	const gunTypes: { [name: string]: RadioOption[] } = {
-		primary: [
-			{ label: "Any", value: NONE },
-			{ label: "Assault rifle", value: GUN_TYPE.rifle },
-			{ label: "Submachine gun", value: GUN_TYPE.smg },
-			{ label: "Marksman rifle", value: GUN_TYPE.dmr },
-			{ label: "Light machine gun", value: GUN_TYPE.lmg },
-			{ label: "Shotgun", value: GUN_TYPE.shotgun },
-			{ label: "Shield", value: GUN_TYPE.shield },
-		],
-		secondary: [
+	const gunTypesPrimary: RadioOption[] = [
+		{ label: "Any", value: NONE },
+		{ label: "Assault rifle", value: GUN_TYPE.rifle },
+		{ label: "Submachine gun", value: GUN_TYPE.smg },
+		{ label: "Marksman rifle", value: GUN_TYPE.dmr },
+		{ label: "Light machine gun", value: GUN_TYPE.lmg },
+		{ label: "Shotgun", value: GUN_TYPE.shotgun },
+		{ label: "Shield", value: GUN_TYPE.shield },
+	]
+	const gunTypesSecondary: InputOptions = {
+		attack: [{ label: "Gonne-6", value: GUN_TYPE.gonne6 }],
+		defense: [{ label: "Bailiff", value: GUN_TYPE.bailiff }],
+		common: [
 			{ label: "Any", value: NONE },
 			{ label: "Submachine gun", value: GUN_TYPE.smg },
 			{ label: "Shotgun", value: GUN_TYPE.shotgun },
 			{ label: "Pistol", value: GUN_TYPE.pistol },
-			{ label: "Bailiff", value: GUN_TYPE.bailiff },
 			{ label: "Machine pistol", value: GUN_TYPE.mpistol },
-			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		],
 	}
 	const gadgets: InputOptions = {
@@ -95,9 +95,15 @@
 
 	let availableGadgets: RadioOption[] = []
 	let availableRoles: RadioOption[] = []
+	let availableGunTypesSecondary: RadioOption[] = []
 	$: {
 		;[availableGadgets, gadget] = disableNonapplicable(gadgets, side, gadget)
 		;[availableRoles, role] = disableNonapplicable(roles, side, role)
+		;[availableGunTypesSecondary, gunTypeSecondary] = disableNonapplicable(
+			gunTypesSecondary,
+			side,
+			gunTypeSecondary,
+		)
 	}
 
 	function disableNonapplicable(
@@ -167,7 +173,7 @@
 		<div class="options">
 			<Radio
 				name="primary_gun"
-				options={gunTypes.primary}
+				options={gunTypesPrimary}
 				bind:selected={gunTypePrimary}
 			/>
 		</div>
@@ -178,7 +184,7 @@
 		<div class="options">
 			<Radio
 				name="secondary_gun"
-				options={gunTypes.secondary}
+				options={availableGunTypesSecondary}
 				bind:selected={gunTypeSecondary}
 			/>
 		</div>
