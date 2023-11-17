@@ -103,7 +103,7 @@
 		.operator,
 		.filler
 			position: relative
-			flex: 1 1 calc(12.5% - 5px)
+			flex: 1 1 calc(12.5% - 10px)
 			text-decoration: none
 
 		.operator
