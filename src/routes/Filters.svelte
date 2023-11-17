@@ -5,12 +5,14 @@
 	import Radio from "$lib/components/Radio.svelte"
 	import { filter } from "$lib/util/filter"
 
-	const sides: RadioOption[] = [
+	const filterSections: { [name: string]: RadioOption[] } = {}
+
+	filterSections.sides = [
 		{ label: "Any", value: NONE },
 		{ label: "Defender", value: SIDE.defense },
 		{ label: "Attacker", value: SIDE.attack },
 	]
-	const gunTypesPrimary: RadioOption[] = [
+	filterSections.gunTypesPrimary = [
 		{ label: "Any", value: NONE },
 		{ label: "Assault rifle", value: GUN_TYPE.rifle },
 		{ label: "Submachine gun", value: GUN_TYPE.smg },
@@ -19,7 +21,7 @@
 		{ label: "Shotgun", value: GUN_TYPE.shotgun },
 		{ label: "Shield", value: GUN_TYPE.shield },
 	]
-	const gunTypesSecondary: RadioOption[] = [
+	filterSections.gunTypesSecondary = [
 		{ label: "Any", value: NONE },
 		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
 		{ label: "Bailiff", value: GUN_TYPE.bailiff },
@@ -28,7 +30,7 @@
 		{ label: "Pistol", value: GUN_TYPE.pistol },
 		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
 	]
-	const gadgets: RadioOption[] = [
+	filterSections.gadgets = [
 		{ label: "Any", value: NONE },
 		{ label: "Impact grenade", value: GADGET.impact },
 		{ label: "Bulletproof camera", value: GADGET.bpcamera },
@@ -45,7 +47,7 @@
 		{ label: "Hard breach charge", value: GADGET.hbreach },
 		{ label: "Impact EMP grenade", value: GADGET.emp },
 	]
-	const scopes: RadioOption[] = [
+	filterSections.scopes = [
 		{ label: "Any", value: NONE },
 		{ label: "1.0x", value: SCOPE.s1_0 },
 		{ label: "1.5x", value: SCOPE.s1_5 },
@@ -53,13 +55,13 @@
 		{ label: "2.5x", value: SCOPE.s2_5 },
 		{ label: "> 2.5x", value: SCOPE.s2_5plus },
 	]
-	const speeds: RadioOption[] = [
+	filterSections.speeds = [
 		{ label: "Any", value: NONE },
 		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
 		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
 		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
 	]
-	const roles: RadioOption[] = [
+	filterSections.roles = [
 		{ label: "Any", value: NONE },
 		{ label: "Anti-entry", value: ROLE.antientry },
 		{ label: "Trapping", value: ROLE.trapping },
@@ -82,20 +84,37 @@
 	let speed: SPEED
 	let role: ROLE
 
+	let sections = [
+		{ selectedProp: "speed", sectionProp: "speeds" },
+		{ selectedProp: "role", sectionProp: "roles" },
+		{ selectedProp: "scope", sectionProp: "scopes" },
+		{ selectedProp: "side", sectionProp: "sides" },
+		{ selectedProp: "gadget", sectionProp: "gadgets" },
+		{ selectedProp: "gunTypeSecondary", sectionProp: "gunTypesSecondary" },
+		{ selectedProp: "gunTypePrimary", sectionProp: "gunTypesPrimary" },
+	]
+
 	$: {
-		for (let i in gunTypesPrimary) {
-			let testFilters = {
-				gadget,
-				side,
-				gunTypePrimary: gunTypesPrimary[i].value,
-				gunTypeSecondary,
-				scope,
-				speed,
-				role,
+		// do a test filtering for every selectable filter to see how many results it would yield,
+		// and then update the badge of the corresponding options
+		for (let s of sections) {
+			for (let i in filterSections[s.sectionProp]) {
+				let testFilters = Object.assign(
+					{
+						gadget,
+						side,
+						gunTypePrimary,
+						gunTypeSecondary,
+						speed,
+						scope,
+						role,
+					},
+					{ [s.selectedProp]: filterSections[s.sectionProp][i].value },
+				)
+				let results = filter(testFilters)
+				filterSections[s.sectionProp][i].count = results.length
+				filterSections[s.sectionProp][i].disabled = results.length === 0
 			}
-			let results = filter(testFilters)
-			gunTypesPrimary[i].count = results.length
-			gunTypesPrimary[i].disabled = results.length === 0
 		}
 	}
 
@@ -116,7 +135,7 @@
 		<div class="options">
 			<Radio
 				name="side"
-				options={sides}
+				options={filterSections.sides}
 				bind:selected={side}
 			/>
 		</div>
@@ -127,7 +146,7 @@
 		<div class="options">
 			<Radio
 				name="speed"
-				options={speeds}
+				options={filterSections.speeds}
 				bind:selected={speed}
 			/>
 		</div>
@@ -138,7 +157,7 @@
 		<div class="options">
 			<Radio
 				name="role"
-				options={roles}
+				options={filterSections.roles}
 				bind:selected={role}
 			/>
 		</div>
@@ -149,7 +168,7 @@
 		<div class="options">
 			<Radio
 				name="primary_gun"
-				options={gunTypesPrimary}
+				options={filterSections.gunTypesPrimary}
 				bind:selected={gunTypePrimary}
 			/>
 		</div>
@@ -160,7 +179,7 @@
 		<div class="options">
 			<Radio
 				name="secondary_gun"
-				options={gunTypesSecondary}
+				options={filterSections.gunTypesSecondary}
 				bind:selected={gunTypeSecondary}
 			/>
 		</div>
@@ -171,7 +190,7 @@
 		<div class="options">
 			<Radio
 				name="gadget"
-				options={gadgets}
+				options={filterSections.gadgets}
 				bind:selected={gadget}
 			/>
 		</div>
@@ -182,7 +201,7 @@
 		<div class="options">
 			<Radio
 				name="scope"
-				options={scopes}
+				options={filterSections.scopes}
 				bind:selected={scope}
 			/>
 		</div>
