@@ -20,15 +20,13 @@
 				<span class="option-label">
 					<span class="label-content">
 						{opt.label}
-					</span>
 
-					<!--
 						{#if opt.secondaryLabel}
 							<span class="secondary">
 								{opt.secondaryLabel}
 							</span>
 						{/if}
-						-->
+					</span>
 
 					{#if opt.count !== undefined}
 						<span class="label-badge">
@@ -67,20 +65,22 @@
 				&:hover
 					background-color: lighten($color_bg, 15%)
 
-				.secondary
-					font-size: .75em
-					opacity: .5
-
-					&::before
-						content: "("
-
-					&::after
-						content: ")"
-
 				.label-content
 					text-transform: uppercase
 					transform: scaleX(.85)
 					transform-origin: left center
+
+					.secondary
+						display: inline-block
+						transform: scale(.75)
+						transform-origin: left center
+						opacity: .5
+
+						&::before
+							content: "("
+
+						&::after
+							content: ")"
 
 				.label-badge
 					display: inline-block
