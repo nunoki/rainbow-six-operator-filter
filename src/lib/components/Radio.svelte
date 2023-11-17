@@ -9,26 +9,34 @@
 {#if options}
 	<div class="options">
 		{#each options as opt}
-			{#key opt.value}
-				<label class="option">
-					<input
-						type="radio"
-						{name}
-						value={opt.value}
-						disabled={opt.disabled || false}
-						bind:group={selected}
-					/>
-					<span class="option-label">
+			<label class="option">
+				<input
+					type="radio"
+					{name}
+					value={opt.value}
+					disabled={opt.disabled || false}
+					bind:group={selected}
+				/>
+				<span class="option-label">
+					<span class="label-content">
 						{opt.label}
+					</span>
 
+					<!--
 						{#if opt.secondaryLabel}
 							<span class="secondary">
 								{opt.secondaryLabel}
 							</span>
 						{/if}
-					</span>
-				</label>
-			{/key}
+						-->
+
+					{#if opt.count !== undefined}
+						<span class="label-badge">
+							{opt.count}
+						</span>
+					{/if}
+				</span>
+			</label>
 		{/each}
 	</div>
 {/if}
@@ -44,8 +52,10 @@
 			margin-bottom: .25rem
 
 			.option-label
-				display: block
-				padding: .25rem .5rem
+				display: flex
+				justify-content: space-between
+				align-items: center
+				padding: .25rem
 				cursor: pointer
 
 				white-space: nowrap
@@ -64,6 +74,13 @@
 
 					&::after
 						content: ")"
+
+				.label-badge
+					display: inline-block
+					padding: .25rem
+					margin-left: .25rem
+					background-color: $color_bg
+					color: white
 
 			input
 				opacity: 0

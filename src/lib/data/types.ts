@@ -80,12 +80,7 @@ export type RadioOption = {
 	secondaryLabel?: string
 	value: number
 	disabled?: boolean
-}
-
-export type InputOptions = {
-	attack: RadioOption[]
-	defense: RadioOption[]
-	common: RadioOption[]
+	count?: number
 }
 
 export type FilterParams = {
