@@ -4,6 +4,7 @@
 	import type { FilterParams, Link, Operator } from "$lib/data/types"
 	import { NONE, SIDE } from "$lib/data/types"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
+	import { filter } from "$lib/util/filter"
 
 	export let filters: FilterParams = {} as FilterParams
 
@@ -31,32 +32,6 @@
 		})
 
 		return links
-	}
-
-	function filter(filters: FilterParams): Operator[] {
-		let output = operators
-		if (filters.hasOwnProperty("side") && filters.side !== NONE) {
-			output = output.filter((op) => op.side === filters.side)
-		}
-		if (filters.hasOwnProperty("gunTypePrimary") && filters.gunTypePrimary !== NONE) {
-			output = output.filter((op) => op.gunsPrimary.includes(filters.gunTypePrimary))
-		}
-		if (filters.hasOwnProperty("gunTypeSecondary") && filters.gunTypeSecondary !== NONE) {
-			output = output.filter((op) => op.gunsSecondary.includes(filters.gunTypeSecondary))
-		}
-		if (filters.hasOwnProperty("gadget") && filters.gadget !== NONE) {
-			output = output.filter((op) => op.gadgets.includes(filters.gadget))
-		}
-		if (filters.hasOwnProperty("scope") && filters.scope !== NONE) {
-			output = output.filter((op) => op.maxScope >= filters.scope)
-		}
-		if (filters.hasOwnProperty("speed") && filters.speed !== NONE) {
-			output = output.filter((op) => op.speed === filters.speed)
-		}
-		if (filters.hasOwnProperty("role") && filters.role !== NONE) {
-			output = output.filter((op) => op.roles.includes(filters.role))
-		}
-		return output
 	}
 </script>
 
@@ -128,7 +103,7 @@
 		.operator,
 		.filler
 			position: relative
-			flex: 1 1 calc(12.5% - 5px)
+			flex: 1 1 calc(12.5% - 10px)
 			text-decoration: none
 
 		.operator

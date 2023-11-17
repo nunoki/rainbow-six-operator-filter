@@ -9,26 +9,34 @@
 {#if options}
 	<div class="options">
 		{#each options as opt}
-			{#key opt.value}
-				<label class="option">
-					<input
-						type="radio"
-						{name}
-						value={opt.value}
-						disabled={opt.disabled || false}
-						bind:group={selected}
-					/>
-					<span class="option-label">
+			<label class="option">
+				<input
+					type="radio"
+					{name}
+					value={opt.value}
+					disabled={opt.disabled || false}
+					bind:group={selected}
+				/>
+				<span class="option-label">
+					<span class="label-content">
 						{opt.label}
+					</span>
 
+					<!--
 						{#if opt.secondaryLabel}
 							<span class="secondary">
 								{opt.secondaryLabel}
 							</span>
 						{/if}
-					</span>
-				</label>
-			{/key}
+						-->
+
+					{#if opt.count !== undefined}
+						<span class="label-badge">
+							{opt.count}
+						</span>
+					{/if}
+				</span>
+			</label>
 		{/each}
 	</div>
 {/if}
@@ -37,19 +45,23 @@
 	@import "$lib/sass/variables"
 
 	.options
+		padding: 1px
+
 		.option
 			// white-space: nowrap
 			display: block
 			position: relative
-			margin-bottom: .25rem
+			margin-bottom: -1px
 
 			.option-label
-				display: block
-				padding: .25rem .5rem
+				display: flex
+				justify-content: space-between
+				align-items: center
+				padding: .25rem
 				cursor: pointer
 
 				white-space: nowrap
-				background-color: lighten($color_bg, 6%)
+				background-color: lighten($color_bg, 5%)
 				border: 1px solid lighten($color_bg, 15%)
 
 				&:hover
@@ -65,6 +77,18 @@
 					&::after
 						content: ")"
 
+				.label-content
+					text-transform: uppercase
+					transform: scaleX(.85)
+					transform-origin: left center
+
+				.label-badge
+					display: inline-block
+					padding: .25rem
+					margin-left: .25rem
+					background-color: $color_bg
+					color: white
+
 			input
 				opacity: 0
 				position: absolute
@@ -79,7 +103,10 @@
 				&:disabled ~ .option-label
 					// opacity: .1
 					cursor: not-allowed
-					color: darken($color_bg, 5%)
+					color: lighten($color_bg, 7%)
 					background-color: darken($color_bg, 1%)
-					border-color: darken($color_bg, 5%)
+					border-color: lighten($color_bg, 5%)
+
+					.label-badge
+						color: lighten($color_bg, 7%)
 </style>
