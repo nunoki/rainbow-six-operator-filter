@@ -217,7 +217,7 @@
 
 	.filters
 		display: flex
-		gap: .25rem
+		gap: .5rem
 		width: 100%
 		overflow-x: auto
 		margin: 1rem 0

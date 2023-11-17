@@ -45,11 +45,13 @@
 	@import "$lib/sass/variables"
 
 	.options
+		padding: 1px
+
 		.option
 			// white-space: nowrap
 			display: block
 			position: relative
-			margin-bottom: .25rem
+			margin-bottom: -1px
 
 			.option-label
 				display: flex
@@ -59,7 +61,7 @@
 				cursor: pointer
 
 				white-space: nowrap
-				background-color: lighten($color_bg, 6%)
+				background-color: lighten($color_bg, 5%)
 				border: 1px solid lighten($color_bg, 15%)
 
 				&:hover
@@ -74,6 +76,11 @@
 
 					&::after
 						content: ")"
+
+				.label-content
+					text-transform: uppercase
+					transform: scaleX(.85)
+					transform-origin: left center
 
 				.label-badge
 					display: inline-block
@@ -96,7 +103,10 @@
 				&:disabled ~ .option-label
 					// opacity: .1
 					cursor: not-allowed
-					color: darken($color_bg, 5%)
+					color: lighten($color_bg, 7%)
 					background-color: darken($color_bg, 1%)
-					border-color: darken($color_bg, 5%)
+					border-color: lighten($color_bg, 5%)
+
+					.label-badge
+						color: lighten($color_bg, 7%)
 </style>
