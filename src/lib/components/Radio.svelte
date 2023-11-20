@@ -55,7 +55,7 @@
 				display: flex
 				justify-content: space-between
 				align-items: center
-				padding: .25rem
+				padding: .15rem .5rem
 				cursor: pointer
 
 				white-space: nowrap
@@ -67,7 +67,7 @@
 
 				.label-content
 					text-transform: uppercase
-					transform: scaleX(.85)
+					transform: scaleX(.9)
 					transform-origin: left center
 
 					.secondary
@@ -84,10 +84,11 @@
 
 				.label-badge
 					display: inline-block
-					padding: .25rem
+					padding: .25rem .5rem
 					margin-left: .25rem
 					background-color: $color_bg
 					color: white
+					border-radius: .75rem
 
 			input
 				opacity: 0
