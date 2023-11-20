@@ -48,6 +48,7 @@ export enum GADGET {
 }
 
 export enum SCOPE {
+	s_none,
 	s1_0,
 	s1_5,
 	s2_0,
@@ -67,8 +68,8 @@ export type Operator = {
 	side: SIDE
 	roles: ROLE[]
 	speed: SPEED
-	gunsPrimary: GUN_TYPE[]
-	gunsSecondary: GUN_TYPE[]
+	gunsPrimary: GunConfig[]
+	gunsSecondary: GunConfig[]
 	gadgets: GADGET[]
 	maxScope: SCOPE
 	note?: string
@@ -96,6 +97,16 @@ export type FilterParams = {
 export type Link = {
 	url: string
 	domain: string
+}
+
+export type Gun = {
+	name: string
+	type: GUN_TYPE
+}
+
+export type GunConfig = {
+	gun: Gun
+	maxScope: SCOPE
 }
 
 export const NONE = -1

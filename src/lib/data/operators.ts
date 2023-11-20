@@ -1,3 +1,4 @@
+import { guns } from "./guns"
 import type { Operator } from "./types"
 import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
 
@@ -10,18 +11,19 @@ function arVsDmrNote(dmr: string): string {
 }
 
 export const operators: Operator[] = [
-	{
-		uri: "tubarao",
-		roles: [ROLE.antientry, ROLE.antigadget],
-		name: "Tubarão",
-		side: SIDE.defense,
-		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
-		gadgets: [GADGET.nitro, GADGET.proxalarm],
-		maxScope: SCOPE.s1_5,
-		note: arVsDmrNote("AR-15.50"),
-	},
+	// {
+	// 	uri: "tubarao",
+	// 	roles: [ROLE.antientry, ROLE.antigadget],
+	// 	name: "Tubarão",
+	// 	side: SIDE.defense,
+	// 	speed: SPEED.s2,
+	// 	gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
+	// 	gunsSecondary: [GUN_TYPE.pistol],
+	// 	gadgets: [GADGET.nitro, GADGET.proxalarm],
+	// 	maxScope: SCOPE.s1_5,
+	// 	note: arVsDmrNote("AR-15.50"),
+	// },
+	/*
 	{
 		uri: "ram",
 		roles: [ROLE.breaching, ROLE.intel],
@@ -245,17 +247,26 @@ export const operators: Operator[] = [
 		gadgets: [GADGET.hbreach, GADGET.smoke],
 		maxScope: SCOPE.s2_5,
 	},
+	*/
 	{
 		uri: "jackal",
 		roles: [ROLE.intel, ROLE.mapcontrol],
 		name: "Jackal",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.c7e, maxScope: SCOPE.s2_0 },
+			{ gun: guns.ita12l, maxScope: SCOPE.s1_0 },
+			{ gun: guns.pdw9, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+			{ gun: guns.usp40, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.claymore, GADGET.smoke],
 		maxScope: SCOPE.s2_0,
 	},
+	/*
 	{
 		uri: "hibana",
 		roles: [ROLE.breaching, ROLE.frontline],
@@ -829,4 +840,5 @@ export const operators: Operator[] = [
 		maxScope: SCOPE.s1_0,
 		noUbisoftWebsite: true,
 	},
+	*/
 ]
