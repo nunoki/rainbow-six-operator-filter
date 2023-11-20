@@ -1,6 +1,7 @@
 import { GUN_TYPE, type Gun } from "./types"
 
 export const guns: { [name: string]: Gun } = {
+	shield: { name: "Ballistic shield", type: GUN_TYPE.shield },
 	l85a2: { name: "L85A2", type: GUN_TYPE.rifle },
 	ar33: { name: "AR33", type: GUN_TYPE.rifle },
 	g36c: { name: "G36C", type: GUN_TYPE.rifle },
@@ -52,6 +53,7 @@ export const guns: { [name: string]: Gun } = {
 	m249: { name: "M249", type: GUN_TYPE.lmg },
 	t95lsw: { name: "T-95 LSW", type: GUN_TYPE.lmg },
 	lmge: { name: "LMG-E", type: GUN_TYPE.lmg },
+	dp27: { name: "DP27", type: GUN_TYPE.lmg },
 	alda556: { name: "ALDA 5.56", type: GUN_TYPE.lmg },
 	m249saw: { name: "M249 SAW", type: GUN_TYPE.lmg },
 	smg11: { name: "SMG-11", type: GUN_TYPE.mpistol },
