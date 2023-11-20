@@ -47,7 +47,15 @@
 		{ label: "Hard breach charge", value: GADGET.hbreach },
 		{ label: "Impact EMP grenade", value: GADGET.emp },
 	]
-	filterSections.scopes = [
+	filterSections.scopesPrimary = [
+		{ label: "Any", value: NONE },
+		{ label: "1.0x", value: SCOPE.s1_0 },
+		{ label: "1.5x", value: SCOPE.s1_5 },
+		{ label: "2.0x", value: SCOPE.s2_0 },
+		{ label: "2.5x", value: SCOPE.s2_5 },
+		{ label: "> 2.5x", value: SCOPE.s2_5plus },
+	]
+	filterSections.scopesSecondary = [
 		{ label: "Any", value: NONE },
 		{ label: "1.0x", value: SCOPE.s1_0 },
 		{ label: "1.5x", value: SCOPE.s1_5 },
@@ -80,14 +88,16 @@
 	let gunTypePrimary: GUN_TYPE
 	let gunTypeSecondary: GUN_TYPE
 	let gadget: GADGET
-	let scope: SCOPE
+	let scopePrimaryGun: SCOPE
+	let scopeSecondaryGun: SCOPE
 	let speed: SPEED
 	let role: ROLE
 
 	let sections = [
 		{ selectedProp: "speed", sectionProp: "speeds" },
 		{ selectedProp: "role", sectionProp: "roles" },
-		{ selectedProp: "scope", sectionProp: "scopes" },
+		{ selectedProp: "scopePrimaryGun", sectionProp: "scopesPrimary" },
+		{ selectedProp: "scopeSecondaryGun", sectionProp: "scopesSecondary" },
 		{ selectedProp: "side", sectionProp: "sides" },
 		{ selectedProp: "gadget", sectionProp: "gadgets" },
 		{ selectedProp: "gunTypeSecondary", sectionProp: "gunTypesSecondary" },
@@ -106,7 +116,8 @@
 						gunTypePrimary,
 						gunTypeSecondary,
 						speed,
-						scope,
+						scopePrimaryGun,
+						scopeSecondaryGun,
 						role,
 					},
 					{ [s.selectedProp]: filterSections[s.sectionProp][i].value },
@@ -123,7 +134,8 @@
 		gunTypePrimary,
 		gunTypeSecondary,
 		gadget,
-		scope,
+		scopePrimaryGun,
+		scopeSecondaryGun,
 		speed,
 		role,
 	})
@@ -172,6 +184,15 @@
 				bind:selected={gunTypePrimary}
 			/>
 		</div>
+
+		<div class="label">Scope</div>
+		<div class="options">
+			<Radio
+				name="scope_primary"
+				options={filterSections.scopesPrimary}
+				bind:selected={scopePrimaryGun}
+			/>
+		</div>
 	</div>
 
 	<div class="filter">
@@ -181,6 +202,15 @@
 				name="secondary_gun"
 				options={filterSections.gunTypesSecondary}
 				bind:selected={gunTypeSecondary}
+			/>
+		</div>
+
+		<div class="label">Scope</div>
+		<div class="options">
+			<Radio
+				name="scope_secondary"
+				options={filterSections.scopesSecondary}
+				bind:selected={scopeSecondaryGun}
 			/>
 		</div>
 	</div>
@@ -194,21 +224,6 @@
 				bind:selected={gadget}
 			/>
 		</div>
-	</div>
-
-	<div class="filter">
-		<div class="label">Scope</div>
-		<div class="options">
-			<Radio
-				name="scope"
-				options={filterSections.scopes}
-				bind:selected={scope}
-			/>
-		</div>
-		<p class="note">
-			Note that the scope filter is not linked to the gun filter, meaning that the selected scope
-			will not necessarily be on the selected gun (if any)
-		</p>
 	</div>
 </div>
 
@@ -230,7 +245,7 @@
 			gap: .5rem
 			align-items: center
 
-			margin-bottom: .5rem
+			margin: .5rem 0
 			font-weight: normal
 			font-family: $font_ubi
 			font-size: 26px
@@ -247,10 +262,4 @@
 
 		.options
 			flex: 100 1 50%
-
-	.note
-		font-size: .9em
-		opacity: .5
-		font-style: italic
-		font-family: serif
 </style>

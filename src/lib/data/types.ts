@@ -88,7 +88,8 @@ export type FilterParams = {
 	gunTypePrimary: number
 	gunTypeSecondary: number
 	gadget: number
-	scope: number
+	scopePrimaryGun: number
+	scopeSecondaryGun: number
 	speed: number
 	role: number
 }
