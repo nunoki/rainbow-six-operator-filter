@@ -1,44 +1,27 @@
 <script lang="ts">
 	import { base } from "$app/paths"
-	import { operators } from "$lib/data/operators"
-	import type { FilterParams, Link, Operator } from "$lib/data/types"
-	import { NONE, SIDE } from "$lib/data/types"
-	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
+	import { createEventDispatcher } from "svelte"
 	import { filter } from "$lib/util/filter"
+	import type { FilterParams, Operator } from "$lib/data/types"
 
 	export let filters: FilterParams = {} as FilterParams
 
+	const dispatch = createEventDispatcher()
+
 	$: filteredOps = filter(filters)
 
-	function generateLinks(op: Operator): Link[] {
-		let links: Link[] = []
-
-		if (op.name !== "Recruit") {
-			links.push({
-				url: `https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/${op.uri}`,
-				domain: "ubisoft.com",
-			})
-			links.push({
-				url: `https://r6siegecenter.com/guides/operators/${
-					op.side === SIDE.defense ? "defenders" : "attackers"
-				}/${op.uri}/`,
-				domain: "r6siegecenter.com",
-			})
-		}
-
-		links.push({
-			url: `https://rainbowsix.fandom.com/wiki/${op.name}`,
-			domain: "fandom.com",
-		})
-
-		return links
+	function onOperatorClick(operator: Operator): void {
+		dispatch("opselected", operator)
 	}
 </script>
 
 <div class="operator-list">
 	{#if filteredOps.length > 0}
 		{#each filteredOps as op}
-			<div class="operator">
+			<button
+				class="operator"
+				on:click={() => onOperatorClick(op)}
+			>
 				<div class="card">
 					<div class="inner">
 						<div
@@ -55,20 +38,6 @@
 					/>
 				</div>
 
-				<div class="links">
-					{#each generateLinks(op) as l}
-						<a
-							href={l.url}
-							target="_blank"
-							rel="noopener"
-							class="link"
-						>
-							{l.domain}
-							<IconExternalLink />
-						</a>
-					{/each}
-				</div>
-
 				{#if op.note}
 					<div
 						class="icon-note"
@@ -77,7 +46,7 @@
 						*
 					</div>
 				{/if}
-			</div>
+			</button>
 		{/each}
 
 		{#each Array(8) as _}
@@ -107,6 +76,11 @@
 			text-decoration: none
 
 		.operator
+			margin: 0
+			padding: 0
+			border: none
+			background: transparent
+
 			.card
 				padding-bottom: 190%
 				position: relative
@@ -147,37 +121,6 @@
 					width: 50%
 					height: auto
 
-			.links
-				opacity: 0
-				transition: opacity .3s ease
-				position: absolute
-				z-index: 3
-				bottom: 2rem
-				left: 10%
-				width: 80%
-
-				.link
-					padding: .25rem
-					margin: .25rem 0
-					display: block
-					text-align: center
-					white-space: nowrap
-					overflow: hidden
-					text-overflow: ellipsis
-					text-decoration: none
-					fill: $color_bg
-					color: $color_bg
-					background-color: $color_fg
-
-					&:hover
-						color: $color_fg
-						fill: $color_fg
-						background-color: $color_bg
-						outline: 1px solid $color_fg
-
-					&:active
-						background-color: black
-
 			.icon-note
 				position: absolute
 				z-index: 2
@@ -190,9 +133,6 @@
 
 			&:hover
 				outline: 2px solid $color_fg
-
-				.links
-					opacity: 1
 
 		.no-results
 			padding: 4rem 0
