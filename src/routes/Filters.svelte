@@ -53,7 +53,8 @@
 		{ label: "1.5x", value: SCOPE.s1_5 },
 		{ label: "2.0x", value: SCOPE.s2_0 },
 		{ label: "2.5x", value: SCOPE.s2_5 },
-		{ label: "> 2.5x", value: SCOPE.s2_5plus },
+		{ label: "3.0x", value: SCOPE.s3_0 },
+		{ label: "> 3.0x", value: SCOPE.s3_0plus },
 	]
 	filterSections.scopesSecondary = [
 		{ label: "Any", value: NONE },
@@ -61,7 +62,8 @@
 		{ label: "1.5x", value: SCOPE.s1_5 },
 		{ label: "2.0x", value: SCOPE.s2_0 },
 		{ label: "2.5x", value: SCOPE.s2_5 },
-		{ label: "> 2.5x", value: SCOPE.s2_5plus },
+		{ label: "3.0x", value: SCOPE.s3_0 },
+		{ label: "> 3.0x", value: SCOPE.s3_0plus },
 	]
 	filterSections.speeds = [
 		{ label: "Any", value: NONE },

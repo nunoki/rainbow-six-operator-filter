@@ -53,7 +53,8 @@ export enum SCOPE {
 	s1_5,
 	s2_0,
 	s2_5,
-	s2_5plus,
+	s3_0,
+	s3_0plus,
 }
 
 export enum SPEED {
