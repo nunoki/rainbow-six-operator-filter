@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_REPORT_ERROR_FORM } from "$env/static/public"
 	import { base } from "$app/paths"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 
@@ -25,14 +26,16 @@
 			</h1>
 
 			<div class="nav">
-				<a
-					href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__W1rDjVUREk2MDhXSkg1RDBZMU80MUk2RjEyRlQwVy4u"
-					target="_blank"
-					rel="noopener"
-				>
-					Report error
-					<IconExternalLink />
-				</a>
+				{#if PUBLIC_REPORT_ERROR_FORM}
+					<a
+						href={PUBLIC_REPORT_ERROR_FORM}
+						target="_blank"
+						rel="noopener"
+					>
+						Report error
+						<IconExternalLink />
+					</a>
+				{/if}
 				<a
 					href={season.link}
 					target="_blank"
