@@ -9,6 +9,8 @@
 
 	export let operator: Operator
 
+	const dispatch = createEventDispatcher()
+
 	onMount(() => {
 		window.addEventListener("keydown", escHandler)
 	})
@@ -46,8 +48,6 @@
 
 		return links
 	}
-
-	const dispatch = createEventDispatcher()
 
 	function close(): void {
 		dispatch("close")
