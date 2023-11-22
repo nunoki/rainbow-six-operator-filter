@@ -144,6 +144,12 @@
 											<IconScope />
 											{scopes[gun.maxScope]}
 										</div>
+										{#if gun.gun.note}
+											<div class="gun-note">
+												<span class="asterisk">*</span>
+												{gun.gun.note}
+											</div>
+										{/if}
 									</div>
 								{/each}
 							</div>

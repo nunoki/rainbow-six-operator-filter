@@ -102,6 +102,7 @@ export type Gun = {
 	name: string
 	type: GUN_TYPE
 	note?: string
+	importantNote?: string
 }
 
 export type GunConfig = {
