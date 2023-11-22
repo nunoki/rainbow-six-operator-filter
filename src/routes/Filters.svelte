@@ -259,11 +259,11 @@
 
 			&::before
 				top: 0
-				left: -(($_dot_thickness - $_line_thickness) / 2)
+				left: -(($_dot_thickness - $_line_thickness) * .5)
 
 			&::after
 				bottom: 0
-				left: -(($_dot_thickness - $_line_thickness) / 2)
+				left: -(($_dot_thickness - $_line_thickness) * .5)
 
 		.label
 			flex: 0 1 content
