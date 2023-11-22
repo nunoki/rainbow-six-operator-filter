@@ -80,6 +80,7 @@
 			padding: 0
 			border: none
 			background: transparent
+			cursor: pointer
 
 			.card
 				padding-bottom: 190%
