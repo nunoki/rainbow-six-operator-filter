@@ -1,3 +1,4 @@
+<!-- TODO FIXME: double scrollbar -->
 <script lang="ts">
 	import { SIDE, type Link, type Operator } from "$lib/data/types"
 	import { createEventDispatcher } from "svelte"
