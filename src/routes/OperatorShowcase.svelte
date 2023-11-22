@@ -209,13 +209,11 @@
 		background-color: darken($color_bg, 5%)
 
 		.close-button
-			position: absolute
+			position: fixed
 			top: 1rem
 			right: 1rem
 			margin: 0
 			padding: .5rem 1.5rem
-			// width: 5rem
-			// height: 5rem
 			line-height: 1
 			font-size: 5rem
 			color: white
