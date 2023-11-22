@@ -16,6 +16,7 @@ function dmrVsArNote(): string {
 }
 
 export const guns: { [name: string]: Gun } = {
+	pof9: { name: "POF-9", type: GUN_TYPE.rifle },
 	shield: { name: "Ballistic shield", type: GUN_TYPE.shield },
 	l85a2: { name: "L85A2", type: GUN_TYPE.rifle },
 	ar33: { name: "AR33", type: GUN_TYPE.rifle },
