@@ -103,11 +103,13 @@ export type Link = {
 export type Gun = {
 	name: string
 	type: GUN_TYPE
+	note?: string
 }
 
 export type GunConfig = {
 	gun: Gun
 	maxScope: SCOPE
+	note?: string
 }
 
 export const NONE = -1

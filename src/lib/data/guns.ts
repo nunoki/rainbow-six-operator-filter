@@ -1,12 +1,16 @@
 import { GUN_TYPE, type Gun } from "./types"
 
+function permaScopeNote(): string {
+	return `The scope is built-in and cannot be removed`
+}
+
 export const guns: { [name: string]: Gun } = {
 	shield: { name: "Ballistic shield", type: GUN_TYPE.shield },
 	l85a2: { name: "L85A2", type: GUN_TYPE.rifle },
 	ar33: { name: "AR33", type: GUN_TYPE.rifle },
 	g36c: { name: "G36C", type: GUN_TYPE.rifle },
 	r4c: { name: "R4-C", type: GUN_TYPE.rifle },
-	_556xi: { name: "556xi", type: GUN_TYPE.rifle },
+	_556xi: { name: "556XI", type: GUN_TYPE.rifle },
 	f2: { name: "F2", type: GUN_TYPE.rifle },
 	ak12: { name: "AK-12", type: GUN_TYPE.rifle },
 	auga2: { name: "AUG A2", type: GUN_TYPE.rifle },
@@ -41,12 +45,12 @@ export const guns: { [name: string]: Gun } = {
 	p229: { name: "P229", type: GUN_TYPE.pistol },
 	usp40: { name: "USP40", type: GUN_TYPE.pistol },
 	q929: { name: "Q-929", type: GUN_TYPE.pistol },
-	rg15: { name: "RG15", type: GUN_TYPE.pistol },
+	rg15: { name: "RG15", type: GUN_TYPE.pistol, note: permaScopeNote() },
 	keratos357: { name: "KERATOS.357", type: GUN_TYPE.pistol },
 	baliff410: { name: "Baliff410", type: GUN_TYPE.pistol },
 	p10c: { name: "P-10C", type: GUN_TYPE.pistol },
 	_1911tacops: { name: "1911 TACOPS", type: GUN_TYPE.pistol },
-	_44magsemiauto: { name: ".44 Mag Semi-Auto", type: GUN_TYPE.pistol },
+	_44magsemiauto: { name: ".44 Mag Semi-Auto", type: GUN_TYPE.pistol, note: permaScopeNote() },
 	sdp9mm: { name: "SDP 9mm", type: GUN_TYPE.pistol },
 	_6p41: { name: "6P41", type: GUN_TYPE.lmg },
 	g8a1: { name: "G8A1", type: GUN_TYPE.lmg },
