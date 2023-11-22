@@ -14,7 +14,7 @@
 					type="radio"
 					{name}
 					value={opt.value}
-					disabled={opt.disabled || false}
+					disabled={opt.count === 0}
 					bind:group={selected}
 				/>
 				<span class="option-label">

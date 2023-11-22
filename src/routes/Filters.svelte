@@ -126,7 +126,6 @@
 				)
 				let results = filter(testFilters)
 				filterSections[s.sectionProp][i].count = results.length
-				filterSections[s.sectionProp][i].disabled = results.length === 0
 			}
 		}
 	}

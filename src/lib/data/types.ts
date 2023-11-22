@@ -80,7 +80,6 @@ export type RadioOption = {
 	label: string
 	secondaryLabel?: string
 	value: number
-	disabled?: boolean
 	count?: number
 }
 
