@@ -5,83 +5,94 @@
 	import Radio from "$lib/components/Radio.svelte"
 	import { filter } from "$lib/util/filter"
 
-	const filterSections: { [name: string]: RadioOption[] } = {}
+	const filterSections: { [name: string]: RadioOption[] } = {
+		sides: [
+			{ label: "Any", value: NONE },
+			{ label: "Defender", value: SIDE.defense },
+			{ label: "Attacker", value: SIDE.attack },
+		],
+		gunTypesPrimary: [
+			{ label: "Any", value: NONE },
+			{ label: "Assault rifle", value: GUN_TYPE.rifle },
+			{ label: "Submachine gun", value: GUN_TYPE.smg },
+			{ label: "Marksman rifle", value: GUN_TYPE.dmr },
+			{ label: "Light machine gun", value: GUN_TYPE.lmg },
+			{ label: "Shotgun", value: GUN_TYPE.shotgun },
+			{ label: "Shield", value: GUN_TYPE.shield },
+		],
+		gunTypesSecondary: [
+			{ label: "Any", value: NONE },
+			{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
+			{ label: "Bailiff", value: GUN_TYPE.bailiff },
+			{ label: "Submachine gun", value: GUN_TYPE.smg },
+			{ label: "Shotgun", value: GUN_TYPE.shotgun },
+			{ label: "Pistol", value: GUN_TYPE.pistol },
+			{ label: "Machine pistol", value: GUN_TYPE.mpistol },
+		],
+		gadgets: [
+			{ label: "Any", value: NONE },
+			{ label: "Impact grenade", value: GADGET.impact },
+			{ label: "Bulletproof camera", value: GADGET.bpcamera },
+			{ label: "Observation blocker", value: GADGET.obsblocker },
+			{ label: "Deployable shield", value: GADGET.dshield },
+			{ label: "Barbed wire", value: GADGET.barbwire },
+			{ label: "Proximity alarm", value: GADGET.proxalarm },
+			{ label: "Nitro cell", value: GADGET.nitro },
+			{ label: "Frag grenade", value: GADGET.grenade },
+			{ label: "Smoke grenade", value: GADGET.smoke },
+			{ label: "Stun grenade", value: GADGET.stun },
+			{ label: "Claymore", value: GADGET.claymore },
+			{ label: "Breach charge", value: GADGET.sbreach },
+			{ label: "Hard breach charge", value: GADGET.hbreach },
+			{ label: "Impact EMP grenade", value: GADGET.emp },
+		],
+		scopesPrimary: [
+			{ label: "Any scope", value: NONE },
+			{ label: "1.0x", value: SCOPE.s1_0 },
+			{ label: "1.5x", value: SCOPE.s1_5 },
+			{ label: "2.0x", value: SCOPE.s2_0 },
+			{ label: "2.5x", value: SCOPE.s2_5 },
+			{ label: "3.0x", value: SCOPE.s3_0 },
+			{ label: "> 3.0x", value: SCOPE.s3_0plus },
+		],
+		scopesSecondary: [
+			{ label: "Any scope", value: NONE },
+			{ label: "1.0x", value: SCOPE.s1_0 },
+			{ label: "1.5x", value: SCOPE.s1_5 },
+			{ label: "2.0x", value: SCOPE.s2_0 },
+			{ label: "2.5x", value: SCOPE.s2_5 },
+			{ label: "3.0x", value: SCOPE.s3_0 },
+			{ label: "> 3.0x", value: SCOPE.s3_0plus },
+		],
+		speeds: [
+			{ label: "Any", value: NONE },
+			{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
+			{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
+			{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
+		],
+		roles: [
+			{ label: "Any", value: NONE },
+			{ label: "Anti-entry", value: ROLE.antientry },
+			{ label: "Trapping", value: ROLE.trapping },
+			{ label: "Crowd control", value: ROLE.crowdcontrol },
+			{ label: "Breaching", value: ROLE.breaching },
+			{ label: "Frontline", value: ROLE.frontline },
+			{ label: "Map control", value: ROLE.mapcontrol },
+			{ label: "Anti-gadget", value: ROLE.antigadget },
+			{ label: "Intel", value: ROLE.intel },
+			{ label: "Support", value: ROLE.support },
+		],
+	}
 
-	filterSections.sides = [
-		{ label: "Any", value: NONE },
-		{ label: "Defender", value: SIDE.defense },
-		{ label: "Attacker", value: SIDE.attack },
-	]
-	filterSections.gunTypesPrimary = [
-		{ label: "Any", value: NONE },
-		{ label: "Assault rifle", value: GUN_TYPE.rifle },
-		{ label: "Submachine gun", value: GUN_TYPE.smg },
-		{ label: "Marksman rifle", value: GUN_TYPE.dmr },
-		{ label: "Light machine gun", value: GUN_TYPE.lmg },
-		{ label: "Shotgun", value: GUN_TYPE.shotgun },
-		{ label: "Shield", value: GUN_TYPE.shield },
-	]
-	filterSections.gunTypesSecondary = [
-		{ label: "Any", value: NONE },
-		{ label: "Gonne-6", value: GUN_TYPE.gonne6 },
-		{ label: "Bailiff", value: GUN_TYPE.bailiff },
-		{ label: "Submachine gun", value: GUN_TYPE.smg },
-		{ label: "Shotgun", value: GUN_TYPE.shotgun },
-		{ label: "Pistol", value: GUN_TYPE.pistol },
-		{ label: "Machine pistol", value: GUN_TYPE.mpistol },
-	]
-	filterSections.gadgets = [
-		{ label: "Any", value: NONE },
-		{ label: "Impact grenade", value: GADGET.impact },
-		{ label: "Bulletproof camera", value: GADGET.bpcamera },
-		{ label: "Observation blocker", value: GADGET.obsblocker },
-		{ label: "Deployable shield", value: GADGET.dshield },
-		{ label: "Barbed wire", value: GADGET.barbwire },
-		{ label: "Proximity alarm", value: GADGET.proxalarm },
-		{ label: "Nitro cell", value: GADGET.nitro },
-		{ label: "Frag grenade", value: GADGET.grenade },
-		{ label: "Smoke grenade", value: GADGET.smoke },
-		{ label: "Stun grenade", value: GADGET.stun },
-		{ label: "Claymore", value: GADGET.claymore },
-		{ label: "Breach charge", value: GADGET.sbreach },
-		{ label: "Hard breach charge", value: GADGET.hbreach },
-		{ label: "Impact EMP grenade", value: GADGET.emp },
-	]
-	filterSections.scopesPrimary = [
-		{ label: "Any", value: NONE },
-		{ label: "1.0x", value: SCOPE.s1_0 },
-		{ label: "1.5x", value: SCOPE.s1_5 },
-		{ label: "2.0x", value: SCOPE.s2_0 },
-		{ label: "2.5x", value: SCOPE.s2_5 },
-		{ label: "3.0x", value: SCOPE.s3_0 },
-		{ label: "> 3.0x", value: SCOPE.s3_0plus },
-	]
-	filterSections.scopesSecondary = [
-		{ label: "Any", value: NONE },
-		{ label: "1.0x", value: SCOPE.s1_0 },
-		{ label: "1.5x", value: SCOPE.s1_5 },
-		{ label: "2.0x", value: SCOPE.s2_0 },
-		{ label: "2.5x", value: SCOPE.s2_5 },
-		{ label: "3.0x", value: SCOPE.s3_0 },
-		{ label: "> 3.0x", value: SCOPE.s3_0plus },
-	]
-	filterSections.speeds = [
-		{ label: "Any", value: NONE },
-		{ label: "1-speed", value: SPEED.s1, secondaryLabel: "3-armor" },
-		{ label: "2-speed", value: SPEED.s2, secondaryLabel: "2-armor" },
-		{ label: "3-speed", value: SPEED.s3, secondaryLabel: "1-armor" },
-	]
-	filterSections.roles = [
-		{ label: "Any", value: NONE },
-		{ label: "Anti-entry", value: ROLE.antientry },
-		{ label: "Trapping", value: ROLE.trapping },
-		{ label: "Crowd control", value: ROLE.crowdcontrol },
-		{ label: "Breaching", value: ROLE.breaching },
-		{ label: "Frontline", value: ROLE.frontline },
-		{ label: "Map control", value: ROLE.mapcontrol },
-		{ label: "Anti-gadget", value: ROLE.antigadget },
-		{ label: "Intel", value: ROLE.intel },
-		{ label: "Support", value: ROLE.support },
+	const sections = [
+		{ selectedProp: "speed", sectionProp: "speeds" },
+		{ selectedProp: "role", sectionProp: "roles" },
+		{ selectedProp: "scopePrimaryGun", sectionProp: "scopesPrimary" },
+		{ selectedProp: "scopeSecondaryGun", sectionProp: "scopesSecondary" },
+		{ selectedProp: "side", sectionProp: "sides" },
+		{ selectedProp: "gadget", sectionProp: "gadgets" },
+		{ selectedProp: "gunTypeSecondary", sectionProp: "gunTypesSecondary" },
+		{ selectedProp: "gunTypePrimary", sectionProp: "gunTypesPrimary" },
 	]
 
 	const dispatch = createEventDispatcher<{ filtered: FilterParams }>()
@@ -94,17 +105,6 @@
 	let scopeSecondaryGun: SCOPE
 	let speed: SPEED
 	let role: ROLE
-
-	let sections = [
-		{ selectedProp: "speed", sectionProp: "speeds" },
-		{ selectedProp: "role", sectionProp: "roles" },
-		{ selectedProp: "scopePrimaryGun", sectionProp: "scopesPrimary" },
-		{ selectedProp: "scopeSecondaryGun", sectionProp: "scopesSecondary" },
-		{ selectedProp: "side", sectionProp: "sides" },
-		{ selectedProp: "gadget", sectionProp: "gadgets" },
-		{ selectedProp: "gunTypeSecondary", sectionProp: "gunTypesSecondary" },
-		{ selectedProp: "gunTypePrimary", sectionProp: "gunTypesPrimary" },
-	]
 
 	$: {
 		// do a test filtering for every selectable filter to see how many results it would yield,
@@ -145,7 +145,7 @@
 
 <div class="filters">
 	<div class="filter">
-		<div class="label">Side</div>
+		<div class="label"><span>Side</span></div>
 		<div class="options">
 			<Radio
 				name="side"
@@ -156,7 +156,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Speed</div>
+		<div class="label"><span>Speed</span></div>
 		<div class="options">
 			<Radio
 				name="speed"
@@ -167,7 +167,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Role</div>
+		<div class="label"><span>Role</span></div>
 		<div class="options">
 			<Radio
 				name="role"
@@ -178,7 +178,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Primary gun</div>
+		<div class="label"><span>Primary gun</span></div>
 		<div class="options">
 			<Radio
 				name="primary_gun"
@@ -187,7 +187,7 @@
 			/>
 		</div>
 
-		<div class="label">Scope</div>
+		<span class="connector" />
 		<div class="options">
 			<Radio
 				name="scope_primary"
@@ -198,7 +198,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Secondary gun</div>
+		<div class="label"><span>Secondary gun</span></div>
 		<div class="options">
 			<Radio
 				name="secondary_gun"
@@ -207,7 +207,7 @@
 			/>
 		</div>
 
-		<div class="label">Scope</div>
+		<span class="connector" />
 		<div class="options">
 			<Radio
 				name="scope_secondary"
@@ -218,7 +218,7 @@
 	</div>
 
 	<div class="filter">
-		<div class="label">Gadget</div>
+		<div class="label"><span>Gadget</span></div>
 		<div class="options">
 			<Radio
 				name="gadget"
@@ -232,36 +232,62 @@
 <style lang="sass">
 	@import "$lib/sass/variables"
 
+	$_color_lines: lighten($color_bg, 20%)
+	$_line_length: 1.75rem
+	$_dot_thickness: 6px
+	$_line_thickness: 3px
+
 	.filters
 		display: flex
-		gap: .5rem
+		gap: 1rem
 		width: 100%
-		overflow-x: auto
-		margin: 1rem 0
+		margin: 1rem 0 2rem
 
 	.filter
 		flex: 1 0 7rem
+		display: flex
+		flex-direction: column
+		align-items: stretch
+		justify-content: flex-start
+
+		.connector
+			position: relative
+			align-self: center
+			width: $_line_thickness
+			height: $_line_length
+			background-color: $color_filter_lines
+
+			&::before
+				top: 0
+				left: -(($_dot_thickness - $_line_thickness) / 2)
+
+			&::after
+				bottom: 0
+				left: -(($_dot_thickness - $_line_thickness) / 2)
 
 		.label
+			flex: 0 1 content
 			display: flex
 			gap: .5rem
 			align-items: center
 
-			margin: .5rem 0
+			margin: .5rem 0 0
 			font-weight: normal
 			font-family: $font_ubi
 			font-size: 26px
 			text-transform: uppercase
-			flex: 1 0 9rem
-			padding-right: .5rem
 
-			// &::after
-			// 	flex: 1
-			// 	content: " "
-			// 	height: 1px
-			// 	background-color: $color_fg
-			// 	opacity: .25
+			> span
+				display: inline-block
+				padding: .5rem 0
+
+			&::after
+				flex: 1
+				content: " "
+				height: 1px
+				background-color: $color_fg
+				opacity: .25
 
 		.options
-			flex: 100 1 50%
+			flex: 0 1 content
 </style>

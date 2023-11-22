@@ -42,32 +42,36 @@
 <style lang="sass">
 	@import "$lib/sass/variables"
 
+	$_border_thickness: 1px
+
 	.options
-		padding: 1px
 
 		.option
-			// white-space: nowrap
 			display: block
 			position: relative
-			margin-bottom: -1px
+			margin-bottom: -$_border_thickness
+
+			&:last-child .option-label
+				margin-bottom: -$_border_thickness
 
 			.option-label
 				display: flex
 				justify-content: space-between
 				align-items: center
 				padding: .15rem .5rem
+				color: $color_fg
 				cursor: pointer
 
 				white-space: nowrap
-				background-color: lighten($color_bg, 5%)
-				border: 1px solid lighten($color_bg, 15%)
+				background-color: lighten($color_bg, 2%)
+				border: $_border_thickness solid $color_filter_lines
 
 				&:hover
 					background-color: lighten($color_bg, 15%)
 
 				.label-content
 					text-transform: uppercase
-					transform: scaleX(.9)
+					transform: scaleX(.85) skewX(-5deg)
 					transform-origin: left center
 
 					.secondary
@@ -86,9 +90,10 @@
 					display: inline-block
 					padding: .25rem .5rem
 					margin-left: .25rem
-					background-color: $color_bg
+					line-height: 1
+					background-color: lighten($color_bg, 10%)
 					color: white
-					border-radius: .75rem
+					border-radius: 50%
 
 			input
 				opacity: 0
@@ -98,16 +103,15 @@
 				&:checked ~ .option-label
 					opacity: 1
 					color: $color_bg
-					background-color: $color_fg
-					border-color: $color_fg
+					background-color: lighten($color_bg, 50%)
 
-				&:disabled ~ .option-label
-					// opacity: .1
+				&:disabled ~ .option-label,
+				&:disabled:hover ~ .option-label
 					cursor: not-allowed
-					color: lighten($color_bg, 7%)
-					background-color: darken($color_bg, 1%)
-					border-color: lighten($color_bg, 5%)
+					color: darken($color_bg, 10%)
+					background-color: darken($color_bg, 3%)
 
 					.label-badge
-						color: lighten($color_bg, 7%)
+						color: darken($color_bg, 10%)
+						background-color: darken($color_bg, 1%)
 </style>
