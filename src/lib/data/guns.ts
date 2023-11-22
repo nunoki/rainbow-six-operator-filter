@@ -4,6 +4,17 @@ function permaScopeNote(): string {
 	return `The scope is built-in and cannot be removed`
 }
 
+function smgVsMpNote(): string {
+	return `Classified as Machine pistol on Ubisoft's site, but as Submachine pistol here`
+}
+
+function dmrVsArNote(): string {
+	return (
+		`Classified as Assault rifle on Ubisoft's site, but as Marksman rifle here because ` +
+		`it doesn't have full-auto fire rate`
+	)
+}
+
 export const guns: { [name: string]: Gun } = {
 	shield: { name: "Ballistic shield", type: GUN_TYPE.shield },
 	l85a2: { name: "L85A2", type: GUN_TYPE.rifle },
@@ -24,7 +35,7 @@ export const guns: { [name: string]: Gun } = {
 	m762: { name: "M762", type: GUN_TYPE.rifle },
 	spear308: { name: "Spear .308", type: GUN_TYPE.rifle },
 	v308: { name: "V308", type: GUN_TYPE.rifle },
-	ar1550: { name: "AR-15.50", type: GUN_TYPE.rifle },
+	ar1550: { name: "AR-15.50", type: GUN_TYPE.dmr, note: dmrVsArNote() },
 	m4: { name: "M4", type: GUN_TYPE.rifle },
 	ak74m: { name: "AK-74M", type: GUN_TYPE.rifle },
 	arx200: { name: "ARX200", type: GUN_TYPE.rifle },
@@ -60,10 +71,10 @@ export const guns: { [name: string]: Gun } = {
 	dp27: { name: "DP27", type: GUN_TYPE.lmg },
 	alda556: { name: "ALDA 5.56", type: GUN_TYPE.lmg },
 	m249saw: { name: "M249 SAW", type: GUN_TYPE.lmg },
-	smg11: { name: "SMG-11", type: GUN_TYPE.smg },
+	smg11: { name: "SMG-11", type: GUN_TYPE.smg, note: smgVsMpNote() },
 	bearing9: { name: "BEARING 9", type: GUN_TYPE.mpistol },
 	c75auto: { name: "C75 Auto", type: GUN_TYPE.mpistol },
-	smg12: { name: "SMG-12", type: GUN_TYPE.smg },
+	smg12: { name: "SMG-12", type: GUN_TYPE.smg, note: smgVsMpNote() },
 	spsmg9: { name: "SPSMG9", type: GUN_TYPE.mpistol },
 	_417: { name: "417", type: GUN_TYPE.dmr },
 	ots03: { name: "Ots-03", type: GUN_TYPE.dmr },

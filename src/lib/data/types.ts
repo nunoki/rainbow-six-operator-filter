@@ -72,7 +72,6 @@ export type Operator = {
 	gunsPrimary: GunConfig[]
 	gunsSecondary: GunConfig[]
 	gadgets: GADGET[]
-	note?: string
 	noUbisoftWebsite?: boolean
 }
 

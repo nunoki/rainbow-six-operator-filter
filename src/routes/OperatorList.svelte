@@ -2,6 +2,7 @@
 	import { base } from "$app/paths"
 	import { createEventDispatcher } from "svelte"
 	import { filter } from "$lib/util/filter"
+	import { gunNotes } from "$lib/util/gun_notes"
 	import type { FilterParams, Operator } from "$lib/data/types"
 
 	export let filters: FilterParams = {} as FilterParams
@@ -38,10 +39,10 @@
 					/>
 				</div>
 
-				{#if op.note}
+				{#if gunNotes(op)}
 					<div
 						class="icon-note"
-						title={op.note}
+						title={gunNotes(op)?.join(", ")}
 					>
 						*
 					</div>

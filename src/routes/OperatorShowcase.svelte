@@ -6,10 +6,13 @@
 	import { roles, sides, gunTypes, scopes, gadgets } from "$lib/data/typenames"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 	import IconScope from "$lib/components/IconScope.svelte"
+	import { gunNotes } from "$lib/util/gun_notes"
 
 	export let operator: Operator
 
 	const dispatch = createEventDispatcher()
+
+	$: _gunNotes = gunNotes(operator)
 
 	onMount(() => {
 		window.addEventListener("keydown", escHandler)
@@ -141,11 +144,6 @@
 											<IconScope />
 											{scopes[gun.maxScope]}
 										</div>
-										<div class="gun-note">
-											{#if gun.gun.note}
-												*{gun.gun.note}
-											{/if}
-										</div>
 									</div>
 								{/each}
 							</div>
@@ -153,13 +151,18 @@
 					</section>
 				{/each}
 
-				{#if operator.note}
-					<section class="info info--note">
-						<div class="label" />
+				{#if _gunNotes}
+					<div class="info info--note">
+						<div class="label-offset" />
 						<div class="value">
-							<span class="asterisk">*</span>{operator.note}
+							{#each _gunNotes as note}
+								<div class="gun-note">
+									<span class="asterisk">*</span>
+									{note}
+								</div>
+							{/each}
 						</div>
-					</section>
+					</div>
 				{/if}
 
 				<section class="info info--gadgets">
@@ -251,7 +254,8 @@
 		align-items: start
 		margin-bottom: 2rem
 
-		.label
+		.label,
+		.label-offset
 			flex: 0 0 10rem
 			display: flex
 			align-items: center
@@ -259,7 +263,7 @@
 			font-family: $font_ubi
 			font-size: 1.5rem
 
-			&::after
+			&.label::after
 				flex: 1
 				content: " "
 				margin: 0 1rem
@@ -274,16 +278,16 @@
 	.info--icon img
 		height: 4rem
 
-	.info--note .value
-		font-size: .9rem
+	.gun-note
+		font-size: .8rem
+		font-style: italic
 		opacity: .5
 
 		.asterisk
 			display: inline-block
-			margin-right: .25rem
 			color: red
 			font-weight: bold
-			font-size: 1rem
+			font-size: 1.25rem
 
 	.indicators
 		.indicator
@@ -350,10 +354,4 @@
 				font-family: $font_ubi
 				font-size: 2rem
 				white-space: nowrap
-
-			.gun-note
-				padding: .25rem 0
-				font-size: .8rem
-				font-style: italic
-				opacity: .5
 </style>
