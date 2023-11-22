@@ -177,7 +177,7 @@
 				</section>
 
 				<section class="info">
-					<div class="label">More links</div>
+					<div class="label">Links</div>
 					<div class="value">
 						<ul>
 							{#each generateLinks(operator) as link}
