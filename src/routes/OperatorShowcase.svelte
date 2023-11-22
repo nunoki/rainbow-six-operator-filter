@@ -213,9 +213,9 @@
 			top: 1rem
 			right: 1rem
 			margin: 0
-			padding: 0
-			width: 5rem
-			height: 5rem
+			padding: .5rem 1.5rem
+			// width: 5rem
+			// height: 5rem
 			line-height: 1
 			font-size: 5rem
 			color: white
@@ -344,6 +344,9 @@
 			text-align: center
 			width: calc(50% - 1rem)
 			background-color: $color_bg
+
+			.gun-type
+				text-transform: capitalize
 
 			.gun-name
 				font-family: $font_ubi
