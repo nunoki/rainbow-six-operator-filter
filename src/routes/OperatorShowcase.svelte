@@ -1,7 +1,7 @@
 <!-- TODO FIXME: double scrollbar -->
 <script lang="ts">
 	import { SIDE, type Link, type Operator } from "$lib/data/types"
-	import { createEventDispatcher } from "svelte"
+	import { createEventDispatcher, onDestroy, onMount } from "svelte"
 	import { base } from "$app/paths"
 	import { roles, sides, gunTypes, scopes, gadgets } from "$lib/data/typenames"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
@@ -9,7 +9,19 @@
 
 	export let operator: Operator
 
-	// import { SIDE, type Operator, type Link } from "$lib/data/types"
+	onMount(() => {
+		window.addEventListener("keydown", escHandler)
+	})
+
+	onDestroy(() => {
+		window.removeEventListener("keydown", escHandler)
+	})
+
+	function escHandler(e: KeyboardEvent) {
+		if (e.key === "Escape") {
+			dispatch("close")
+		}
+	}
 
 	function generateLinks(op: Operator): Link[] {
 		let links: Link[] = []
