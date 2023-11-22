@@ -4,9 +4,3 @@
 		fill-rule="evenodd"
 	/>
 </svg>
-
-<style lang="sass">
-	svg
-		height: .75em
-		vertical-align: middle
-</style>

@@ -96,6 +96,10 @@
 				fill: darken($color_link, 10%)
 				color: darken($color_link, 10%)
 
+	:global(svg)
+		height: .75em
+		vertical-align: middle
+
 	:global(h1,h2)
 		text-transform: uppercase
 		font-family: $font_ubi
