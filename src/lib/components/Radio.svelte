@@ -44,7 +44,7 @@
 
 	$_border_thickness: 0
 
-	$_color_border: $color_filter_lines
+	$_color_border: transparent
 	$_color_bg: #ddd
 	$_color_fg: #333
 
