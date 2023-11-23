@@ -80,6 +80,8 @@
 			background-color: $_close_button_color_bg
 			border: none
 			cursor: pointer
+			animation: slide-left .1s ease
+			animation-delay: 300ms
 
 			> span
 				color: white
@@ -91,4 +93,13 @@
 
 				> span
 					color: lighten($_close_button_color_bg, 5%)
+
+	@keyframes slide-left
+		from
+			transform: translateX(1rem)
+			opacity: 0
+
+		to
+			transform: translateX(0)
+			opacity: 1
 </style>
