@@ -1,12 +1,13 @@
 <!-- TODO FIXME: double scrollbar -->
 <script lang="ts">
-	import { SIDE, type Link, type Operator } from "$lib/data/types"
-	import { createEventDispatcher, onDestroy, onMount } from "svelte"
 	import { base } from "$app/paths"
+	import { createEventDispatcher, onDestroy, onMount } from "svelte"
+	import { fade } from "svelte/transition"
+	import { gunNotes } from "$lib/util/gun_notes"
 	import { roles, sides, gunTypes, scopes, gadgets } from "$lib/data/typenames"
+	import { SIDE, type Link, type Operator } from "$lib/data/types"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
 	import IconScope from "$lib/components/IconScope.svelte"
-	import { gunNotes } from "$lib/util/gun_notes"
 
 	export let operator: Operator
 
@@ -53,43 +54,47 @@
 	}
 </script>
 
-<div class="operator-showcase">
-	<div class="container">
-		<div class="wrapper">
-			<div class="pic">
-				<img
-					src="{base}/operators/{operator.uri}-pic.png"
-					alt=""
-				/>
-			</div>
+{#key operator.name}
+	<div
+		class="operator-showcase"
+		in:fade={{ duration: 300 }}
+	>
+		<div class="container">
+			<div class="wrapper">
+				<div class="pic">
+					<img
+						src="{base}/operators/{operator.uri}-pic.png"
+						alt=""
+					/>
+				</div>
 
-			<div class="details">
-				<header class="header">
-					<div class="op-icon">
-						<img
-							src="{base}/operators/{operator.uri}-icon.png"
-							alt=""
-						/>
-					</div>
-
-					<div class="op-summary">
-						<h1 class="name">
-							{operator.name}
-						</h1>
-						<div class="side">
-							{sides[operator.side]}
+				<div class="details">
+					<header class="header">
+						<div class="op-icon">
+							<img
+								src="{base}/operators/{operator.uri}-icon.png"
+								alt=""
+							/>
 						</div>
-						<div class="roles">
-							<ul>
-								{#each operator.roles as role}
-									<li>{roles[role]}</li>
-								{/each}
-							</ul>
-						</div>
-					</div>
-				</header>
 
-				<!-- <section class="info info--icon">
+						<div class="op-summary">
+							<h1 class="name">
+								{operator.name}
+							</h1>
+							<div class="side">
+								{sides[operator.side]}
+							</div>
+							<div class="roles">
+								<ul>
+									{#each operator.roles as role}
+										<li>{roles[role]}</li>
+									{/each}
+								</ul>
+							</div>
+						</div>
+					</header>
+
+					<!-- <section class="info info--icon">
 					<div class="label">Operator icon</div>
 					<div class="value">
 						<img
@@ -99,14 +104,14 @@
 					</div>
 				</section> -->
 
-				<!-- <section class="info info--side">
+					<!-- <section class="info info--side">
 					<div class="label">Side</div>
 					<div class="value">
 						{sides[operator.side]}
 					</div>
 				</section> -->
 
-				<!-- <section class="info info--role">
+					<!-- <section class="info info--role">
 					<div class="label">Role{operator.roles.length > 1 ? "s" : ""}</div>
 					<div class="value">
 						<ul>
@@ -117,106 +122,107 @@
 					</div>
 				</section> -->
 
-				<section class="info info--speed">
-					<div class="label">Speed / Armor</div>
-					<!-- TODO: maybe get rid of the SPEED type, and have the `speed` prop be
+					<section class="info info--speed">
+						<div class="label">Speed / Armor</div>
+						<!-- TODO: maybe get rid of the SPEED type, and have the `speed` prop be
 					just a number -->
-					<div class="value">
-						<div class="speed-armor">
-							<div class="speed">
-								<div class="title">{operator.speed + 1}-speed</div>
-								<div class="indicators indicators--{operator.speed + 1}">
-									<span class="indicator" />
-									<span class="indicator" />
-									<span class="indicator" />
+						<div class="value">
+							<div class="speed-armor">
+								<div class="speed">
+									<div class="title">{operator.speed + 1}-speed</div>
+									<div class="indicators indicators--{operator.speed + 1}">
+										<span class="indicator" />
+										<span class="indicator" />
+										<span class="indicator" />
+									</div>
 								</div>
-							</div>
-							<div class="armor">
-								<div class="title">{3 - operator.speed}-armor</div>
-								<div class="indicators indicators--{3 - operator.speed}">
-									<span class="indicator" />
-									<span class="indicator" />
-									<span class="indicator" />
+								<div class="armor">
+									<div class="title">{3 - operator.speed}-armor</div>
+									<div class="indicators indicators--{3 - operator.speed}">
+										<span class="indicator" />
+										<span class="indicator" />
+										<span class="indicator" />
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 
-				{#each [{ label: "Primary guns", data: operator.gunsPrimary }, { label: "Secondary guns", data: operator.gunsSecondary }] as placement}
-					<section class="info info--guns">
-						<div class="label">{placement.label}</div>
-						<div class="value">
-							<div class="guns">
-								{#each placement.data as gun}
-									<div class="gun">
-										<div class="gun-type">{gunTypes[gun.gun.type]}</div>
-										<div class="gun-name">{gun.gun.name}</div>
-										<div class="gun-scope">
-											<IconScope />
-											{scopes[gun.maxScope]}
-										</div>
-										{#if gun.gun.note}
-											<div class="gun-note">
-												<span class="asterisk">*</span>
-												{gun.gun.note}
+					{#each [{ label: "Primary guns", data: operator.gunsPrimary }, { label: "Secondary guns", data: operator.gunsSecondary }] as placement}
+						<section class="info info--guns">
+							<div class="label">{placement.label}</div>
+							<div class="value">
+								<div class="guns">
+									{#each placement.data as gun}
+										<div class="gun">
+											<div class="gun-type">{gunTypes[gun.gun.type]}</div>
+											<div class="gun-name">{gun.gun.name}</div>
+											<div class="gun-scope">
+												<IconScope />
+												{scopes[gun.maxScope]}
 											</div>
-										{/if}
+											{#if gun.gun.note}
+												<div class="gun-note">
+													<span class="asterisk">*</span>
+													{gun.gun.note}
+												</div>
+											{/if}
+										</div>
+									{/each}
+								</div>
+							</div>
+						</section>
+					{/each}
+
+					{#if _gunNotes}
+						<div class="info info--note">
+							<div class="label-offset" />
+							<div class="value">
+								{#each _gunNotes as note}
+									<div class="gun-note">
+										<span class="asterisk">*</span>
+										{note}
 									</div>
 								{/each}
 							</div>
 						</div>
-					</section>
-				{/each}
+					{/if}
 
-				{#if _gunNotes}
-					<div class="info info--note">
-						<div class="label-offset" />
+					<section class="info info--gadgets">
+						<div class="label">Gadgets</div>
 						<div class="value">
-							{#each _gunNotes as note}
-								<div class="gun-note">
-									<span class="asterisk">*</span>
-									{note}
-								</div>
-							{/each}
+							<ul>
+								{#each operator.gadgets as gadget}
+									<li>{gadgets[gadget]}</li>
+								{/each}
+							</ul>
 						</div>
-					</div>
-				{/if}
+					</section>
 
-				<section class="info info--gadgets">
-					<div class="label">Gadgets</div>
-					<div class="value">
-						<ul>
-							{#each operator.gadgets as gadget}
-								<li>{gadgets[gadget]}</li>
-							{/each}
-						</ul>
-					</div>
-				</section>
-
-				<section class="info">
-					<div class="label">Links</div>
-					<div class="value">
-						<ul>
-							{#each generateLinks(operator) as link}
-								<li>
-									<a
-										href={link.url}
-										target="_blank"
-										rel="noopener"
-									>
-										{link.domain}
-										<IconExternalLink />
-									</a>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				</section>
+					<section class="info">
+						<div class="label">Links</div>
+						<div class="value">
+							<ul>
+								{#each generateLinks(operator) as link}
+									<li>
+										<a
+											href={link.url}
+											target="_blank"
+											rel="noopener"
+										>
+											{link.domain}
+											<IconExternalLink />
+										</a>
+									</li>
+								{/each}
+							</ul>
+						</div>
+					</section>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/key}
 
 <style lang="sass">
 	@import "$lib/sass/variables"
