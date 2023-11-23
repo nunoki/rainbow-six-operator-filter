@@ -51,10 +51,6 @@
 
 		return links
 	}
-
-	function close(): void {
-		dispatch("close")
-	}
 </script>
 
 <div class="operator-showcase">
