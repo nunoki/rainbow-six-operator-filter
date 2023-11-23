@@ -58,13 +58,6 @@
 </script>
 
 <div class="operator-showcase">
-	<button
-		class="close-button"
-		on:click={() => close()}
-	>
-		&times;
-	</button>
-
 	<div class="container">
 		<div class="wrapper">
 			<div class="pic">
@@ -75,9 +68,32 @@
 			</div>
 
 			<div class="details">
-				<h1 class="name">{operator.name}</h1>
+				<header class="header">
+					<div class="op-icon">
+						<img
+							src="{base}/operators/{operator.uri}-icon.png"
+							alt=""
+						/>
+					</div>
 
-				<section class="info info--icon">
+					<div class="op-summary">
+						<h1 class="name">
+							{operator.name}
+						</h1>
+						<div class="side">
+							{sides[operator.side]}
+						</div>
+						<div class="roles">
+							<ul>
+								{#each operator.roles as role}
+									<li>{roles[role]}</li>
+								{/each}
+							</ul>
+						</div>
+					</div>
+				</header>
+
+				<!-- <section class="info info--icon">
 					<div class="label">Operator icon</div>
 					<div class="value">
 						<img
@@ -85,16 +101,16 @@
 							alt=""
 						/>
 					</div>
-				</section>
+				</section> -->
 
-				<section class="info info--side">
+				<!-- <section class="info info--side">
 					<div class="label">Side</div>
 					<div class="value">
 						{sides[operator.side]}
 					</div>
-				</section>
+				</section> -->
 
-				<section class="info info--role">
+				<!-- <section class="info info--role">
 					<div class="label">Role{operator.roles.length > 1 ? "s" : ""}</div>
 					<div class="value">
 						<ul>
@@ -103,7 +119,7 @@
 							{/each}
 						</ul>
 					</div>
-				</section>
+				</section> -->
 
 				<section class="info info--speed">
 					<div class="label">Speed / Armor</div>
@@ -210,35 +226,18 @@
 	@import "$lib/sass/variables"
 
 	.operator-showcase
+		// display: flex
+		// justify-content: center
+		// align-items: center
+
 		position: relative
-		padding: 2rem
 		width: 100%
 		height: 100%
-		overflow-y: scroll
-		background-color: darken($color_bg, 5%)
-
-		.close-button
-			position: fixed
-			top: 1rem
-			right: 1rem
-			margin: 0
-			padding: .5rem 1.5rem
-			line-height: 1
-			font-size: 5rem
-			color: white
-			background-color: black
-			border: none
-			cursor: pointer
-
-			&:hover
-				background-color: #333
-
-			&:active
-				color: black
-				background-color: white
+		overflow-y: auto
 
 	.container
 		margin: 0 auto
+		width: 100%
 		max-width: 60rem
 
 	.wrapper
@@ -246,6 +245,7 @@
 		gap: 2rem
 
 		> .pic
+			display: none
 			flex: 1 1 30%
 
 		> .details
@@ -280,9 +280,6 @@
 		.value
 			flex: 1
 			font-size: 1.2rem
-
-	.info--icon img
-		height: 4rem
 
 	.gun-note
 		font-size: .8rem
@@ -329,17 +326,43 @@
 	ul
 		margin: 0
 
-	.info--role
-		ul
-			padding: 0
-			list-style: none
+	.header
+		display: flex
+		align-items: center
+		margin-bottom: 2rem
 
-			li
-				display: inline-block
+		.op-icon
+			flex: 0 0 10rem
+			display: flex
+			justify-content: center
+			align-items: center
 
-				&:not(:last-child)::after
-					margin-right: .25rem
-					content: ","
+			img
+				height: 8rem
+
+		.op-summary
+			display: flex
+			flex-direction: column
+
+			.name
+				margin: 0
+
+			.side
+				font-weight: bold
+				font-size: 1.1em
+				text-transform: uppercase
+
+			.roles
+				ul
+					padding: 0
+					list-style: none
+
+					li
+						display: inline-block
+
+						&:not(:last-child)::after
+							margin-right: .25rem
+							content: ","
 
 	.guns
 		display: flex
