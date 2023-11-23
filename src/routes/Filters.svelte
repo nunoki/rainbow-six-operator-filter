@@ -254,7 +254,7 @@
 			align-self: center
 			width: $_line_thickness
 			height: $_line_length
-			background-color: $color_filter_lines
+			background-color: white
 
 			&::before
 				top: 0
