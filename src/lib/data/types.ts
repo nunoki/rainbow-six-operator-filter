@@ -66,6 +66,7 @@ export enum SPEED {
 export type Operator = {
 	uri: string
 	name: string
+	nameNote?: string
 	side: SIDE
 	roles: ROLE[]
 	speed: SPEED

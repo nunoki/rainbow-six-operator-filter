@@ -16,6 +16,9 @@ function dmrVsArNote(): string {
 }
 
 export const guns: { [name: string]: Gun } = {
+	uzk50gi: { name: "UZK50Gi", type: GUN_TYPE.smg },
+	bailiff: { name: "Bailiff 410", type: GUN_TYPE.bailiff, note: permaScopeNote() },
+	sc3000k: { name: "SC3000K", type: GUN_TYPE.rifle },
 	csrx300: { name: "CSRX 300", type: GUN_TYPE.dmr },
 	pof9: { name: "POF-9", type: GUN_TYPE.rifle },
 	shield: { name: "Ballistic shield", type: GUN_TYPE.shield },
@@ -60,8 +63,7 @@ export const guns: { [name: string]: Gun } = {
 	q929: { name: "Q-929", type: GUN_TYPE.pistol },
 	rg15: { name: "RG15", type: GUN_TYPE.pistol, note: permaScopeNote() },
 	keratos357: { name: "KERATOS.357", type: GUN_TYPE.pistol },
-	baliff410: { name: "Baliff410", type: GUN_TYPE.pistol },
-	p10c: { name: "P-10C", type: GUN_TYPE.pistol },
+	p10c: { name: "P-10C", type: GUN_TYPE.pistol, note: permaScopeNote() },
 	_1911tacops: { name: "1911 TACOPS", type: GUN_TYPE.pistol },
 	_44magsemiauto: { name: ".44 Mag Semi-Auto", type: GUN_TYPE.pistol, note: permaScopeNote() },
 	sdp9mm: { name: "SDP 9mm", type: GUN_TYPE.pistol },
