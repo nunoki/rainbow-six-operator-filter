@@ -94,34 +94,6 @@
 						</div>
 					</header>
 
-					<!-- <section class="info info--icon">
-					<div class="label">Operator icon</div>
-					<div class="value">
-						<img
-							src="{base}/operators/{operator.uri}-icon.png"
-							alt=""
-						/>
-					</div>
-				</section> -->
-
-					<!-- <section class="info info--side">
-					<div class="label">Side</div>
-					<div class="value">
-						{sides[operator.side]}
-					</div>
-				</section> -->
-
-					<!-- <section class="info info--role">
-					<div class="label">Role{operator.roles.length > 1 ? "s" : ""}</div>
-					<div class="value">
-						<ul>
-							{#each operator.roles as role}
-								<li>{roles[role]}</li>
-							{/each}
-						</ul>
-					</div>
-				</section> -->
-
 					<section class="info info--speed">
 						<div class="label">Speed / Armor</div>
 						<!-- TODO: maybe get rid of the SPEED type, and have the `speed` prop be
@@ -191,11 +163,13 @@
 					<section class="info info--gadgets">
 						<div class="label">Gadgets</div>
 						<div class="value">
-							<ul>
+							<div class="guns">
 								{#each operator.gadgets as gadget}
-									<li>{gadgets[gadget]}</li>
+									<div class="gun">
+										<div class="gun-name">{gadgets[gadget]}</div>
+									</div>
 								{/each}
-							</ul>
+							</div>
 						</div>
 					</section>
 
@@ -228,27 +202,34 @@
 	@import "$lib/sass/variables"
 
 	.operator-showcase
-		// display: flex
-		// justify-content: center
-		// align-items: center
+		display: flex
+		justify-content: center
+		align-items: center
 
 		position: relative
 		width: 100%
-		height: 100%
-		overflow-y: auto
+
+		&::before
+			content: " "
+			margin-top: auto
+
+		&::after
+			content: " "
+			margin-bottom: auto
 
 	.container
-		margin: 0 auto
+		margin: auto
 		width: 100%
-		max-width: 60rem
 
 	.wrapper
 		display: flex
 		gap: 2rem
 
 		> .pic
-			display: none
-			flex: 1 1 30%
+			flex: 0 1 18.75rem
+
+			> img
+				width: 100%
 
 		> .details
 			flex: 100
@@ -260,7 +241,7 @@
 	.info
 		display: flex
 		align-items: start
-		margin-bottom: 2rem
+		margin-bottom: 3rem
 
 		.label,
 		.label-offset
@@ -283,25 +264,13 @@
 			flex: 1
 			font-size: 1.2rem
 
-	.gun-note
-		font-size: .8rem
-		font-style: italic
-		opacity: .5
-
-		.asterisk
-			display: inline-block
-			color: red
-			font-weight: bold
-			font-size: 1.25rem
-
 	.indicators
 		.indicator
 			display: inline-block
-			margin-right: .5rem
+			margin-right: .25rem
 			width: 1.5rem
 			height: 1.5rem
 			border: 1px solid transparentize($color_fg, .75)
-			border-radius: 50%
 
 		&.indicators--1 .indicator:nth-child(1),
 		&.indicators--2 .indicator:nth-child(1),
@@ -373,10 +342,16 @@
 		flex-wrap: wrap
 
 		.gun
+			display: flex
+			flex-direction: column
+			justify-content: center
+			align-items: center
 			padding: 1rem
 			text-align: center
 			width: calc(50% - 1rem)
-			background-color: $color_bg
+			min-height: 8rem
+			background-color: lighten($color_bg, 1%)
+			border: 4px solid $color_fg
 
 			.gun-type
 				text-transform: capitalize
@@ -385,4 +360,15 @@
 				font-family: $font_ubi
 				font-size: 2rem
 				white-space: nowrap
+
+			.gun-note
+				font-size: .7rem
+				font-style: italic
+				opacity: .5
+
+				.asterisk
+					display: inline-block
+					color: red
+					font-weight: bold
+					font-size: 1.25em
 </style>

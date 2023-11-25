@@ -36,25 +36,29 @@
 		class="operator-showcase"
 		transition:slide={{ duration: 300, axis: "x" }}
 	>
-		<OperatorShowcase
-			operator={selectedOp}
-			on:close={onOperatorClosed}
-		/>
+		<div class="inner">
+			<div class="close-bar">
+				<button
+					on:click={() => onOperatorClosed()}
+					class="close-button"
+				>
+					&lsaquo; Back
+				</button>
+			</div>
 
-		<button
-			on:click={() => onOperatorClosed()}
-			class="close-button"
-		>
-			<span>&rsaquo;</span>
-		</button>
+			<OperatorShowcase
+				operator={selectedOp}
+				on:close={onOperatorClosed}
+			/>
+		</div>
 	</div>
 {/if}
 
 <style lang="sass">
 	@import "$lib/sass/variables"
 
-	$_close_button_width: 5rem
-	$_close_button_color_bg: darken($color_bg, 5%)
+	$_close_button_color_fg: $color_bg
+	$_close_button_color_bg: $color_fg
 
 	.operator-showcase
 		position: fixed
@@ -62,44 +66,31 @@
 		top: 0
 		right: 0
 		padding: 1.5rem
-		width: calc(100vw - $_close_button_width)
-		max-width: 40rem
+		width: calc(99vw)
 		height: 100vh
+		overflow-y: scroll
 		background-color: darken($color_bg, 2%)
 
-		.close-button
-			display: flex
-			justify-content: center
-			align-items: center
+		> .inner
+			margin: 0 auto
+			max-width: 60rem
 
-			position: absolute
-			top: 0
-			left: -$_close_button_width
-			width: $_close_button_width
-			height: 100%
+	.close-bar
+		margin: 1rem 0 2rem
+
+		.close-button
+			padding: .5rem 2rem
+			font-family: $font_ubi
+			text-transform: uppercase
+			font-size: 2rem
+
+			color: $_close_button_color_fg
 			background-color: $_close_button_color_bg
 			border: none
+			border-left: 10px solid darken($_close_button_color_bg, 20%)
 			cursor: pointer
-			animation: slide-left .1s ease
-			animation-delay: 300ms
-
-			> span
-				color: white
-				font-size: $_close_button_width * 1.5
-				transform: scaleY(2)
 
 			&:hover
-				background-color: #aaa
-
-				> span
-					color: lighten($_close_button_color_bg, 5%)
-
-	@keyframes slide-left
-		from
-			transform: translateX(1rem)
-			opacity: 0
-
-		to
-			transform: translateX(0)
-			opacity: 1
+				background-color: darken($_close_button_color_bg, 20%)
+				border-color: darken($_close_button_color_bg, 40%)
 </style>

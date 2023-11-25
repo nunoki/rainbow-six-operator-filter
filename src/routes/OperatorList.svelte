@@ -29,7 +29,17 @@
 							class="pic"
 							style="background-image: url({base}/operators/{op.uri}-pic.png)"
 						/>
-						<span class="name">{op.name}</span>
+						<span class="title">
+							<span class="name">
+								{op.name}
+							</span>
+
+							{#if op.nameNote}
+								<span class="note">
+									({op.nameNote})
+								</span>
+							{/if}
+						</span>
 					</div>
 
 					<img
@@ -102,7 +112,12 @@
 						background-position: center
 						flex: 1
 
-					.name
+					.title
+						display: flex
+						justify-content: center
+						align-items: center
+						gap: .25rem
+
 						padding: .25rem
 						text-transform: uppercase
 						text-align: center
@@ -110,6 +125,11 @@
 						font-size: 26px
 						color: #24262a
 						background-color: #c3c3c3
+
+						> .note
+							opacity: .75
+							font-size: .7em
+							vertical-align: middle
 
 				.operator-icon
 					display: block
