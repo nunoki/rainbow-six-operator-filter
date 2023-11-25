@@ -75,7 +75,7 @@
 
 	:global(body)
 		margin: 0
-		overflow-y: scroll
+		overflow: hidden
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
 		fill: $color_fg
@@ -115,7 +115,8 @@
 	.wrapper
 		display: flex
 		flex-direction: column
-		min-height: 100vh
+		height: 100vh
+		overflow-y: scroll
 
 		.header
 			flex: 0 1 content
