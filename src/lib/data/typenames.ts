@@ -13,9 +13,9 @@ export const gunTypes = {
 	[GUN_TYPE.shotgun]: "Shotgun",
 	[GUN_TYPE.pistol]: "Pistol",
 	[GUN_TYPE.mpistol]: "Machine pistol",
-	[GUN_TYPE.gonne6]: "Gonne-6",
+	[GUN_TYPE.gonne6]: "Hand cannon",
 	[GUN_TYPE.shield]: "Ballistic shield",
-	[GUN_TYPE.bailiff]: "Bailiff",
+	[GUN_TYPE.bailiff]: "Pistol shotgun",
 }
 
 export const roles = {
