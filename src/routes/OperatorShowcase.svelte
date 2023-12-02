@@ -124,26 +124,26 @@
 						<section class="info info--guns">
 							<div class="label">{placement.label}</div>
 							<div class="value">
-								<table class="guns">
+								<div class="weapons">
 									{#each placement.data as gun}
-										<tr class="gun">
-											<td class="gun-type">{gunTypes[gun.gun.type]}</td>
-											<td class="gun-name">{gun.gun.name}</td>
-											<td class="gun-scope">
+										<div class="weapon">
+											<div class="weapon-type">{gunTypes[gun.gun.type]}</div>
+											<div class="weapon-name">{gun.gun.name}</div>
+											<div class="weapon-scope">
 												<IconScope />
 												{scopes[gun.maxScope]}
 												{#if gun.gun.note}
 													<span
-														class="gun-note"
+														class="weapon-note"
 														title={gun.gun.note}
 													>
 														<span class="asterisk">*</span>
 													</span>
 												{/if}
-											</td>
-										</tr>
+											</div>
+										</div>
 									{/each}
-								</table>
+								</div>
 							</div>
 						</section>
 					{/each}
@@ -153,7 +153,7 @@
 							<div class="label-offset" />
 							<div class="value">
 								{#each _gunNotes as note}
-									<div class="gun-note">
+									<div class="weapon-note">
 										<span class="asterisk">*</span>
 										{note}
 									</div>
@@ -165,10 +165,10 @@
 					<section class="info info--gadgets">
 						<div class="label">Gadgets</div>
 						<div class="value">
-							<div class="guns">
+							<div class="weapons">
 								{#each operator.gadgets as gadget}
-									<div class="gun">
-										<div class="gun-name">{gadgets[gadget]}</div>
+									<div class="weapon">
+										<div class="weapon-name">{gadgets[gadget]}</div>
 									</div>
 								{/each}
 							</div>
@@ -259,8 +259,7 @@
 				content: " "
 				margin: 0 1rem
 				height: 1px
-				background-color: $color_fg
-				opacity: .25
+				background-color: orange
 
 		.value
 			flex: 1
@@ -337,28 +336,33 @@
 							margin-right: .25rem
 							content: ","
 
-	.guns
-		width: 100%
-		border-spacing: .25rem
+	.weapons
 
-		th,
-		td
-			padding: .25rem 1rem
-			background-color: lighten($color_overlay_bg, 5%)
-			border: 1px solid lighten($color_overlay_bg, 5%)
+		.weapon
+			display: flex
+			margin-bottom: .5rem
 
-		.gun
-			.gun-type
-				width: 40%
-				text-transform: capitalize
+			> div
+				padding: .5rem .25rem
+				text-align: center
+				fill: black
+				color: black
+				background-color: darken($color_fg, 15%)
 
-			.gun-name
-				width: 35%
+			.weapon-type
+				flex: 1 1 40%
+
+			.weapon-name
+				flex: 1 1 40%
 				font-family: $font_ubi
-				font-size: 2rem
+				font-size: 1.75rem
+				background-color: darken($color_fg, 0%)
+
+			.weapon-scope
+				flex: 0 1 20%
 				white-space: nowrap
 
-	.gun-note
+	.weapon-note
 		font-size: .7rem
 		font-style: italic
 		opacity: .5
