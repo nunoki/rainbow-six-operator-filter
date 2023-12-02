@@ -69,7 +69,7 @@
 		width: calc(99vw)
 		height: 100vh
 		overflow-y: scroll
-		background-color: darken($color_bg, 2%)
+		background-color: $color_overlay_bg
 
 		> .inner
 			margin: 0 auto

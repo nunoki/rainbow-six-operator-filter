@@ -124,24 +124,26 @@
 						<section class="info info--guns">
 							<div class="label">{placement.label}</div>
 							<div class="value">
-								<div class="guns">
+								<table class="guns">
 									{#each placement.data as gun}
-										<div class="gun">
-											<div class="gun-type">{gunTypes[gun.gun.type]}</div>
-											<div class="gun-name">{gun.gun.name}</div>
-											<div class="gun-scope">
+										<tr class="gun">
+											<td class="gun-type">{gunTypes[gun.gun.type]}</td>
+											<td class="gun-name">{gun.gun.name}</td>
+											<td class="gun-scope">
 												<IconScope />
 												{scopes[gun.maxScope]}
-											</div>
-											{#if gun.gun.note}
-												<div class="gun-note">
-													<span class="asterisk">*</span>
-													{gun.gun.note}
-												</div>
-											{/if}
-										</div>
+												{#if gun.gun.note}
+													<span
+														class="gun-note"
+														title={gun.gun.note}
+													>
+														<span class="asterisk">*</span>
+													</span>
+												{/if}
+											</td>
+										</tr>
 									{/each}
-								</div>
+								</table>
 							</div>
 						</section>
 					{/each}
@@ -336,39 +338,35 @@
 							content: ","
 
 	.guns
-		display: flex
-		align-items: start
-		gap: 1rem
-		flex-wrap: wrap
+		width: 100%
+		border-spacing: .25rem
+
+		th,
+		td
+			padding: .25rem 1rem
+			background-color: lighten($color_overlay_bg, 5%)
+			border: 1px solid lighten($color_overlay_bg, 5%)
 
 		.gun
-			display: flex
-			flex-direction: column
-			justify-content: center
-			align-items: center
-			padding: 1rem
-			text-align: center
-			width: calc(50% - 1rem)
-			min-height: 8rem
-			background-color: lighten($color_bg, 1%)
-			border: 4px solid $color_fg
-
 			.gun-type
+				width: 40%
 				text-transform: capitalize
 
 			.gun-name
+				width: 35%
 				font-family: $font_ubi
 				font-size: 2rem
 				white-space: nowrap
 
-			.gun-note
-				font-size: .7rem
-				font-style: italic
-				opacity: .5
+	.gun-note
+		font-size: .7rem
+		font-style: italic
+		opacity: .5
 
-				.asterisk
-					display: inline-block
-					color: red
-					font-weight: bold
-					font-size: 1.25em
+		.asterisk
+			display: inline-block
+			color: red
+			font-weight: bold
+			font-size: 1.5rem
+			cursor: help
 </style>

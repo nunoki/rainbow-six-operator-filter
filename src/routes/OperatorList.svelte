@@ -146,9 +146,9 @@
 			.icon-note
 				position: absolute
 				z-index: 2
-				top: 0
-				right: 0
-				font-size: 3rem
+				top: .5rem
+				right: .5rem
+				font-size: 1.5rem
 				font-weight: bold
 				color: red
 				cursor: help
