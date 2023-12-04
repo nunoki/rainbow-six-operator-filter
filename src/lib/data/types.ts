@@ -73,7 +73,6 @@ export type Operator = {
 	gunsPrimary: GunConfig[]
 	gunsSecondary: GunConfig[]
 	gadgets: GADGET[]
-	noUbisoftWebsite?: boolean
 }
 
 export type RadioOption = {

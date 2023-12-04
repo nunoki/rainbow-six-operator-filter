@@ -1147,7 +1147,6 @@ export const operators: Operator[] = [
 			GADGET.proxalarm,
 			GADGET.dshield,
 		],
-		noUbisoftWebsite: true,
 	},
 	{
 		uri: "recruit",
@@ -1174,6 +1173,5 @@ export const operators: Operator[] = [
 			GADGET.stun,
 			GADGET.sbreach,
 		],
-		noUbisoftWebsite: true,
 	},
 ]

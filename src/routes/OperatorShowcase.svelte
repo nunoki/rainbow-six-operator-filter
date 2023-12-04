@@ -30,7 +30,12 @@
 	}
 
 	function generateLinks(op: Operator): Link[] {
-		let links: Link[] = []
+		let links: Link[] = [
+			{
+				url: `https://rainbowsix.fandom.com/wiki/${op.name}`,
+				domain: "fandom.com",
+			},
+		]
 
 		if (op.name !== "Recruit") {
 			links.push({
@@ -44,11 +49,6 @@
 				domain: "r6siegecenter.com",
 			})
 		}
-
-		links.push({
-			url: `https://rainbowsix.fandom.com/wiki/${op.name}`,
-			domain: "fandom.com",
-		})
 
 		return links
 	}
