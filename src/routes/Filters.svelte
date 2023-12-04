@@ -287,4 +287,16 @@
 
 		.options
 			flex: 0 1 content
+
+	@media (max-width: 1110px)
+		.filters
+			flex-wrap: wrap
+
+			.filter
+				flex: 1 0 calc(33% - 1rem)
+
+	@media (max-width: 700px)
+		.filters
+			.filter
+				flex: 1 0 calc(50% - 1rem)
 </style>

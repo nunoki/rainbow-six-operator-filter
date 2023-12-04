@@ -337,7 +337,6 @@
 							content: ","
 
 	.weapons
-
 		.weapon
 			display: flex
 			margin-bottom: .5rem
@@ -373,4 +372,20 @@
 			font-weight: bold
 			font-size: 1.5rem
 			cursor: help
+
+	@media (max-width: 1000px)
+		.pic
+			display: none
+
+	@media (max-width: 600px)
+		.info
+			flex-direction: column
+
+			.label,
+			.value
+				flex: 1 1 0
+				width: 100%
+
+			.label
+				margin-bottom: 1rem
 </style>
