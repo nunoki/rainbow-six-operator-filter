@@ -259,7 +259,7 @@
 				content: " "
 				margin: 0 1rem
 				height: 1px
-				background-color: orange
+				background-color: $color_accent
 
 		.value
 			flex: 1
