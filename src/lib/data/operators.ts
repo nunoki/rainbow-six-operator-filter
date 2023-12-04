@@ -551,7 +551,7 @@ export const operators: Operator[] = [
 		gunsSecondary: [
 			{ gun: guns.p12, maxScope: SCOPE.s_none }, //
 		],
-		gadgets: [GADGET.sbreach, GADGET.claymore],
+		gadgets: [GADGET.sbreach, GADGET.claymore, GADGET.grenade],
 	},
 	{
 		uri: "fuze",
