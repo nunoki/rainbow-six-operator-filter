@@ -52,10 +52,10 @@
 	$_color_badge_bg: lighten($color_bg, 12%)
 
 	$_color_hover_fg: black
-	$_color_hover_bg: lighten(darkorange, 20%)
+	$_color_hover_bg: lighten($color_accent, 20%)
 
 	$_color_selected_fg: black
-	$_color_selected_bg: darkorange // saturate(lighten($color_bg, 30%), 30%)
+	$_color_selected_bg: $color_accent
 
 	$_color_disabled_fg: #888
 	$_color_disabled_bg: #aaa
