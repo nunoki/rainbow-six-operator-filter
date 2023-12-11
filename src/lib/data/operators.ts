@@ -1,8 +1,9 @@
+import { guns } from "./guns"
 import type { Operator } from "./types"
-import { GUN_TYPE, SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
+import { SIDE, GADGET, SPEED, SCOPE, ROLE } from "./types"
 
 function mpVsSmgNote(smg: string): string {
-	return `${smg} is classified as a Machine pistol on Ubisoft's site, so here it counts as both Machine pistol and Submachine gun.`
+	return `${smg} is classified as a Machine pistol on Ubisoft's site, but here it counts as a Submachine gun.`
 }
 
 function arVsDmrNote(dmr: string): string {
@@ -16,11 +17,14 @@ export const operators: Operator[] = [
 		name: "Tubarão",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.mpx, maxScope: SCOPE.s1_5 },
+			{ gun: guns.ar1550, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.nitro, GADGET.proxalarm],
-		maxScope: SCOPE.s1_5,
-		note: arVsDmrNote("AR-15.50"),
 	},
 	{
 		uri: "ram",
@@ -28,10 +32,15 @@ export const operators: Operator[] = [
 		name: "Ram",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg],
-		gunsSecondary: [GUN_TYPE.shotgun, GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.r4c, maxScope: SCOPE.s2_0 },
+			{ gun: guns.lmge, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.mmk19mm, maxScope: SCOPE.s_none },
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.smoke, GADGET.stun],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "brava",
@@ -39,10 +48,15 @@ export const operators: Operator[] = [
 		name: "Brava",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.camrs, maxScope: SCOPE.s3_0 },
+			{ gun: guns.para308, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.supershorty, maxScope: SCOPE.s1_0 },
+			{ gun: guns.usp40, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "grim",
@@ -50,10 +64,15 @@ export const operators: Operator[] = [
 		name: "Grim",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
-		gadgets: [GADGET.sbreach, GADGET.hbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_0,
+		gunsPrimary: [
+			{ gun: guns._552commando, maxScope: SCOPE.s2_0 },
+			{ gun: guns.sgcqb, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p229, maxScope: SCOPE.s_none },
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+		],
+		gadgets: [GADGET.emp, GADGET.hbreach, GADGET.claymore],
 	},
 	{
 		uri: "sens",
@@ -61,10 +80,14 @@ export const operators: Operator[] = [
 		name: "Sens",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6],
-		gadgets: [GADGET.hbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
+		gunsPrimary: [
+			{ gun: guns.pof9, maxScope: SCOPE.s2_5 },
+			{ gun: guns._417, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.sdp9mm, maxScope: SCOPE.s_none }, //
+		],
+		gadgets: [GADGET.hbreach, GADGET.claymore, GADGET.grenade],
 	},
 	{
 		uri: "osa",
@@ -72,10 +95,14 @@ export const operators: Operator[] = [
 		name: "Osa",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol],
-		gadgets: [GADGET.smoke, GADGET.claymore, GADGET.emp],
-		maxScope: SCOPE.s2_5,
+		gunsPrimary: [
+			{ gun: guns._556xi, maxScope: SCOPE.s2_5 },
+			{ gun: guns.pdw9, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.pmm, maxScope: SCOPE.s_none }, //
+		],
+		gadgets: [GADGET.grenade, GADGET.claymore, GADGET.emp],
 	},
 	{
 		uri: "flores",
@@ -83,10 +110,14 @@ export const operators: Operator[] = [
 		name: "Flores",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.ar33, maxScope: SCOPE.s2_0 },
+			{ gun: guns.sr25, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.gsh18, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.stun, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "zero",
@@ -94,10 +125,15 @@ export const operators: Operator[] = [
 		name: "Zero",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6],
+		gunsPrimary: [
+			{ gun: guns.sc3000k, maxScope: SCOPE.s2_0 },
+			{ gun: guns.mp7, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.hbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "ace",
@@ -105,10 +141,14 @@ export const operators: Operator[] = [
 		name: "Ace",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.ak12, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m1014, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p9, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "iana",
@@ -116,10 +156,15 @@ export const operators: Operator[] = [
 		name: "Iana",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6],
+		gunsPrimary: [
+			{ gun: guns.arx200, maxScope: SCOPE.s1_0 },
+			{ gun: guns.g36c, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.mmk19mm, maxScope: SCOPE.s_none },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.stun, GADGET.smoke],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "kali",
@@ -127,10 +172,15 @@ export const operators: Operator[] = [
 		name: "Kali",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.csrx300, maxScope: SCOPE.s3_0plus }, //
+		],
+		gunsSecondary: [
+			{ gun: guns.spsmg9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none },
+			{ gun: guns.c75auto, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_5plus,
 	},
 	{
 		uri: "amaru",
@@ -138,11 +188,16 @@ export const operators: Operator[] = [
 		name: "Amaru",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol, GUN_TYPE.smg, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.g8a1, maxScope: SCOPE.s2_5 },
+			{ gun: guns.supernova, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+			{ gun: guns.smg11, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.stun, GADGET.hbreach],
-		maxScope: SCOPE.s2_5,
-		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "nokk",
@@ -150,10 +205,15 @@ export const operators: Operator[] = [
 		name: "Nøkk",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.fmg9, maxScope: SCOPE.s1_5 },
+			{ gun: guns.six12sd, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.d50, maxScope: SCOPE.s_none },
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.hbreach, GADGET.grenade, GADGET.emp],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "gridlock",
@@ -161,10 +221,15 @@ export const operators: Operator[] = [
 		name: "Gridlock",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg],
-		gunsSecondary: [GUN_TYPE.shotgun, GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.f90, maxScope: SCOPE.s2_5 },
+			{ gun: guns.m249, maxScope: SCOPE.s2_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.supershorty, maxScope: SCOPE.s1_0 },
+			{ gun: guns.sdp9mm, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.grenade, GADGET.emp],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "nomad",
@@ -172,10 +237,15 @@ export const operators: Operator[] = [
 		name: "Nomad",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.ak74m, maxScope: SCOPE.s2_5 },
+			{ gun: guns.arx200, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.prb92, maxScope: SCOPE.s_none },
+			{ gun: guns._44magsemiauto, maxScope: SCOPE.s2_5 },
+		],
 		gadgets: [GADGET.sbreach, GADGET.stun],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "maverick",
@@ -183,11 +253,14 @@ export const operators: Operator[] = [
 		name: "Maverick",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.m4, maxScope: SCOPE.s2_5 },
+			{ gun: guns.ar1550, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns._1911tacops, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.stun, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
-		note: arVsDmrNote("AR-15.50"),
 	},
 	{
 		uri: "lion",
@@ -195,10 +268,16 @@ export const operators: Operator[] = [
 		name: "Lion",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.pistol],
-		gadgets: [GADGET.stun, GADGET.claymore, GADGET.emp],
-		maxScope: SCOPE.s2_5,
+		gunsPrimary: [
+			{ gun: guns.v308, maxScope: SCOPE.s2_5 },
+			{ gun: guns._417, maxScope: SCOPE.s3_0 },
+			{ gun: guns.sgcqb, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+		],
+		gadgets: [GADGET.stun, GADGET.claymore, GADGET.grenade],
 	},
 	{
 		uri: "finka",
@@ -206,10 +285,16 @@ export const operators: Operator[] = [
 		name: "Finka",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.spear308, maxScope: SCOPE.s2_0 },
+			{ gun: guns._6p41, maxScope: SCOPE.s2_0 },
+			{ gun: guns.sasg12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.pmm, maxScope: SCOPE.s_none },
+			{ gun: guns.gsh18, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.stun, GADGET.grenade],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "dokkaebi",
@@ -217,11 +302,16 @@ export const operators: Operator[] = [
 		name: "Dokkaebi",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.dmr, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.gonne6, GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.bosg122, maxScope: SCOPE.s2_5 },
+			{ gun: guns.mk14ebr, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg12, maxScope: SCOPE.s1_0 },
+			{ gun: guns.c75auto, maxScope: SCOPE.s_none },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.stun, GADGET.emp],
-		maxScope: SCOPE.s2_5,
-		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "zofia",
@@ -229,10 +319,14 @@ export const operators: Operator[] = [
 		name: "Zofia",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.m762, maxScope: SCOPE.s2_0 },
+			{ gun: guns.lmge, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.rg15, maxScope: SCOPE.s1_0 }, //
+		],
 		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "ying",
@@ -240,10 +334,14 @@ export const operators: Operator[] = [
 		name: "Ying",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.t95lsw, maxScope: SCOPE.s2_5 },
+			{ gun: guns.six12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.q929, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.hbreach, GADGET.smoke],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "jackal",
@@ -251,10 +349,16 @@ export const operators: Operator[] = [
 		name: "Jackal",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.c7e, maxScope: SCOPE.s2_0 },
+			{ gun: guns.ita12l, maxScope: SCOPE.s1_0 },
+			{ gun: guns.pdw9, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+			{ gun: guns.usp40, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.claymore, GADGET.smoke],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "hibana",
@@ -262,10 +366,15 @@ export const operators: Operator[] = [
 		name: "Hibana",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsPrimary: [
+			{ gun: guns.supernova, maxScope: SCOPE.s1_0 },
+			{ gun: guns.type89, maxScope: SCOPE.s2_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.bearing9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p229, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.stun, GADGET.sbreach],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "capitao",
@@ -273,10 +382,15 @@ export const operators: Operator[] = [
 		name: "CAPITÃO",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6],
-		gadgets: [GADGET.claymore, GADGET.hbreach],
-		maxScope: SCOPE.s2_0,
+		gunsPrimary: [
+			{ gun: guns.para308, maxScope: SCOPE.s2_0 },
+			{ gun: guns.m249, maxScope: SCOPE.s2_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.prb92, maxScope: SCOPE.s_none },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+		],
+		gadgets: [GADGET.claymore, GADGET.hbreach, GADGET.emp],
 	},
 	{
 		uri: "blackbeard",
@@ -284,10 +398,14 @@ export const operators: Operator[] = [
 		name: "Blackbeard",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
-		gadgets: [GADGET.claymore, GADGET.stun, GADGET.emp],
-		maxScope: SCOPE.s2_5,
+		gunsPrimary: [
+			{ gun: guns.mk17cqb, maxScope: SCOPE.s2_0 },
+			{ gun: guns.sr25, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.d50, maxScope: SCOPE.s_none }, //
+		],
+		gadgets: [GADGET.claymore, GADGET.stun, GADGET.grenade],
 	},
 	{
 		uri: "buck",
@@ -295,10 +413,15 @@ export const operators: Operator[] = [
 		name: "Buck",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6],
+		gunsPrimary: [
+			{ gun: guns.c8sfw, maxScope: SCOPE.s1_5 },
+			{ gun: guns.camrs, maxScope: SCOPE.s3_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.mmk19mm, maxScope: SCOPE.s_none },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.hbreach, GADGET.stun],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "sledge",
@@ -306,10 +429,14 @@ export const operators: Operator[] = [
 		name: "Sledge",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.l85a2, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m590a1, maxScope: SCOPE.s_none },
+		],
+		gunsSecondary: [
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.grenade, GADGET.stun, GADGET.emp],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "thatcher",
@@ -317,10 +444,15 @@ export const operators: Operator[] = [
 		name: "Thatcher",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.l85a2, maxScope: SCOPE.s2_0 },
+			{ gun: guns.ar33, maxScope: SCOPE.s2_5 },
+			{ gun: guns.m590a1, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "ash",
@@ -328,10 +460,15 @@ export const operators: Operator[] = [
 		name: "Ash",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.g36c, maxScope: SCOPE.s1_5 },
+			{ gun: guns.r4c, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.m45meusoc, maxScope: SCOPE.s_none },
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "thermite",
@@ -339,10 +476,15 @@ export const operators: Operator[] = [
 		name: "Thermite",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns._556xi, maxScope: SCOPE.s2_5 },
+			{ gun: guns.m1014, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.m45meusoc, maxScope: SCOPE.s_none },
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.stun],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "montagne",
@@ -350,10 +492,14 @@ export const operators: Operator[] = [
 		name: "Montagne",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.shield],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.shield, maxScope: SCOPE.s_none }, //
+		],
+		gunsSecondary: [
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.hbreach, GADGET.smoke, GADGET.emp],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "twitch",
@@ -361,10 +507,16 @@ export const operators: Operator[] = [
 		name: "Twitch",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.dmr, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.f2, maxScope: SCOPE.s1_5 },
+			{ gun: guns._417, maxScope: SCOPE.s3_0 },
+			{ gun: guns.sgcqb, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "blitz",
@@ -372,10 +524,13 @@ export const operators: Operator[] = [
 		name: "Blitz",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shield],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.shield, maxScope: SCOPE.s_none }, //
+		],
+		gunsSecondary: [
+			{ gun: guns.p12, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.smoke, GADGET.sbreach],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "iq",
@@ -383,10 +538,15 @@ export const operators: Operator[] = [
 		name: "IQ",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg],
-		gunsSecondary: [GUN_TYPE.pistol],
-		gadgets: [GADGET.sbreach, GADGET.claymore],
-		maxScope: SCOPE.s2_5,
+		gunsPrimary: [
+			{ gun: guns.auga2, maxScope: SCOPE.s2_5 },
+			{ gun: guns._552commando, maxScope: SCOPE.s1_5 },
+			{ gun: guns.g8a1, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p12, maxScope: SCOPE.s_none }, //
+		],
+		gadgets: [GADGET.sbreach, GADGET.claymore, GADGET.grenade],
 	},
 	{
 		uri: "fuze",
@@ -394,10 +554,16 @@ export const operators: Operator[] = [
 		name: "Fuze",
 		side: SIDE.attack,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg, GUN_TYPE.shield],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.ak12, maxScope: SCOPE.s2_5 },
+			{ gun: guns._6p41, maxScope: SCOPE.s2_5 },
+			{ gun: guns.shield, maxScope: SCOPE.s_none },
+		],
+		gunsSecondary: [
+			{ gun: guns.pmm, maxScope: SCOPE.s_none },
+			{ gun: guns.gsh18, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.sbreach, GADGET.hbreach, GADGET.smoke],
-		maxScope: SCOPE.s2_5,
 	},
 	{
 		uri: "glaz",
@@ -405,10 +571,15 @@ export const operators: Operator[] = [
 		name: "Glaz",
 		side: SIDE.attack,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.gonne6, GUN_TYPE.mpistol],
+		gunsPrimary: [
+			{ gun: guns.ots03, maxScope: SCOPE.s3_0plus }, //
+		],
+		gunsSecondary: [
+			{ gun: guns.bearing9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.gonne6, maxScope: SCOPE.s_none },
+			{ gun: guns.pmm, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.smoke, GADGET.grenade, GADGET.claymore],
-		maxScope: SCOPE.s2_5plus,
 	},
 	{
 		uri: "fenrir",
@@ -416,10 +587,15 @@ export const operators: Operator[] = [
 		name: "Fenrir",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.mp7, maxScope: SCOPE.s1_0 },
+			{ gun: guns.sasg12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.barbwire, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "solis",
@@ -427,11 +603,14 @@ export const operators: Operator[] = [
 		name: "Solis",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.p90, maxScope: SCOPE.s1_0 },
+			{ gun: guns.ita12l, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg11, maxScope: SCOPE.s1_0 }, //
+		],
 		gadgets: [GADGET.impact, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
-		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "azami",
@@ -439,10 +618,14 @@ export const operators: Operator[] = [
 		name: "Azami ",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns._9x19vsn, maxScope: SCOPE.s1_0 },
+			{ gun: guns.acs12, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.d50, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.impact, GADGET.barbwire],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "thorn",
@@ -450,10 +633,15 @@ export const operators: Operator[] = [
 		name: "Thorn",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsPrimary: [
+			{ gun: guns.uzk50gi, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m870, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns._1911tacops, maxScope: SCOPE.s_none },
+			{ gun: guns.c75auto, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.dshield, GADGET.barbwire],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "thunderbird",
@@ -461,10 +649,15 @@ export const operators: Operator[] = [
 		name: "Thunderbird",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.spear308, maxScope: SCOPE.s1_0 },
+			{ gun: guns.spas15, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.bearing9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.q929, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.barbwire, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "aruni",
@@ -472,10 +665,14 @@ export const operators: Operator[] = [
 		name: "Aruni",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.p10roni, maxScope: SCOPE.s1_0 },
+			{ gun: guns.mk14ebr, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.prb92, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.bpcamera, GADGET.barbwire],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "melusi",
@@ -483,10 +680,14 @@ export const operators: Operator[] = [
 		name: "Melusi",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.mp5, maxScope: SCOPE.s1_0 },
+			{ gun: guns.super90, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.rg15, maxScope: SCOPE.s1_0 }, //
+		],
 		gadgets: [GADGET.impact, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "oryx",
@@ -494,10 +695,15 @@ export const operators: Operator[] = [
 		name: "Oryx",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.t5smg, maxScope: SCOPE.s1_0 },
+			{ gun: guns.spas12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+			{ gun: guns.usp40, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.barbwire, GADGET.proxalarm],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "wamai",
@@ -505,10 +711,15 @@ export const operators: Operator[] = [
 		name: "Wamai",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.auga2, maxScope: SCOPE.s1_0 },
+			{ gun: guns.mp5, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.keratos357, maxScope: SCOPE.s_none },
+			{ gun: guns.p12, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.impact],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "goyo",
@@ -516,10 +727,14 @@ export const operators: Operator[] = [
 		name: "Goyo",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.vector45acp, maxScope: SCOPE.s1_5 },
+			{ gun: guns.tcsg12, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p229, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.proxalarm, GADGET.bpcamera, GADGET.impact],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "warden",
@@ -527,11 +742,15 @@ export const operators: Operator[] = [
 		name: "Warden",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.mpx, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m590a1, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg12, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p10c, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.dshield, GADGET.nitro, GADGET.obsblocker],
-		maxScope: SCOPE.s1_5,
-		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "mozzie",
@@ -539,10 +758,14 @@ export const operators: Operator[] = [
 		name: "Mozzie",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.p10roni, maxScope: SCOPE.s1_5 },
+			{ gun: guns.commando9, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.sdp9mm, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.barbwire, GADGET.nitro],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "kaid",
@@ -550,10 +773,15 @@ export const operators: Operator[] = [
 		name: "Kaid",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.auga3, maxScope: SCOPE.s1_0 },
+			{ gun: guns.tcsg12, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns._44magsemiauto, maxScope: SCOPE.s2_5 },
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.barbwire, GADGET.nitro, GADGET.obsblocker],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "clash",
@@ -561,10 +789,15 @@ export const operators: Operator[] = [
 		name: "Clash",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.shield],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.shield, maxScope: SCOPE.s_none }, //
+		],
+		gunsSecondary: [
+			{ gun: guns.supershorty, maxScope: SCOPE.s1_0 },
+			{ gun: guns.spsmg9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p10c, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.barbwire, GADGET.impact, GADGET.dshield],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "maestro",
@@ -572,10 +805,15 @@ export const operators: Operator[] = [
 		name: "Maestro",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.alda556, maxScope: SCOPE.s1_0 },
+			{ gun: guns.acs12, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.keratos357, maxScope: SCOPE.s_none },
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.barbwire, GADGET.impact, GADGET.obsblocker],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "alibi",
@@ -583,10 +821,15 @@ export const operators: Operator[] = [
 		name: "Alibi",
 		side: SIDE.defense,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.mx4storm, maxScope: SCOPE.s1_0 },
+			{ gun: guns.acs12, maxScope: SCOPE.s2_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.keratos357, maxScope: SCOPE.s_none },
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.obsblocker],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "vigil",
@@ -594,11 +837,15 @@ export const operators: Operator[] = [
 		name: "Vigil",
 		side: SIDE.defense,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.k1a, maxScope: SCOPE.s1_0 },
+			{ gun: guns.bosg122, maxScope: SCOPE.s2_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg12, maxScope: SCOPE.s1_0 },
+			{ gun: guns.c75auto, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.bpcamera, GADGET.impact],
-		maxScope: SCOPE.s2_5,
-		note: mpVsSmgNote("SMG-12"),
 	},
 	{
 		uri: "ela",
@@ -606,10 +853,14 @@ export const operators: Operator[] = [
 		name: "Ela",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.scorpionevo3a1, maxScope: SCOPE.s1_0 },
+			{ gun: guns.fo12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.rg15, maxScope: SCOPE.s1_0 }, //
+		],
 		gadgets: [GADGET.barbwire, GADGET.dshield, GADGET.obsblocker],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "lesion",
@@ -617,10 +868,15 @@ export const operators: Operator[] = [
 		name: "Lesion",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.t5smg, maxScope: SCOPE.s1_0 },
+			{ gun: guns.six12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.supershorty, maxScope: SCOPE.s1_0 },
+			{ gun: guns.q929, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.impact, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "mira",
@@ -628,10 +884,15 @@ export const operators: Operator[] = [
 		name: "Mira",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.vector45acp, maxScope: SCOPE.s1_0 },
+			{ gun: guns.ita12l, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+			{ gun: guns.usp40, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.nitro],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "echo",
@@ -639,10 +900,15 @@ export const operators: Operator[] = [
 		name: "Echo",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsPrimary: [
+			{ gun: guns.mp5sd, maxScope: SCOPE.s1_5 },
+			{ gun: guns.supernova, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.bearing9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p229, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.impact, GADGET.dshield],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "caveira",
@@ -650,10 +916,14 @@ export const operators: Operator[] = [
 		name: "Caveira",
 		side: SIDE.defense,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.m12, maxScope: SCOPE.s1_0 },
+			{ gun: guns.spas12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.luison, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.proxalarm, GADGET.impact, GADGET.obsblocker],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "valkyrie",
@@ -661,10 +931,14 @@ export const operators: Operator[] = [
 		name: "Valkyrie",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.mpx, maxScope: SCOPE.s1_0 },
+			{ gun: guns.spas12, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.d50, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.impact, GADGET.nitro],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "frost",
@@ -672,10 +946,15 @@ export const operators: Operator[] = [
 		name: "Frost",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns._9mmc1, maxScope: SCOPE.s1_5 },
+			{ gun: guns.super90, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.ita12s, maxScope: SCOPE.s1_0 },
+			{ gun: guns.mmk19mm, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.bpcamera, GADGET.dshield],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "mute",
@@ -683,11 +962,15 @@ export const operators: Operator[] = [
 		name: "Mute",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.mp5, maxScope: SCOPE.s1_0 },
+			{ gun: guns.m590a1, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg11, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.bpcamera, GADGET.nitro],
-		maxScope: SCOPE.s1_0,
-		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "smoke",
@@ -695,11 +978,15 @@ export const operators: Operator[] = [
 		name: "Smoke",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.m590a1, maxScope: SCOPE.s1_0 },
+			{ gun: guns.fmg9, maxScope: SCOPE.s1_5 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg11, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p226mk25, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.barbwire],
-		maxScope: SCOPE.s1_5,
-		note: mpVsSmgNote("SMG-11"),
 	},
 	{
 		uri: "castle",
@@ -707,10 +994,16 @@ export const operators: Operator[] = [
 		name: "Castle",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.ump45, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m1014, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.m45meusoc, maxScope: SCOPE.s_none },
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+			{ gun: guns.supershorty, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.bpcamera],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "pulse",
@@ -718,10 +1011,15 @@ export const operators: Operator[] = [
 		name: "Pulse",
 		side: SIDE.defense,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.ump45, maxScope: SCOPE.s1_5 },
+			{ gun: guns.m1014, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.m45meusoc, maxScope: SCOPE.s_none },
+			{ gun: guns._57usg, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.dshield, GADGET.obsblocker, GADGET.nitro],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "doc",
@@ -729,10 +1027,17 @@ export const operators: Operator[] = [
 		name: "Doc",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.bailiff],
+		gunsPrimary: [
+			{ gun: guns.mp5, maxScope: SCOPE.s1_5 },
+			{ gun: guns.p90, maxScope: SCOPE.s1_5 },
+			{ gun: guns.sgcqb, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+			{ gun: guns.bailiff, maxScope: SCOPE.s1_0 },
+		],
 		gadgets: [GADGET.bpcamera, GADGET.barbwire],
-		maxScope: SCOPE.s1_5,
 	},
 	{
 		uri: "rook",
@@ -740,10 +1045,16 @@ export const operators: Operator[] = [
 		name: "Rook",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.mp5, maxScope: SCOPE.s2_0 },
+			{ gun: guns.p90, maxScope: SCOPE.s1_5 },
+			{ gun: guns.sgcqb, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+			{ gun: guns.lfp586, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.proxalarm, GADGET.impact, GADGET.obsblocker],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "jager",
@@ -751,10 +1062,14 @@ export const operators: Operator[] = [
 		name: "Jäger",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.shotgun, GUN_TYPE.rifle],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns._416ccarbine, maxScope: SCOPE.s1_0 },
+			{ gun: guns.m870, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p12, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.obsblocker, GADGET.bpcamera],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "bandit",
@@ -762,10 +1077,14 @@ export const operators: Operator[] = [
 		name: "Bandit",
 		side: SIDE.defense,
 		speed: SPEED.s3,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.mp7, maxScope: SCOPE.s1_0 },
+			{ gun: guns.m870, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.p12, maxScope: SCOPE.s_none }, //
+		],
 		gadgets: [GADGET.barbwire, GADGET.nitro],
-		maxScope: SCOPE.s1_0,
 	},
 	{
 		uri: "tachanka",
@@ -773,10 +1092,16 @@ export const operators: Operator[] = [
 		name: "Tachanka",
 		side: SIDE.defense,
 		speed: SPEED.s1,
-		gunsPrimary: [GUN_TYPE.lmg, GUN_TYPE.smg],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol],
+		gunsPrimary: [
+			{ gun: guns._9x19vsn, maxScope: SCOPE.s2_0 },
+			{ gun: guns.dp27, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.bearing9, maxScope: SCOPE.s1_0 },
+			{ gun: guns.gsh18, maxScope: SCOPE.s_none },
+			{ gun: guns.pmm, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.barbwire, GADGET.proxalarm, GADGET.dshield],
-		maxScope: SCOPE.s2_0,
 	},
 	{
 		uri: "kapkan",
@@ -784,21 +1109,32 @@ export const operators: Operator[] = [
 		name: "Kapkan",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol],
+		gunsPrimary: [
+			{ gun: guns.sasg12, maxScope: SCOPE.s1_0 },
+			{ gun: guns._9x19vsn, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.pmm, maxScope: SCOPE.s_none },
+			{ gun: guns.gsh18, maxScope: SCOPE.s_none },
+		],
 		gadgets: [GADGET.impact, GADGET.nitro],
-		maxScope: SCOPE.s1_0,
 	},
 	{
-		uri: "recruit-defense",
+		uri: "recruit",
 		roles: [],
 		name: "Recruit",
+		nameNote: "defense",
 		side: SIDE.defense,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.smg, GUN_TYPE.shotgun],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.smg],
+		gunsPrimary: [
+			{ gun: guns.m870, maxScope: SCOPE.s1_0 },
+			{ gun: guns.mp5k, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.smg11, maxScope: SCOPE.s1_0 },
+			{ gun: guns.p9, maxScope: SCOPE.s_none },
+		],
 		gadgets: [
-			GADGET.nitro,
 			GADGET.bpcamera,
 			GADGET.obsblocker,
 			GADGET.barbwire,
@@ -806,19 +1142,25 @@ export const operators: Operator[] = [
 			GADGET.proxalarm,
 			GADGET.dshield,
 		],
-		maxScope: SCOPE.s1_0,
-		noUbisoftWebsite: true,
 	},
 	{
-		uri: "recruit-attack",
+		uri: "recruit",
 		roles: [],
 		name: "Recruit",
+		nameNote: "attack",
 		side: SIDE.attack,
 		speed: SPEED.s2,
-		gunsPrimary: [GUN_TYPE.rifle, GUN_TYPE.lmg, GUN_TYPE.dmr],
-		gunsSecondary: [GUN_TYPE.pistol, GUN_TYPE.mpistol, GUN_TYPE.shotgun],
+		gunsPrimary: [
+			{ gun: guns.l85a2, maxScope: SCOPE.s1_0 },
+			{ gun: guns.mk14ebr, maxScope: SCOPE.s3_0 },
+			{ gun: guns.m249, maxScope: SCOPE.s1_0 },
+		],
+		gunsSecondary: [
+			{ gun: guns.c75auto, maxScope: SCOPE.s_none },
+			{ gun: guns.supershorty, maxScope: SCOPE.s_none },
+			{ gun: guns.p12, maxScope: SCOPE.s_none },
+		],
 		gadgets: [
-			GADGET.grenade,
 			GADGET.smoke,
 			GADGET.hbreach,
 			GADGET.emp,
@@ -826,7 +1168,5 @@ export const operators: Operator[] = [
 			GADGET.stun,
 			GADGET.sbreach,
 		],
-		maxScope: SCOPE.s1_0,
-		noUbisoftWebsite: true,
 	},
 ]

@@ -1,6 +1,12 @@
 <script lang="ts">
+	import { PUBLIC_REPORT_ERROR_FORM } from "$env/static/public"
 	import { base } from "$app/paths"
 	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
+
+	const season = {
+		link: "https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/5elVeFwuDGjHBeNxPEoZNT/y8s3-midseason-roadmap-update",
+		name: "Y8S3",
+	}
 </script>
 
 <svelte:head>
@@ -19,16 +25,30 @@
 				<span class="app-name"> Rainbow six operator filter </span>
 			</h1>
 
-			<nav>
+			<div class="nav">
+				{#if PUBLIC_REPORT_ERROR_FORM}
+					<a
+						href={PUBLIC_REPORT_ERROR_FORM}
+						target="_blank"
+						rel="noopener"
+					>
+						Report error
+						<IconExternalLink />
+					</a>
+				{/if}
 				<a
-					href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__W1rDjVUREk2MDhXSkg1RDBZMU80MUk2RjEyRlQwVy4u"
+					href={season.link}
 					target="_blank"
 					rel="noopener"
+					class="season"
 				>
-					Report error
-					<IconExternalLink />
+					<div class="label">Updated for</div>
+					<div class="name">
+						{season.name}
+						<IconExternalLink />
+					</div>
 				</a>
-			</nav>
+			</div>
 		</div>
 	</header>
 
@@ -45,6 +65,8 @@
 <style lang="sass">
 	@import "$lib/sass/variables"
 
+	$_color_header_bg: darken($color_bg, 10%)
+
 	:global(*)
 		box-sizing: border-box
 
@@ -53,14 +75,15 @@
 
 	:global(body)
 		margin: 0
-		overflow-y: scroll
+		overflow: hidden
 
 		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"
+		fill: $color_fg
 		color: $color_fg
 
 		background-color: $color_bg
 
-		a
+		:global(a)
 			fill: $color_link
 			color: $color_link
 			text-decoration: none
@@ -73,6 +96,10 @@
 			&:active
 				fill: darken($color_link, 10%)
 				color: darken($color_link, 10%)
+
+	:global(svg)
+		height: .75em
+		vertical-align: middle
 
 	:global(h1,h2)
 		text-transform: uppercase
@@ -88,7 +115,8 @@
 	.wrapper
 		display: flex
 		flex-direction: column
-		min-height: 100vh
+		height: 100vh
+		overflow-y: scroll
 
 		.header
 			flex: 0 1 content
@@ -100,14 +128,13 @@
 			flex: 0 1 content
 
 	.header
-		background-color: darken($color_bg, 5%)
-		border-bottom: 1px solid darken($color_bg, 50%)
+		padding: .25rem 0
+		background-color: $_color_header_bg
 
 		.container
 			display: flex
 			justify-content: space-between
 			align-items: center
-			height: 3rem
 
 			> h1
 				margin: 0
@@ -121,6 +148,30 @@
 				height: 2rem
 				vertical-align: middle
 				margin-right: .5rem
+
+			.nav
+				display: flex
+				align-items: center
+				gap: 1.5rem
+
+				.season
+					padding: .25rem .5rem
+					text-align: center
+
+					&:hover
+						text-decoration: none
+						background-color: lighten($_color_header_bg, 10%)
+
+					.label
+						color: lighten($color_bg, 50%)
+						font-size: .7rem
+						line-height: 1
+
+					.name
+						font-size: 1.15rem
+						font-weight: bold
+						color: $color_fg
+						fill: $color_fg
 
 	.footer
 		padding: 2em

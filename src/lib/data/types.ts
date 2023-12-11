@@ -48,11 +48,13 @@ export enum GADGET {
 }
 
 export enum SCOPE {
+	s_none,
 	s1_0,
 	s1_5,
 	s2_0,
 	s2_5,
-	s2_5plus,
+	s3_0,
+	s3_0plus,
 }
 
 export enum SPEED {
@@ -64,22 +66,19 @@ export enum SPEED {
 export type Operator = {
 	uri: string
 	name: string
+	nameNote?: string
 	side: SIDE
 	roles: ROLE[]
 	speed: SPEED
-	gunsPrimary: GUN_TYPE[]
-	gunsSecondary: GUN_TYPE[]
+	gunsPrimary: GunConfig[]
+	gunsSecondary: GunConfig[]
 	gadgets: GADGET[]
-	maxScope: SCOPE
-	note?: string
-	noUbisoftWebsite?: boolean
 }
 
 export type RadioOption = {
 	label: string
 	secondaryLabel?: string
 	value: number
-	disabled?: boolean
 	count?: number
 }
 
@@ -88,7 +87,8 @@ export type FilterParams = {
 	gunTypePrimary: number
 	gunTypeSecondary: number
 	gadget: number
-	scope: number
+	scopePrimaryGun: number
+	scopeSecondaryGun: number
 	speed: number
 	role: number
 }
@@ -96,6 +96,19 @@ export type FilterParams = {
 export type Link = {
 	url: string
 	domain: string
+}
+
+export type Gun = {
+	name: string
+	type: GUN_TYPE
+	note?: string
+	importantNote?: string
+}
+
+export type GunConfig = {
+	gun: Gun
+	maxScope: SCOPE
+	note?: string
 }
 
 export const NONE = -1
