@@ -11,7 +11,6 @@ function arVsDmrNote(dmr: string): string {
 }
 
 export const operators: Operator[] = [
-	/*
 	{
 		uri: "tubarao",
 		roles: [ROLE.antientry, ROLE.antigadget],
@@ -19,7 +18,6 @@ export const operators: Operator[] = [
 		side: SIDE.defense,
 		speed: SPEED.s2,
 		gunsPrimary: [
-			// TODO:
 			{ gun: guns.mpx, maxScope: SCOPE.s1_5 },
 			{ gun: guns.ar1550, maxScope: SCOPE.s2_0 },
 		],
@@ -28,7 +26,6 @@ export const operators: Operator[] = [
 		],
 		gadgets: [GADGET.nitro, GADGET.proxalarm],
 	},
-	*/
 	{
 		uri: "ram",
 		roles: [ROLE.breaching, ROLE.intel],
