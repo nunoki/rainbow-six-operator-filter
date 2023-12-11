@@ -14,7 +14,7 @@
 					type="radio"
 					{name}
 					value={opt.value}
-					disabled={opt.disabled || false}
+					disabled={opt.count === 0}
 					bind:group={selected}
 				/>
 				<span class="option-label">
@@ -42,32 +42,56 @@
 <style lang="sass">
 	@import "$lib/sass/variables"
 
+	$_border_thickness: 0
+
+	$_color_border: transparent
+	$_color_bg: #ddd
+	$_color_fg: #333
+
+	$_color_badge_fg: white
+	$_color_badge_bg: lighten($color_bg, 12%)
+
+	$_color_hover_fg: black
+	$_color_hover_bg: lighten($color_accent, 20%)
+
+	$_color_selected_fg: black
+	$_color_selected_bg: $color_accent
+
+	$_color_disabled_fg: #888
+	$_color_disabled_bg: #aaa
+	$_color_disabled_badge_bg: #999
+
 	.options
-		padding: 1px
 
 		.option
-			// white-space: nowrap
 			display: block
 			position: relative
-			margin-bottom: -1px
+			margin-bottom: 1px
+
+			&:last-child .option-label
+				margin-bottom: -$_border_thickness
 
 			.option-label
 				display: flex
 				justify-content: space-between
 				align-items: center
 				padding: .15rem .5rem
+				color: $_color_fg
 				cursor: pointer
 
 				white-space: nowrap
-				background-color: lighten($color_bg, 5%)
-				border: 1px solid lighten($color_bg, 15%)
+				background-color: $_color_bg
+				border: $_border_thickness solid $_color_border
 
 				&:hover
-					background-color: lighten($color_bg, 15%)
+					color: $_color_hover_fg
+					background-color: $_color_hover_bg
 
 				.label-content
+					font-family: $font_ubi
+					font-size: 1.5rem
 					text-transform: uppercase
-					transform: scaleX(.9)
+					transform: scaleX(.85) skewX(-5deg)
 					transform-origin: left center
 
 					.secondary
@@ -86,9 +110,10 @@
 					display: inline-block
 					padding: .25rem .5rem
 					margin-left: .25rem
-					background-color: $color_bg
-					color: white
-					border-radius: .75rem
+					line-height: 1
+					color: $_color_badge_fg
+					background-color: $_color_badge_bg
+					border-radius: 1rem
 
 			input
 				opacity: 0
@@ -97,17 +122,16 @@
 
 				&:checked ~ .option-label
 					opacity: 1
-					color: $color_bg
-					background-color: $color_fg
-					border-color: $color_fg
+					color: $_color_selected_fg
+					background-color: $_color_selected_bg
 
-				&:disabled ~ .option-label
-					// opacity: .1
+				&:disabled ~ .option-label,
+				&:disabled:hover ~ .option-label
 					cursor: not-allowed
-					color: lighten($color_bg, 7%)
-					background-color: darken($color_bg, 1%)
-					border-color: lighten($color_bg, 5%)
+					color: $_color_disabled_fg
+					background-color: $_color_disabled_bg
 
 					.label-badge
-						color: lighten($color_bg, 7%)
+						color: $_color_disabled_fg
+						background-color: $_color_disabled_badge_bg
 </style>

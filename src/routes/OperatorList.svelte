@@ -1,51 +1,45 @@
 <script lang="ts">
 	import { base } from "$app/paths"
-	import { operators } from "$lib/data/operators"
-	import type { FilterParams, Link, Operator } from "$lib/data/types"
-	import { NONE, SIDE } from "$lib/data/types"
-	import IconExternalLink from "$lib/components/IconExternalLink.svelte"
+	import { createEventDispatcher } from "svelte"
 	import { filter } from "$lib/util/filter"
+	import { gunNotes } from "$lib/util/gun_notes"
+	import type { FilterParams, Operator } from "$lib/data/types"
 
 	export let filters: FilterParams = {} as FilterParams
 
+	const dispatch = createEventDispatcher()
+
 	$: filteredOps = filter(filters)
 
-	function generateLinks(op: Operator): Link[] {
-		let links: Link[] = []
-
-		if (op.name !== "Recruit") {
-			links.push({
-				url: `https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/${op.uri}`,
-				domain: "ubisoft.com",
-			})
-			links.push({
-				url: `https://r6siegecenter.com/guides/operators/${
-					op.side === SIDE.defense ? "defenders" : "attackers"
-				}/${op.uri}/`,
-				domain: "r6siegecenter.com",
-			})
-		}
-
-		links.push({
-			url: `https://rainbowsix.fandom.com/wiki/${op.name}`,
-			domain: "fandom.com",
-		})
-
-		return links
+	function onOperatorClick(operator: Operator): void {
+		dispatch("opselected", operator)
 	}
 </script>
 
 <div class="operator-list">
 	{#if filteredOps.length > 0}
 		{#each filteredOps as op}
-			<div class="operator">
+			<button
+				class="operator"
+				on:click={() => onOperatorClick(op)}
+			>
 				<div class="card">
 					<div class="inner">
 						<div
 							class="pic"
 							style="background-image: url({base}/operators/{op.uri}-pic.png)"
 						/>
-						<span class="name">{op.name}</span>
+						<span class="title">
+							<span class="name">
+								{op.name}
+							</span>
+
+							{#if op.nameNote}
+								<span class="note">
+									({op.nameNote})
+								</span>
+							{/if}
+						</span>
 					</div>
 
 					<img
@@ -55,29 +49,15 @@
 					/>
 				</div>
 
-				<div class="links">
-					{#each generateLinks(op) as l}
-						<a
-							href={l.url}
-							target="_blank"
-							rel="noopener"
-							class="link"
-						>
-							{l.domain}
-							<IconExternalLink />
-						</a>
-					{/each}
-				</div>
-
-				{#if op.note}
+				{#if gunNotes(op)}
 					<div
 						class="icon-note"
-						title={op.note}
+						title={gunNotes(op)?.join(", ")}
 					>
 						*
 					</div>
 				{/if}
-			</div>
+			</button>
 		{/each}
 
 		{#each Array(8) as _}
@@ -107,6 +87,12 @@
 			text-decoration: none
 
 		.operator
+			margin: 0
+			padding: 0
+			border: none
+			background: transparent
+			cursor: pointer
+
 			.card
 				padding-bottom: 190%
 				position: relative
@@ -126,7 +112,12 @@
 						background-position: center
 						flex: 1
 
-					.name
+					.title
+						display: flex
+						justify-content: center
+						align-items: center
+						gap: .25rem
+
 						padding: .25rem
 						text-transform: uppercase
 						text-align: center
@@ -134,6 +125,11 @@
 						font-size: 26px
 						color: #24262a
 						background-color: #c3c3c3
+
+						> .note
+							opacity: .75
+							font-size: .7em
+							vertical-align: middle
 
 				.operator-icon
 					display: block
@@ -147,52 +143,18 @@
 					width: 50%
 					height: auto
 
-			.links
-				opacity: 0
-				transition: opacity .3s ease
-				position: absolute
-				z-index: 3
-				bottom: 2rem
-				left: 10%
-				width: 80%
-
-				.link
-					padding: .25rem
-					margin: .25rem 0
-					display: block
-					text-align: center
-					white-space: nowrap
-					overflow: hidden
-					text-overflow: ellipsis
-					text-decoration: none
-					fill: $color_bg
-					color: $color_bg
-					background-color: $color_fg
-
-					&:hover
-						color: $color_fg
-						fill: $color_fg
-						background-color: $color_bg
-						outline: 1px solid $color_fg
-
-					&:active
-						background-color: black
-
 			.icon-note
 				position: absolute
 				z-index: 2
-				top: 0
-				right: 0
-				font-size: 3rem
+				top: .5rem
+				right: .5rem
+				font-size: 1.5rem
 				font-weight: bold
 				color: red
 				cursor: help
 
 			&:hover
 				outline: 2px solid $color_fg
-
-				.links
-					opacity: 1
 
 		.no-results
 			padding: 4rem 0
