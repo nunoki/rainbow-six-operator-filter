@@ -342,11 +342,14 @@
 			margin-bottom: .5rem
 
 			> div
+				display: flex
+				align-items: center
+				justify-content: center
 				padding: .5rem .25rem
 				text-align: center
 				fill: black
 				color: black
-				background-color: darken($color_fg, 15%)
+				background-color: darken($color_fg, 7%)
 
 			.weapon-type
 				flex: 1 1 40%
@@ -356,10 +359,15 @@
 				font-family: $font_ubi
 				font-size: 1.75rem
 				background-color: darken($color_fg, 0%)
+				border-left: 2px solid $color_bg
+				border-right: 2px solid $color_bg
 
 			.weapon-scope
 				flex: 0 1 20%
 				white-space: nowrap
+
+				:global(svg)
+					margin-right: .25rem
 
 	.weapon-note
 		font-size: .7rem
