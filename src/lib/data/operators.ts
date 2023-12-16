@@ -18,8 +18,8 @@ export const operators: Operator[] = [
 		side: SIDE.defense,
 		speed: SPEED.s2,
 		gunsPrimary: [
-			{ gun: guns.mpx, maxScope: SCOPE.s1_5 },
-			{ gun: guns.ar1550, maxScope: SCOPE.s2_0 },
+			{ gun: guns.mpx, maxScope: SCOPE.s1_0 },
+			{ gun: guns.ar1550, maxScope: SCOPE.s1_5 },
 		],
 		gunsSecondary: [
 			{ gun: guns.p226mk25, maxScope: SCOPE.s_none }, //
